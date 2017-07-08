@@ -20,6 +20,8 @@
 		FBDC93111F10708700E515C8 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC93101F10708700E515C8 /* SearchTableViewCell.swift */; };
 		FBDC93131F10833600E515C8 /* SWSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC93121F10833600E515C8 /* SWSegmentedControl.swift */; };
 		FBDC93161F1085D200E515C8 /* ShowInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC93151F1085D200E515C8 /* ShowInformationViewController.swift */; };
+		FBDC93181F11452100E515C8 /* CastCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC93171F11452100E515C8 /* CastCollectionViewController.swift */; };
+		FBDC931A1F11467500E515C8 /* CastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC93191F11467500E515C8 /* CastCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -53,6 +55,8 @@
 		FBDC93101F10708700E515C8 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		FBDC93121F10833600E515C8 /* SWSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWSegmentedControl.swift; sourceTree = "<group>"; };
 		FBDC93151F1085D200E515C8 /* ShowInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowInformationViewController.swift; sourceTree = "<group>"; };
+		FBDC93171F11452100E515C8 /* CastCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CastCollectionViewController.swift; sourceTree = "<group>"; };
+		FBDC93191F11467500E515C8 /* CastCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CastCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +154,8 @@
 			children = (
 				FB77F2031F1054B2003A1D46 /* ShowDetailViewController.swift */,
 				FBDC93151F1085D200E515C8 /* ShowInformationViewController.swift */,
+				FBDC93171F11452100E515C8 /* CastCollectionViewController.swift */,
+				FBDC93191F11467500E515C8 /* CastCollectionViewCell.swift */,
 			);
 			name = "Show Details";
 			sourceTree = "<group>";
@@ -285,7 +291,9 @@
 				FB57CD8C1F10356100F98DAE /* ViewController.swift in Sources */,
 				FBDC93131F10833600E515C8 /* SWSegmentedControl.swift in Sources */,
 				FBDC93161F1085D200E515C8 /* ShowInformationViewController.swift in Sources */,
+				FBDC93181F11452100E515C8 /* CastCollectionViewController.swift in Sources */,
 				FBDC93111F10708700E515C8 /* SearchTableViewCell.swift in Sources */,
+				FBDC931A1F11467500E515C8 /* CastCollectionViewCell.swift in Sources */,
 				FB77F1FF1F104323003A1D46 /* ShowCollectionCellCollectionViewCell.swift in Sources */,
 				FB57CD8A1F10356100F98DAE /* AppDelegate.swift in Sources */,
 			);

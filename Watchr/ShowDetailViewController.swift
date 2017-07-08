@@ -14,10 +14,13 @@ class ShowDetailViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var stillsImageView: UIImageView!
     @IBOutlet var showInfoView: UIView!
+    @IBOutlet var castInfoView: UIView!
     @IBOutlet var segmentControl: SWSegmentedControl!
     
     var show: TVMDB?
     var stills: [UIImage] = []
+    var castController: CastCollectionViewController?
+    var infoController: ShowInformationViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +29,7 @@ class ShowDetailViewController: UIViewController, UIScrollViewDelegate {
         self.title = show?.name
         fillBannerImage()
         getStillsForShow()
+        castInfoView.isHidden = true
     }
     
     override func didReceiveMemoryWarning() {
@@ -86,10 +90,12 @@ class ShowDetailViewController: UIViewController, UIScrollViewDelegate {
         {
         case 0:
             showInfoView.isHidden = false
-            //locationContainerView.isHidden = true
+            castInfoView.isHidden = true
+            infoController?.resizeScrollView()
         case 1:
             showInfoView.isHidden = true
-            //locationContainerView.isHidden = false
+            castInfoView.isHidden = false
+            castController?.resizeCollectionView()
         default:
             break
         }
@@ -97,8 +103,23 @@ class ShowDetailViewController: UIViewController, UIScrollViewDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            if let destinationVC = segue.destination  as? ShowInformationViewController{
-                destinationVC.show = show
-            }
+        if let destinationVC = segue.destination  as? ShowInformationViewController{
+            infoController = destinationVC
+            destinationVC.show = show
         }
+        if let destinationVC = segue.destination  as? CastCollectionViewController{
+            castController = destinationVC
+            destinationVC.show = show
+        }
+    }
+    
+    @IBAction func experimentalButtonTapped(_ sender: Any) {
+        
+        var contentRect = CGRect(x: 0, y: 0, width: 0, height: 0)
+        for view in self.scrollView.subviews {
+            contentRect = contentRect.union(view.frame)
+        }
+        print(contentRect)
+        self.scrollView.contentSize = contentRect.size;
+    }
 }
