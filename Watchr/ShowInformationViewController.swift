@@ -43,6 +43,7 @@ class ShowInformationViewController: UIViewController, UICollectionViewDelegate,
         genreLabel.text = getGenresString(show: detailedShow!)
         networkLabel.text = detailedShow!.networks[0].name
         descriptionTextView.text = detailedShow!.overview
+        descriptionTextView.sizeToFit()
         
     }
     
