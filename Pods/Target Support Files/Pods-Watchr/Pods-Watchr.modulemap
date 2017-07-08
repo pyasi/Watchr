@@ -1,0 +1,6 @@
+framework module Pods_Watchr {
+  umbrella header "Pods-Watchr-umbrella.h"
+
+  export *
+  module * { export * }
+}
