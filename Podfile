@@ -7,4 +7,6 @@ target 'Watchr' do
 
   # Pods for Watchr
   pod "TMDBSwift"
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
 end
