@@ -25,6 +25,7 @@
 		FBDC931C1F11999000E515C8 /* CastDetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBDC931B1F11999000E515C8 /* CastDetailView.storyboard */; };
 		FBDC931E1F119BC000E515C8 /* ActorDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC931D1F119BC000E515C8 /* ActorDetailViewController.swift */; };
 		FBDC93201F11DF9E00E515C8 /* DOFavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC931F1F11DF9E00E515C8 /* DOFavoriteButton.swift */; };
+		FBF583B81F12995E00950C96 /* LoadMoreFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF583B71F12995E00950C96 /* LoadMoreFooterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -63,6 +64,7 @@
 		FBDC931B1F11999000E515C8 /* CastDetailView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CastDetailView.storyboard; sourceTree = "<group>"; };
 		FBDC931D1F119BC000E515C8 /* ActorDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActorDetailViewController.swift; sourceTree = "<group>"; };
 		FBDC931F1F11DF9E00E515C8 /* DOFavoriteButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DOFavoriteButton.swift; sourceTree = "<group>"; };
+		FBF583B71F12995E00950C96 /* LoadMoreFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadMoreFooterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 			children = (
 				FB57CD8B1F10356100F98DAE /* ViewController.swift */,
 				FB77F1FE1F104323003A1D46 /* ShowCollectionCellCollectionViewCell.swift */,
+				FBF583B71F12995E00950C96 /* LoadMoreFooterView.swift */,
 				FBDC93141F1085A900E515C8 /* Show Details */,
 				FBDC930D1F106F5A00E515C8 /* Search */,
 			);
@@ -299,6 +302,7 @@
 				FBDC930F1F106F7000E515C8 /* SearchViewController.swift in Sources */,
 				FB77F2041F1054B2003A1D46 /* ShowDetailViewController.swift in Sources */,
 				FBDC931E1F119BC000E515C8 /* ActorDetailViewController.swift in Sources */,
+				FBF583B81F12995E00950C96 /* LoadMoreFooterView.swift in Sources */,
 				FB57CD8C1F10356100F98DAE /* ViewController.swift in Sources */,
 				FBDC93201F11DF9E00E515C8 /* DOFavoriteButton.swift in Sources */,
 				FBDC93131F10833600E515C8 /* SWSegmentedControl.swift in Sources */,

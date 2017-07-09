@@ -51,6 +51,26 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         performSegue(withIdentifier: "ToShowDetailSegue", sender: show)
     }
     
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        switch kind {
+            
+        case UICollectionElementKindSectionFooter:
+            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "LoadMoreFooter", for: indexPath as IndexPath) as! LoadMoreFooterView
+            
+            footerView.layoutView()
+            return footerView
+            
+        default:
+            
+            assert(false, "Unexpected element kind")
+        }
+    }
+    
+    @IBAction func loadMoreTapped(_ sender: Any) {
+        onPage += 1
+        loadShows()
+    }
     /*
      func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
      let lastElement = showsToDisplay.count - 1
@@ -63,7 +83,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
      }*/
     
     func loadShows(){
-        TVMDB.popular(apiKey, page: 1, language: "en"){
+        TVMDB.popular(apiKey, page: onPage, language: "en"){
             apiReturn in
             let tv = apiReturn.1!
             for x in 0..<tv.count{

@@ -22,6 +22,10 @@ class CastCollectionViewCell: UICollectionViewCell {
     
     }
     
+    override func prepareForReuse() {
+        castImage.image = nil
+    }
+    
     func fillCastImage(path: String){
             let url = URL(string:"https://image.tmdb.org/t/p/w185//" + path)
             DispatchQueue.global().async {

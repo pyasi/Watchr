@@ -16,6 +16,11 @@ class ShowCollectionCellCollectionViewCell: UICollectionViewCell {
     @IBOutlet var seasonLabel: UILabel!
     @IBOutlet var numberOfSeasonsLabel: UILabel!
     
+    override func prepareForReuse() {
+        showImage.image = nil
+        showTitle.text = nil
+    }
+    
     func getImageForShow(showId: Int){
         
         TVMDB.images(apiKey, tvShowID: showId, language: "en"){
