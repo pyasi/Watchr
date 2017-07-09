@@ -116,14 +116,4 @@ class ShowInformationViewController: UIViewController, UICollectionViewDelegate,
             self.loadShowInformation()
         }
     }
-    
-    func resizeScrollView(){
-        if let parent = self.parent as? ShowDetailViewController{
-            var height: CGFloat = 0
-            for view in parent.view.subviews{
-                height += view.frame.height
-            }
-            parent.scrollView.contentSize.height = height
-        }
-    }
 }

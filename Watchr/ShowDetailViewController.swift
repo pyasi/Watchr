@@ -61,11 +61,10 @@ class ShowDetailViewController: UIViewController, UIScrollViewDelegate {
     
     func getStillsForShow(){
         
-        print(show!.id!)
-        TVEpisodesMDB.images(apiKey, tvShowId: show!.id!, seasonNumber: 1, episodeNumber: 1){
-            apiReturn, images in
-            if let images = images{
-                for still in images.stills{
+        TVMDB.images(apiKey, tvShowID: show!.id, language: "en"){
+            apiReturn in
+            if let tvImages = apiReturn.1{
+                for still in tvImages.backdrops{
                     
                     let url = URL(string:"https://image.tmdb.org/t/p/w185//" + still.file_path!)
                     DispatchQueue.global().async {
@@ -91,7 +90,7 @@ class ShowDetailViewController: UIViewController, UIScrollViewDelegate {
         case 0:
             showInfoView.isHidden = false
             castInfoView.isHidden = true
-            infoController?.resizeScrollView()
+            resizeScrollView()
         case 1:
             showInfoView.isHidden = true
             castInfoView.isHidden = false
@@ -113,13 +112,16 @@ class ShowDetailViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
-    @IBAction func experimentalButtonTapped(_ sender: Any) {
-        
+    func resizeScrollView(){
         var contentRect = CGRect(x: 0, y: 0, width: 0, height: 0)
         for view in self.scrollView.subviews {
             contentRect = contentRect.union(view.frame)
         }
         print(contentRect)
-        self.scrollView.contentSize = contentRect.size;
+        self.scrollView.contentSize = contentRect.size
+    }
+    
+    @IBAction func experimentalButtonTapped(_ sender: Any) {
+        fillStillsImageView(newStills: stills)
     }
 }

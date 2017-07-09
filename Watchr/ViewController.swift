@@ -37,7 +37,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let cell = popularShowsCollectionView.dequeueReusableCell(withReuseIdentifier: "ShowCell", for: indexPath) as! ShowCollectionCellCollectionViewCell
         cell.showTitle.text = showsToDisplay[indexPath.row].name
         cell.getImageForShow(showId: showsToDisplay[indexPath.row].id!)
-        
+        cell.numberOfSeasonsLabel.text = showsToDisplay[indexPath.row].numberOfSeasons != nil ? String(describing: showsToDisplay[indexPath.row].numberOfSeasons!) : "10"
+        if (showsToDisplay[indexPath.row].numberOfSeasons == 1){
+            cell.seasonLabel.text = "Season"
+        }
+        cell.layoutViews()
         
         return cell
     }
@@ -48,24 +52,42 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     /*
-    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        let lastElement = showsToDisplay.count - 1
-        print("shows: ", showsToDisplay)
-        print("Showing: ", indexPath.row)
-        if indexPath.row == lastElement {
-            onPage += 1
-            loadShows()
-        }
-    }*/
+     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+     let lastElement = showsToDisplay.count - 1
+     print("shows: ", showsToDisplay)
+     print("Showing: ", indexPath.row)
+     if indexPath.row == lastElement {
+     onPage += 1
+     loadShows()
+     }
+     }*/
     
     func loadShows(){
         TVMDB.popular(apiKey, page: 1, language: "en"){
             apiReturn in
             let tv = apiReturn.1!
-            for show in tv{
-                self.showsToDisplay.append(show)
+            for x in 0..<tv.count{
+                self.showsToDisplay.append(tv[x])
+                self.getSeasonsForShow(show: tv[x], index: x)
             }
             self.popularShowsCollectionView.reloadData()
+        }
+    }
+    
+    func getSeasonsForShow(show: TVMDB, index: Int){
+        TVDetailedMDB.tv(apiKey, tvShowID: show.id, language: "en"){
+            apiReturn in
+            if let data = apiReturn.1{
+                show.numberOfSeasons = data.seasons.count - 1
+                if (show.numberOfSeasons == 0){
+                    show.numberOfSeasons = 1
+                }
+                let cell = self.popularShowsCollectionView.cellForItem(at: IndexPath(row: index, section: 0)) as? ShowCollectionCellCollectionViewCell
+                cell?.numberOfSeasonsLabel.text = String(describing: show.numberOfSeasons!)
+                if (show.numberOfSeasons == 1){
+                    cell?.seasonLabel.text = "Season"
+                }
+            }
         }
     }
     

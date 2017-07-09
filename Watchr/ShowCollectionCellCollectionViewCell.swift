@@ -13,6 +13,8 @@ class ShowCollectionCellCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var showImage: UIImageView!
     @IBOutlet var showTitle: UILabel!
+    @IBOutlet var seasonLabel: UILabel!
+    @IBOutlet var numberOfSeasonsLabel: UILabel!
     
     func getImageForShow(showId: Int){
         
@@ -32,4 +34,25 @@ class ShowCollectionCellCollectionViewCell: UICollectionViewCell {
             }
         }
     }
+    
+    func layoutViews(){
+        self.seasonLabel.layer.masksToBounds = true
+        self.numberOfSeasonsLabel.layer.masksToBounds = true
+        self.seasonLabel.layer.cornerRadius = 3
+        self.numberOfSeasonsLabel.layer.cornerRadius = 3
+    }
+    
+    @IBAction func favoriteTapped(_ sender: DOFavoriteButton) {
+        if sender.isSelected {
+            // deselect
+            sender.deselect()
+        } else {
+            // select with animation
+            sender.select()
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.success)
+        }
+    }
+    
+    
 }
