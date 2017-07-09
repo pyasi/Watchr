@@ -8,6 +8,7 @@
 
 import UIKit
 import TMDBSwift
+import FirebaseDatabase
 
 class ShowCollectionCellCollectionViewCell: UICollectionViewCell {
     
@@ -15,10 +16,14 @@ class ShowCollectionCellCollectionViewCell: UICollectionViewCell {
     @IBOutlet var showTitle: UILabel!
     @IBOutlet var seasonLabel: UILabel!
     @IBOutlet var numberOfSeasonsLabel: UILabel!
+    @IBOutlet var favoriteButton: DOFavoriteButton!
+    
+    var showId: Int?
     
     override func prepareForReuse() {
         showImage.image = nil
         showTitle.text = nil
+        showId = nil
     }
     
     func getImageForShow(showId: Int){
@@ -51,12 +56,34 @@ class ShowCollectionCellCollectionViewCell: UICollectionViewCell {
         if sender.isSelected {
             // deselect
             sender.deselect()
+            removeFromFavorites()
         } else {
             // select with animation
             sender.select()
+            
+            
             let generator = UINotificationFeedbackGenerator()
             generator.notificationOccurred(.success)
+            addShowToFavorites()
         }
+    }
+    
+    func addShowToFavorites(){
+        ref.child("favorites").child(currentUser!.favoritesKey!).childByAutoId().setValue(self.showId)
+        favorites.append(self.showId!)
+    }
+    
+    func removeFromFavorites(){
+        ref.child("favorites").child(currentUser!.favoritesKey!).observeSingleEvent(of: .value, with: {
+            (snapshot) in
+            for child in snapshot.children{
+                let thisChild = child as! DataSnapshot
+                if (thisChild.value as? Int == self.showId){
+                    ref.child("favorites").child(currentUser!.favoritesKey!).child(thisChild.key).removeValue()
+                    favorites.remove(at: favorites.index(of: self.showId!)!)
+                }
+            }
+        })
     }
     
     

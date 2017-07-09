@@ -9,4 +9,6 @@ target 'Watchr' do
   pod "TMDBSwift"
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
+  pod 'Firebase/Database'
+  pod 'FacebookLogin'
 end

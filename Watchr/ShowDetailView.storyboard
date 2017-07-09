@@ -204,7 +204,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RecommendationCell" id="jc9-81-xWM" customClass="ShowCollectionCellCollectionViewCell" customModule="Watchr" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="14" width="83" height="128"/>
+                                        <rect key="frame" x="0.0" y="13.5" width="83" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="83" height="128"/>
@@ -292,6 +292,10 @@
         <scene sceneID="5UI-5m-QKz">
             <objects>
                 <viewController id="ZOU-lj-fMY" customClass="CastCollectionViewController" customModule="Watchr" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XUj-BB-6UF"/>
+                        <viewControllerLayoutGuide type="bottom" id="voN-nx-mP8"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="73m-zj-nno">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="550"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

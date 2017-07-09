@@ -8,6 +8,8 @@
 
 import UIKit
 import TMDBSwift
+import Firebase
+import FBSDKLoginKit
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -41,6 +43,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         if (showsToDisplay[indexPath.row].numberOfSeasons == 1){
             cell.seasonLabel.text = "Season"
         }
+        cell.showId = showsToDisplay[indexPath.row].id
+        cell.favoriteButton.isSelected = favorites.contains(showsToDisplay[indexPath.row].id!) ? true : false
         cell.layoutViews()
         
         return cell
@@ -71,16 +75,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         onPage += 1
         loadShows()
     }
-    /*
-     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-     let lastElement = showsToDisplay.count - 1
-     print("shows: ", showsToDisplay)
-     print("Showing: ", indexPath.row)
-     if indexPath.row == lastElement {
-     onPage += 1
-     loadShows()
-     }
-     }*/
     
     func loadShows(){
         TVMDB.popular(apiKey, page: onPage, language: "en"){
@@ -116,6 +110,17 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             let show = sender as! TVMDB
             destinationVC.show = show
             
+        }
+    }
+    @IBAction func logOutTapped(_ sender: Any) {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            let loginManager = FBSDKLoginManager()
+            loginManager.logOut()
+            self.performSegue(withIdentifier: "LogOutSegue", sender: nil)
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
         }
     }
 }
