@@ -78,7 +78,7 @@
                 <viewControllerPlaceholder storyboardName="ShowDetailView" id="zJS-hB-okt" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E6r-fg-yHD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2538.4000000000001" y="118.29085457271366"/>
+            <point key="canvasLocation" x="1931" y="738"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="unV-TD-2rb">
@@ -99,12 +99,12 @@
             </objects>
             <point key="canvasLocation" x="62" y="133"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="5Ox-OZ-U52">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Vl-QB-s8H" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="akp-wx-M6Q" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="kD0-KP-r5D"/>
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="kD0-KP-r5D"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sXb-lo-Wv0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

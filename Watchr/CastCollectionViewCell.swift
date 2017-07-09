@@ -13,6 +13,14 @@ class CastCollectionViewCell: UICollectionViewCell {
     @IBOutlet var castImage: UIImageView!
     @IBOutlet var actorNameLabel: UILabel!
     @IBOutlet var characterLabel: UILabel!
+    @IBOutlet var showTitleLabel: UILabel!
+    @IBOutlet var mainBackground: UIView!
+    @IBOutlet var shadowLayer: UIView!
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    
+    }
     
     func fillCastImage(path: String){
             let url = URL(string:"https://image.tmdb.org/t/p/w185//" + path)

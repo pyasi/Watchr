@@ -39,16 +39,28 @@ class CastCollectionViewController: UIViewController, UICollectionViewDelegate, 
         cell.characterLabel.text = castMembers[indexPath.row].character
         cell.fillCastImage(path: castMembers[indexPath.row].profile_path!)
         
+        cell.mainBackground.layer.cornerRadius = 5
+        cell.mainBackground.layer.masksToBounds = true
+        
+        cell.shadowLayer.layer.shadowColor = UIColor.black.cgColor
+        cell.shadowLayer.layer.shadowOpacity = 0.75
+        cell.shadowLayer.layer.shadowRadius = 3
+        cell.shadowLayer.layer.shadowOffset = CGSize(width: 10.0, height: 10.0)
+        cell.shadowLayer.layer.shouldRasterize = true
+        cell.shadowLayer.layer.masksToBounds = false
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let actor = castMembers[indexPath.row]
+        performSegue(withIdentifier: "CastToActorDetailSegue", sender: actor)
     }
     
     func resizeCollectionView(){
         if let parent = self.parent as? ShowDetailViewController{
             parent.scrollView.contentSize.height = self.castCollectionView.contentSize.height + 225
-            castCollectionView.frame = CGRect(x: 0, y: 0, width: self.castCollectionView.contentSize.width, height: self.castCollectionView.contentSize.height + (self.tabBarController?.tabBar.frame.height)! + 225)
+            castCollectionView.frame = CGRect(x: 0, y: 0, width: self.castCollectionView.contentSize.width, height: self.castCollectionView.contentSize.height + 225)
             castCollectionView.reloadData()
         }
     }
@@ -62,6 +74,12 @@ class CastCollectionViewController: UIViewController, UICollectionViewDelegate, 
                 }
                 self.castCollectionView.reloadData()
             }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationVC = segue.destination as? ActorDetailViewController{
+            destinationVC.actorId = (sender as? TVCastMDB)?.id
         }
     }
 }

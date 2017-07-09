@@ -50,8 +50,13 @@ class ShowInformationViewController: UIViewController, UICollectionViewDelegate,
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = recommendationCollectionView.dequeueReusableCell(withReuseIdentifier: "RecommendationCell", for: indexPath) as! ShowCollectionCellCollectionViewCell
-        cell.showTitle.text = recommendations[indexPath.row].name
+        cell.showTitle.text = recommendations[indexPath.row].name != nil ? recommendations[indexPath.row].name : ""
+        if( recommendations[indexPath.row].id != nil){
         cell.getImageForShow(showId: recommendations[indexPath.row].id!)
+        }
+        else{
+            cell.showImage.image = UIImage(named: "default")
+        }
         
         return cell
     }

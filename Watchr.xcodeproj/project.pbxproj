@@ -22,6 +22,8 @@
 		FBDC93161F1085D200E515C8 /* ShowInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC93151F1085D200E515C8 /* ShowInformationViewController.swift */; };
 		FBDC93181F11452100E515C8 /* CastCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC93171F11452100E515C8 /* CastCollectionViewController.swift */; };
 		FBDC931A1F11467500E515C8 /* CastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC93191F11467500E515C8 /* CastCollectionViewCell.swift */; };
+		FBDC931C1F11999000E515C8 /* CastDetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBDC931B1F11999000E515C8 /* CastDetailView.storyboard */; };
+		FBDC931E1F119BC000E515C8 /* ActorDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC931D1F119BC000E515C8 /* ActorDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -57,6 +59,8 @@
 		FBDC93151F1085D200E515C8 /* ShowInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowInformationViewController.swift; sourceTree = "<group>"; };
 		FBDC93171F11452100E515C8 /* CastCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CastCollectionViewController.swift; sourceTree = "<group>"; };
 		FBDC93191F11467500E515C8 /* CastCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CastCollectionViewCell.swift; sourceTree = "<group>"; };
+		FBDC931B1F11999000E515C8 /* CastDetailView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CastDetailView.storyboard; sourceTree = "<group>"; };
+		FBDC931D1F119BC000E515C8 /* ActorDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActorDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +140,7 @@
 			children = (
 				FB57CD8D1F10356100F98DAE /* Main.storyboard */,
 				FB77F2011F1052A6003A1D46 /* ShowDetailView.storyboard */,
+				FBDC931B1F11999000E515C8 /* CastDetailView.storyboard */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -156,6 +161,7 @@
 				FBDC93151F1085D200E515C8 /* ShowInformationViewController.swift */,
 				FBDC93171F11452100E515C8 /* CastCollectionViewController.swift */,
 				FBDC93191F11467500E515C8 /* CastCollectionViewCell.swift */,
+				FBDC931D1F119BC000E515C8 /* ActorDetailViewController.swift */,
 			);
 			name = "Show Details";
 			sourceTree = "<group>";
@@ -226,6 +232,7 @@
 			files = (
 				FB57CD941F10356100F98DAE /* LaunchScreen.storyboard in Resources */,
 				FB57CD911F10356100F98DAE /* Assets.xcassets in Resources */,
+				FBDC931C1F11999000E515C8 /* CastDetailView.storyboard in Resources */,
 				FB57CD8F1F10356100F98DAE /* Main.storyboard in Resources */,
 				FB77F2021F1052A6003A1D46 /* ShowDetailView.storyboard in Resources */,
 			);
@@ -288,6 +295,7 @@
 			files = (
 				FBDC930F1F106F7000E515C8 /* SearchViewController.swift in Sources */,
 				FB77F2041F1054B2003A1D46 /* ShowDetailViewController.swift in Sources */,
+				FBDC931E1F119BC000E515C8 /* ActorDetailViewController.swift in Sources */,
 				FB57CD8C1F10356100F98DAE /* ViewController.swift in Sources */,
 				FBDC93131F10833600E515C8 /* SWSegmentedControl.swift in Sources */,
 				FBDC93161F1085D200E515C8 /* ShowInformationViewController.swift in Sources */,
