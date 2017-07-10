@@ -32,72 +32,14 @@
                                     <inset key="sectionInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShowCell" id="jFS-Mg-28g" customClass="ShowCollectionCellCollectionViewCell" customModule="Watchr" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="jFS-Mg-28g" customClass="ShowCollectionCellCollectionViewCell" customModule="Watchr" customModuleProvider="target">
                                         <rect key="frame" x="8" y="0.0" width="170" height="312"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="170" height="312"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bs2-1P-Wv7">
-                                                    <rect key="frame" x="0.0" y="0.0" width="170" height="244"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bRJ-5n-nM8">
-                                                    <rect key="frame" x="0.0" y="252" width="170" height="23"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Seasons" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6K-Af-9XW">
-                                                    <rect key="frame" x="56" y="231" width="74" height="22"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="7" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kll-7g-Jj8">
-                                                    <rect key="frame" x="41" y="231" width="20" height="22"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" red="0.59489071369171143" green="0.74986636638641357" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XUK-vf-lid" customClass="DOFavoriteButton" customModule="Watchr" customModuleProvider="target">
-                                                    <rect key="frame" x="131" y="274" width="39" height="38"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="image" keyPath="image" value="heart"/>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="imageColorOn">
-                                                            <color key="value" red="0.23018704349999999" green="0.77713233230000001" blue="0.31589496140000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
-                                                            <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="imageColorOff">
-                                                            <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="circleColor">
-                                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                    <connections>
-                                                        <action selector="favoriteTapped:" destination="jFS-Mg-28g" eventType="touchUpInside" id="YTS-tQ-BSo"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
                                         </view>
                                         <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
-                                        <connections>
-                                            <outlet property="favoriteButton" destination="XUK-vf-lid" id="nGB-FF-Jsv"/>
-                                            <outlet property="numberOfSeasonsLabel" destination="Kll-7g-Jj8" id="Hxa-Op-w4W"/>
-                                            <outlet property="seasonLabel" destination="Z6K-Af-9XW" id="MvH-5d-xnO"/>
-                                            <outlet property="showImage" destination="bs2-1P-Wv7" id="FKZ-Oj-xKg"/>
-                                            <outlet property="showTitle" destination="bRJ-5n-nM8" id="aLY-Lk-sPY"/>
-                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LoadMoreFooter" id="uUJ-zs-DRP" customClass="LoadMoreFooterView" customModule="Watchr" customModuleProvider="target">
@@ -148,7 +90,7 @@
                 <viewControllerPlaceholder storyboardName="ShowDetailView" id="zJS-hB-okt" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E6r-fg-yHD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1931" y="738"/>
+            <point key="canvasLocation" x="2576" y="756"/>
         </scene>
         <!--Log In View Controller-->
         <scene sceneID="y62-KF-ZyA">
@@ -179,6 +121,53 @@
             </objects>
             <point key="canvasLocation" x="-780" y="132.68365817091455"/>
         </scene>
+        <!--Favorites View Controller-->
+        <scene sceneID="2iK-NL-ffc">
+            <objects>
+                <viewController id="Gz6-FD-90I" customClass="FavoritesViewController" customModule="Watchr" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tfO-hc-soE"/>
+                        <viewControllerLayoutGuide type="bottom" id="Sk7-tv-AzB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5JM-nx-42G">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="idS-82-Lii">
+                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LWe-6r-ORK">
+                                    <size key="itemSize" width="170" height="312"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="zCJ-VV-vf2">
+                                        <rect key="frame" x="8" y="0.0" width="170" height="312"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="170" height="312"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="2dL-E2-mxY"/>
+                    <connections>
+                        <outlet property="favoritesCollectionsView" destination="idS-82-Lii" id="Yyn-rn-sG6"/>
+                        <segue destination="zJS-hB-okt" kind="show" identifier="FavoritesToDetail" id="jUl-Nc-i8g"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yce-78-8ZH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1271.2" y="-662.51874062968523"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="unV-TD-2rb">
             <objects>
@@ -192,17 +181,18 @@
                     <connections>
                         <segue destination="akp-wx-M6Q" kind="relationship" relationship="viewControllers" id="cD8-RH-D6y"/>
                         <segue destination="N06-rl-bHY" kind="relationship" relationship="viewControllers" id="1oj-kx-nSn"/>
+                        <segue destination="lNI-sS-FJL" kind="relationship" relationship="viewControllers" id="mHF-Ms-img"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ww-PB-jgy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="62" y="133"/>
+            <point key="canvasLocation" x="2" y="157"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5Ox-OZ-U52">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="akp-wx-M6Q" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="kD0-KP-r5D"/>
+                    <tabBarItem key="tabBarItem" systemItem="mostViewed" id="kD0-KP-r5D"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sXb-lo-Wv0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -298,7 +288,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qtp-TA-sGR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="996" y="1183.3583208395803"/>
+            <point key="canvasLocation" x="1556" y="1182"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ln8-4W-MzO">
@@ -319,11 +309,27 @@
             </objects>
             <point key="canvasLocation" x="62" y="1183"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0Xp-r0-hP6">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lNI-sS-FJL" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="1jH-Bz-s0s"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ih0-9g-Pi5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Gz6-FD-90I" kind="relationship" relationship="rootViewController" id="fwY-8c-NLh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zkh-WZ-9ae" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="332" y="-662.51874062968523"/>
+        </scene>
     </scenes>
-    <resources>
-        <image name="heart" width="32" height="32"/>
-    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="P6b-8T-GOF"/>
+        <segue reference="jUl-Nc-i8g"/>
     </inferredMetricsTieBreakers>
 </document>

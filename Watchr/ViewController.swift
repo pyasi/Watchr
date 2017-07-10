@@ -24,6 +24,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         loadShows()
         popularShowsCollectionView.delegate = self
         popularShowsCollectionView.dataSource = self
+        
+        let nibName = UINib(nibName: "ShowCard", bundle:nil)
+        
+        popularShowsCollectionView.register(nibName, forCellWithReuseIdentifier: "ShowCell")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        popularShowsCollectionView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -109,9 +117,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         if let destinationVC = segue.destination as? ShowDetailViewController{
             let show = sender as! TVMDB
             destinationVC.show = show
-            
         }
     }
+    
     @IBAction func logOutTapped(_ sender: Any) {
         let firebaseAuth = Auth.auth()
         do {

@@ -71,16 +71,21 @@ class ShowCollectionCellCollectionViewCell: UICollectionViewCell {
     func addShowToFavorites(){
         ref.child("favorites").child(currentUser!.favoritesKey!).childByAutoId().setValue(self.showId)
         favorites.append(self.showId!)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: favoriteAddedKey), object: nil)
     }
     
     func removeFromFavorites(){
+        print(favorites)
         ref.child("favorites").child(currentUser!.favoritesKey!).observeSingleEvent(of: .value, with: {
             (snapshot) in
             for child in snapshot.children{
                 let thisChild = child as! DataSnapshot
                 if (thisChild.value as? Int == self.showId){
                     ref.child("favorites").child(currentUser!.favoritesKey!).child(thisChild.key).removeValue()
-                    favorites.remove(at: favorites.index(of: self.showId!)!)
+                    let indexToRemove = favorites.index(of: self.showId!)!
+                    favorites.remove(at: indexToRemove)
+                    let indexInfo:[String: Int] = ["index": indexToRemove]
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: favoriteRemovedKey), object: indexToRemove, userInfo: indexInfo)
                 }
             }
         })
