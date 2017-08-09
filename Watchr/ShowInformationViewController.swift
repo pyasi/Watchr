@@ -97,6 +97,7 @@ class ShowInformationViewController: UIViewController, UICollectionViewDelegate,
         return genreString
     }
     
+    /*
     func getNetworksString(show: TVMDB) -> String{
         var genreString = ""
         print(show.genres)
@@ -107,7 +108,7 @@ class ShowInformationViewController: UIViewController, UICollectionViewDelegate,
             }
         }
         return genreString
-    }
+    }*/
     
     func getShowDetailedInformation(show: TVMDB){
         TVDetailedMDB.tv(apiKey, tvShowID: show.id, language: "en"){

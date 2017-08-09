@@ -37,7 +37,13 @@ class CastCollectionViewController: UIViewController, UICollectionViewDelegate, 
         let cell = castCollectionView.dequeueReusableCell(withReuseIdentifier: "CastCell", for: indexPath) as! CastCollectionViewCell
         cell.actorNameLabel.text = castMembers[indexPath.row].name
         cell.characterLabel.text = castMembers[indexPath.row].character
-        cell.fillCastImage(path: castMembers[indexPath.row].profile_path!)
+        
+        if(castMembers[indexPath.row].profile_path != nil){
+            cell.fillCastImage(path: castMembers[indexPath.row].profile_path!)
+        }
+        else{
+            cell.castImage.image = UIImage(named: "default")
+        }
         
         cell.mainBackground.layer.cornerRadius = 5
         cell.mainBackground.layer.masksToBounds = true
@@ -61,6 +67,7 @@ class CastCollectionViewController: UIViewController, UICollectionViewDelegate, 
         if let parent = self.parent as? ShowDetailViewController{
             parent.scrollView.contentSize.height = self.castCollectionView.contentSize.height + 225
             castCollectionView.frame = CGRect(x: 0, y: 0, width: self.castCollectionView.contentSize.width, height: self.castCollectionView.contentSize.height + 225)
+            castCollectionView.isUserInteractionEnabled = true
             castCollectionView.reloadData()
         }
     }
