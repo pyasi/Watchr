@@ -1,4 +1,5 @@
 PODS:
+  - AMScrollingNavbar (3.3.4)
   - Bolts (1.8.4):
     - Bolts/AppLinks (= 1.8.4)
     - Bolts/Tasks (= 1.8.4)
@@ -54,6 +55,7 @@ PODS:
   - TMDBSwift (0.3.1)
 
 DEPENDENCIES:
+  - AMScrollingNavbar
   - FacebookLogin
   - Firebase/Auth
   - Firebase/Core
@@ -61,6 +63,7 @@ DEPENDENCIES:
   - TMDBSwift
 
 SPEC CHECKSUMS:
+  AMScrollingNavbar: 4a49d5b74abf33d2a08279dcad07080d7d3f31b6
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   FacebookCore: 2cb3f0fbff218e9d3119cec84bae983b232412de
   FacebookLogin: c9d606504735780a9e3002465a615512e0a691a5
@@ -76,6 +79,6 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 30d874b96d0d76028f61fbd122801e3f030d47db
   TMDBSwift: 64cdc44e58c438620f771e71bd4d415f8075ff43
 
-PODFILE CHECKSUM: 4885cd63424ba75224537fce7080d1cc130d109d
+PODFILE CHECKSUM: a5daa2d3b90aa23d450b4858902d27b877a8ca39
 
 COCOAPODS: 1.2.0

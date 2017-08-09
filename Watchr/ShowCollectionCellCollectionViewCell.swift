@@ -50,6 +50,7 @@ class ShowCollectionCellCollectionViewCell: UICollectionViewCell {
         self.numberOfSeasonsLabel.layer.masksToBounds = true
         self.seasonLabel.layer.cornerRadius = 3
         self.numberOfSeasonsLabel.layer.cornerRadius = 3
+        self.showImage.layer.cornerRadius = 2
     }
     
     @IBAction func favoriteTapped(_ sender: DOFavoriteButton) {
@@ -61,9 +62,8 @@ class ShowCollectionCellCollectionViewCell: UICollectionViewCell {
             // select with animation
             sender.select()
             
-            
-            let generator = UINotificationFeedbackGenerator()
-            generator.notificationOccurred(.success)
+            let generator = UIImpactFeedbackGenerator(style: .medium)
+            generator.impactOccurred()
             addShowToFavorites()
         }
     }

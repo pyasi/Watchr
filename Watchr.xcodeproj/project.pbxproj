@@ -16,6 +16,7 @@
 		FB77F1FF1F104323003A1D46 /* ShowCollectionCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB77F1FE1F104323003A1D46 /* ShowCollectionCellCollectionViewCell.swift */; };
 		FB77F2021F1052A6003A1D46 /* ShowDetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB77F2011F1052A6003A1D46 /* ShowDetailView.storyboard */; };
 		FB77F2041F1054B2003A1D46 /* ShowDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB77F2031F1054B2003A1D46 /* ShowDetailViewController.swift */; };
+		FB93FD441F3AA4C3002DB84A /* ColorsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93FD431F3AA4C3002DB84A /* ColorsHelper.swift */; };
 		FBDC930F1F106F7000E515C8 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC930E1F106F7000E515C8 /* SearchViewController.swift */; };
 		FBDC93111F10708700E515C8 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC93101F10708700E515C8 /* SearchTableViewCell.swift */; };
 		FBDC93131F10833600E515C8 /* SWSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC93121F10833600E515C8 /* SWSegmentedControl.swift */; };
@@ -62,6 +63,7 @@
 		FB77F1FE1F104323003A1D46 /* ShowCollectionCellCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowCollectionCellCollectionViewCell.swift; sourceTree = "<group>"; };
 		FB77F2011F1052A6003A1D46 /* ShowDetailView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ShowDetailView.storyboard; sourceTree = "<group>"; };
 		FB77F2031F1054B2003A1D46 /* ShowDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowDetailViewController.swift; sourceTree = "<group>"; };
+		FB93FD431F3AA4C3002DB84A /* ColorsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorsHelper.swift; sourceTree = "<group>"; };
 		FBDC930E1F106F7000E515C8 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		FBDC93101F10708700E515C8 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		FBDC93121F10833600E515C8 /* SWSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWSegmentedControl.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				FB57CD951F10356100F98DAE /* Info.plist */,
 				FBF583B91F12A5E800950C96 /* GoogleService-Info.plist */,
 				FBF583C61F12E10200950C96 /* NotificationKeys.swift */,
+				FB93FD431F3AA4C3002DB84A /* ColorsHelper.swift */,
 			);
 			path = Watchr;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 				FBF583C11F12BD7C00950C96 /* AppUser.swift in Sources */,
 				FBDC93181F11452100E515C8 /* CastCollectionViewController.swift in Sources */,
 				FBF583C51F12D6AD00950C96 /* FavoritesViewController.swift in Sources */,
+				FB93FD441F3AA4C3002DB84A /* ColorsHelper.swift in Sources */,
 				FBDC93111F10708700E515C8 /* SearchTableViewCell.swift in Sources */,
 				FBF583BC1F12ADC000950C96 /* LogInViewController.swift in Sources */,
 				FBDC931A1F11467500E515C8 /* CastCollectionViewCell.swift in Sources */,

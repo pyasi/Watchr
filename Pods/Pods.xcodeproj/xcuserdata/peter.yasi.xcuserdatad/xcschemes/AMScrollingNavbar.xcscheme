@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'F8BA916C2D8E1A08571A391D81BA617B'
-               BlueprintName = 'TMDBSwift'
+               BlueprintIdentifier = '9B7BEF22A2D2E5C2E4174836475BC47B'
+               BlueprintName = 'AMScrollingNavbar'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'TMDBSwift.framework'>
+               BuildableName = 'AMScrollingNavbar.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

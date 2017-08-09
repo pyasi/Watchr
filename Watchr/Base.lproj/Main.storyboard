@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rLn-xK-xvC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rLn-xK-xvC">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -18,32 +18,32 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HEA-Pq-eS3">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.086274509803921567" green="0.090196078431372548" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cCc-Iu-lDA">
-                                    <size key="itemSize" width="170" height="312"/>
+                                    <size key="itemSize" width="170" height="292"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="50" height="75"/>
-                                    <inset key="sectionInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="jFS-Mg-28g" customClass="ShowCollectionCellCollectionViewCell" customModule="Watchr" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="0.0" width="170" height="312"/>
+                                        <rect key="frame" x="10" y="0.0" width="170" height="292"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="170" height="312"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="170" height="292"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </view>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                        <color key="backgroundColor" red="0.1647058824" green="0.18039215689999999" blue="0.2274509804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LoadMoreFooter" id="uUJ-zs-DRP" customClass="LoadMoreFooterView" customModule="Watchr" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="312" width="375" height="75"/>
+                                    <rect key="frame" x="0.0" y="292" width="375" height="75"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nch-7U-TwH">
@@ -68,7 +68,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="UqG-tn-H1z">
-                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="sFh-AA-JuH">
+                        <barButtonItem key="leftBarButtonItem" title="L" id="sFh-AA-JuH">
                             <connections>
                                 <action selector="logOutTapped:" destination="BYZ-38-t0r" id="KAL-4Y-A0l"/>
                             </connections>
@@ -78,6 +78,7 @@
                         <outlet property="popularShowsCollectionView" destination="HEA-Pq-eS3" id="iKO-C5-ptQ"/>
                         <segue destination="zJS-hB-okt" kind="show" identifier="ToShowDetailSegue" id="P6b-8T-GOF"/>
                         <segue destination="rLn-xK-xvC" kind="presentation" identifier="LogOutSegue" id="hsP-en-T3O"/>
+                        <segue destination="oxl-bb-0Wq" kind="show" identifier="PopularToSearchSegue" animates="NO" id="9Zl-aN-fr3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -119,7 +120,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6tU-EM-Y2y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-780" y="132.68365817091455"/>
+            <point key="canvasLocation" x="-865" y="157"/>
         </scene>
         <!--Favorites View Controller-->
         <scene sceneID="2iK-NL-ffc">
@@ -130,25 +131,25 @@
                         <viewControllerLayoutGuide type="bottom" id="Sk7-tv-AzB"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="5JM-nx-42G">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="idS-82-Lii">
                                 <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.086274509799999996" green="0.090196078430000007" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LWe-6r-ORK">
-                                    <size key="itemSize" width="170" height="312"/>
+                                    <size key="itemSize" width="170" height="292"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="zCJ-VV-vf2">
-                                        <rect key="frame" x="8" y="0.0" width="170" height="312"/>
+                                        <rect key="frame" x="8" y="0.0" width="170" height="292"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="170" height="312"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="170" height="292"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -173,14 +174,16 @@
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="eyk-ta-bPz" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="lqc-Ou-D3I">
+                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="lqc-Ou-D3I">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" cyan="0.84740632772445679" magenta="0.74705207347869873" yellow="0.4968203604221344" black="0.55295857347097976" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
+                        <color key="selectedImageTintColor" red="0.37647058820000001" green="0.34509803919999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="akp-wx-M6Q" kind="relationship" relationship="viewControllers" id="cD8-RH-D6y"/>
-                        <segue destination="N06-rl-bHY" kind="relationship" relationship="viewControllers" id="1oj-kx-nSn"/>
                         <segue destination="lNI-sS-FJL" kind="relationship" relationship="viewControllers" id="mHF-Ms-img"/>
                     </connections>
                 </tabBarController>
@@ -188,15 +191,17 @@
             </objects>
             <point key="canvasLocation" x="2" y="157"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Scrolling Navigation Controller-->
         <scene sceneID="5Ox-OZ-U52">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="akp-wx-M6Q" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="akp-wx-M6Q" customClass="ScrollingNavigationController" customModule="AMScrollingNavbar" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="mostViewed" id="kD0-KP-r5D"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sXb-lo-Wv0">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="sXb-lo-Wv0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.92538958790000003" green="0.92554813619999998" blue="0.92537957429999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" cyan="0.84740632770000002" magenta="0.74705207350000002" yellow="0.49682036039999999" black="0.55295857349999999" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -216,7 +221,7 @@
                         <viewControllerLayoutGuide type="bottom" id="mXi-ph-sVc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="WIb-bw-8HU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VEa-OV-Hm3">
@@ -278,7 +283,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.68888300660000001" green="0.71366006140000005" blue="0.73448425530000006" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="t6a-Vb-ANc"/>
+                    <navigationItem key="navigationItem" id="WWl-4a-chO"/>
                     <connections>
                         <outlet property="clearSearch" destination="L0h-2h-yGG" id="gaj-aD-MPX"/>
                         <outlet property="searchBar" destination="lCo-57-6T5" id="Lp9-gu-Bdr"/>
@@ -288,26 +293,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qtp-TA-sGR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1556" y="1182"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Ln8-4W-MzO">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="N06-rl-bHY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="search" id="Vtt-CB-AHv"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AeV-cd-Dzq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="oxl-bb-0Wq" kind="relationship" relationship="rootViewController" id="q0I-dJ-RIg"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yVH-7T-uoc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="62" y="1183"/>
+            <point key="canvasLocation" x="1399" y="1378"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0Xp-r0-hP6">

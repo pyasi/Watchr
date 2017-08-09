@@ -23,7 +23,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         searchTableView.delegate = self
         searchTableView.dataSource = self
         searchBar.delegate = self
-        self.title = "Search"
     }
     
     override func didReceiveMemoryWarning() {

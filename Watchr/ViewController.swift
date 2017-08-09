@@ -10,24 +10,93 @@ import UIKit
 import TMDBSwift
 import Firebase
 import FBSDKLoginKit
+import AMScrollingNavbar
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
     
     @IBOutlet var popularShowsCollectionView: UICollectionView!
     
     var showsToDisplay: [TVMDB] = []
+    var showsFoundInSearch: [TVMDB] = []
     var onPage = 1
+    var isSearching = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Popular"
         loadShows()
         popularShowsCollectionView.delegate = self
         popularShowsCollectionView.dataSource = self
         
         let nibName = UINib(nibName: "ShowCard", bundle:nil)
-        
         popularShowsCollectionView.register(nibName, forCellWithReuseIdentifier: "ShowCell")
+        
+        if let navigationController = navigationController as? ScrollingNavigationController {
+            navigationController.followScrollView(popularShowsCollectionView, delay: 50.0)
+        }
+        
+        createSearchBar()
+    }
+    
+    func createSearchBar(){
+        let searchBar = UISearchBar()
+        searchBar.showsCancelButton = false
+        searchBar.placeholder = "Search shows"
+        searchBar.delegate = self
+        searchBar.barStyle = UIBarStyle.black
+        searchBar.keyboardAppearance = UIKeyboardAppearance.dark
+        
+        self.navigationItem.titleView = searchBar
+        
+    }
+    
+    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+        searchBar.showsCancelButton = false
+        return true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        isSearching = searchBar.text != "" ? true : false
+        if (!isSearching){
+            self.popularShowsCollectionView.reloadData()
+        }
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchBar.showsCancelButton = false
+        searchBar.endEditing(true)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        isSearching = true
+        if (!searchBar.text!.isEmpty){
+            SearchMDB.tv(apiKey, query: searchBar.text!, page: 1, language: "en", first_air_date_year: nil){
+                data, tvShows in
+                if(tvShows != nil){
+                    self.showsFoundInSearch = tvShows!
+                    self.popularShowsCollectionView.reloadData()
+                }
+                else{
+                    self.clearSearchEntries()
+                }
+            }
+        }
+        else{
+            /*
+             ***
+             Collection view empty state
+             ***
+             */
+        }
+    }
+    
+    func clearSearchEntries(){
+        self.showsFoundInSearch.removeAll()
+        self.popularShowsCollectionView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,27 +108,46 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if let navigationController = navigationController as? ScrollingNavigationController {
+            navigationController.showNavbar(animated: true)
+        }
+    }
+    
+    // Nav Bar
+    func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool {
+        if let navigationController = navigationController as? ScrollingNavigationController {
+            navigationController.showNavbar(animated: true)
+        }
+        return true
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return showsToDisplay.count
+        return isSearching ? showsFoundInSearch.count : showsToDisplay.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = popularShowsCollectionView.dequeueReusableCell(withReuseIdentifier: "ShowCell", for: indexPath) as! ShowCollectionCellCollectionViewCell
-        cell.showTitle.text = showsToDisplay[indexPath.row].name
-        cell.getImageForShow(showId: showsToDisplay[indexPath.row].id!)
-        cell.numberOfSeasonsLabel.text = showsToDisplay[indexPath.row].numberOfSeasons != nil ? String(describing: showsToDisplay[indexPath.row].numberOfSeasons!) : "10"
-        if (showsToDisplay[indexPath.row].numberOfSeasons == 1){
+        
+        let showToCreate = isSearching ? showsFoundInSearch[indexPath.row] : showsToDisplay[indexPath.row]
+        
+        cell.showTitle.text = showToCreate.name
+        cell.getImageForShow(showId: showToCreate.id!)
+        cell.numberOfSeasonsLabel.text = showToCreate.numberOfSeasons != nil ? String(describing: showToCreate.numberOfSeasons!) : "10"
+        if (showToCreate.numberOfSeasons == 1){
             cell.seasonLabel.text = "Season"
         }
-        cell.showId = showsToDisplay[indexPath.row].id
-        cell.favoriteButton.isSelected = favorites.contains(showsToDisplay[indexPath.row].id!) ? true : false
+        cell.showId = showToCreate.id
+        cell.favoriteButton.isSelected = favorites.contains(showToCreate.id!) ? true : false
+        cell.layer.cornerRadius = 2
         cell.layoutViews()
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let show = showsToDisplay[indexPath.row]
+        let show = isSearching ? showsFoundInSearch[indexPath.row] : showsToDisplay[indexPath.row]
         performSegue(withIdentifier: "ToShowDetailSegue", sender: show)
     }
     
@@ -133,3 +221,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
 }
 
+extension UISearchBar {
+    func changeSearchBarColor(color: UIColor) {
+        UIGraphicsBeginImageContext(self.frame.size)
+        color.setFill()
+        UIBezierPath(rect: self.frame).fill()
+        let bgImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        self.setSearchFieldBackgroundImage(bgImage, for: .normal)
+    }
+}
