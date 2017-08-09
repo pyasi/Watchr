@@ -15,6 +15,7 @@ import AMScrollingNavbar
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
     
     @IBOutlet var popularShowsCollectionView: UICollectionView!
+    @IBOutlet var darkenedView: UIView!
     
     var showsToDisplay: [TVMDB] = []
     var showsFoundInSearch: [TVMDB] = []
@@ -35,6 +36,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
         
         createSearchBar()
+        shouldShowBlur(shouldShow: false)
     }
     
     func createSearchBar(){
@@ -46,23 +48,28 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         searchBar.keyboardAppearance = UIKeyboardAppearance.dark
         
         self.navigationItem.titleView = searchBar
-        
     }
     
-    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
-        searchBar.showsCancelButton = false
-        return true
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         isSearching = searchBar.text != "" ? true : false
         if (!isSearching){
+            searchBar.showsCancelButton = false
             self.popularShowsCollectionView.reloadData()
         }
+        shouldShowBlur(shouldShow: false)
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = true
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = view.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        shouldShowBlur(shouldShow: true)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -74,23 +81,25 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         isSearching = true
         if (!searchBar.text!.isEmpty){
-            SearchMDB.tv(apiKey, query: searchBar.text!, page: 1, language: "en", first_air_date_year: nil){
-                data, tvShows in
-                if(tvShows != nil){
-                    self.showsFoundInSearch = tvShows!
-                    self.popularShowsCollectionView.reloadData()
-                }
-                else{
-                    self.clearSearchEntries()
-                }
-            }
+            shouldShowBlur(shouldShow: false)
+            searchForShowsWithQuery(query: searchBar.text!)
         }
         else{
+            shouldShowBlur(shouldShow: true)
             /*
              ***
              Collection view empty state
              ***
              */
+        }
+    }
+    
+    func shouldShowBlur(shouldShow: Bool){
+        if(shouldShow){
+            popularShowsCollectionView.addSubview(darkenedView)
+        }
+        else{
+            darkenedView.removeFromSuperview()
         }
     }
     
@@ -184,18 +193,40 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
+    func searchForShowsWithQuery(query: String){
+        self.showsFoundInSearch.removeAll()
+        SearchMDB.tv(apiKey, query: query, page: 1, language: "en", first_air_date_year: nil){
+            data, tvShows in
+            if(tvShows != nil){
+                let shows = tvShows!
+                for x in 0..<shows.count{
+                    self.showsFoundInSearch.append(shows[x])
+                    //self.getSeasonsForShow(show: shows[x], index: x)
+                }
+                self.popularShowsCollectionView.reloadData()
+            }
+            else{
+                self.clearSearchEntries()
+            }
+        }
+    }
+    
     func getSeasonsForShow(show: TVMDB, index: Int){
+        print("Starting: 2 - ", show.name)
         TVDetailedMDB.tv(apiKey, tvShowID: show.id, language: "en"){
             apiReturn in
+            print("Returned: 2 - ", show.name)
             if let data = apiReturn.1{
-                show.numberOfSeasons = data.seasons.count - 1
-                if (show.numberOfSeasons == 0){
-                    show.numberOfSeasons = 1
-                }
-                let cell = self.popularShowsCollectionView.cellForItem(at: IndexPath(row: index, section: 0)) as? ShowCollectionCellCollectionViewCell
-                cell?.numberOfSeasonsLabel.text = String(describing: show.numberOfSeasons!)
-                if (show.numberOfSeasons == 1){
-                    cell?.seasonLabel.text = "Season"
+                if let numberOfSeasons = data.number_of_seasons{
+                    show.numberOfSeasons = numberOfSeasons
+                    if (numberOfSeasons == 0){
+                        show.numberOfSeasons = 1
+                    }
+                    let cell = self.popularShowsCollectionView.cellForItem(at: IndexPath(row: index, section: 0)) as? ShowCollectionCellCollectionViewCell
+                    cell?.numberOfSeasonsLabel.text = String(describing: show.numberOfSeasons!)
+                    if (show.numberOfSeasons == 1){
+                        cell?.seasonLabel.text = "Season"
+                    }
                 }
             }
         }
