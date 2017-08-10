@@ -36,7 +36,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
         
         createSearchBar()
+        setupViews()
         shouldShowBlur(shouldShow: false)
+    }
+    
+    func setupViews(){
+        let tap = UITapGestureRecognizer(target: self, action: #selector(ViewController.darkenedViewTapped))
+        darkenedView.addGestureRecognizer(tap)
     }
     
     func createSearchBar(){
@@ -46,6 +52,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         searchBar.delegate = self
         searchBar.barStyle = UIBarStyle.black
         searchBar.keyboardAppearance = UIKeyboardAppearance.dark
+        searchBar.tag = 5
         
         self.navigationItem.titleView = searchBar
     }
@@ -82,6 +89,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         isSearching = true
         if (!searchBar.text!.isEmpty){
             shouldShowBlur(shouldShow: false)
+            popularShowsCollectionView.setContentOffset(CGPoint.zero, animated: false)
             searchForShowsWithQuery(query: searchBar.text!)
         }
         else{
@@ -101,6 +109,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         else{
             darkenedView.removeFromSuperview()
         }
+    }
+    
+    func darkenedViewTapped(){
+        self.view.viewWithTag(5)?.endEditing(true)
+        shouldShowBlur(shouldShow: false)
     }
     
     func clearSearchEntries(){
