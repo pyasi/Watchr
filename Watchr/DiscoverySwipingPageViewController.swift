@@ -51,8 +51,8 @@ class DiscoverySwipingPageViewController: UIPageViewController, UIPageViewContro
         
         let cur = pages.index(of: viewController)!
         
-        // if you prefer to NOT scroll circularly, simply add here:
-        // if cur == 0 { return nil }
+        // if you prefer to NOT scroll circularly, simply comment here:
+        if cur == 0 { return nil }
         
         let prev = abs((cur - 1) % pages.count)
         return pages[prev]
@@ -63,8 +63,8 @@ class DiscoverySwipingPageViewController: UIPageViewController, UIPageViewContro
         
         let cur = pages.index(of: viewController)!
         
-        // if you prefer to NOT scroll circularly, simply add here:
-        // if cur == (pages.count - 1) { return nil }
+        // if you prefer to NOT scroll circularly, simply comment here:
+        if cur == (pages.count - 1) { return nil }
         
         let nxt = abs((cur + 1) % pages.count)
         return pages[nxt]

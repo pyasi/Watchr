@@ -219,6 +219,10 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Television Icon" translatesAutoresizingMaskIntoConstraints="NO" id="XPE-dS-g0r">
+                                                    <rect key="frame" x="0.0" y="15" width="83" height="83"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                         </view>
                                         <constraints>
@@ -231,6 +235,7 @@
                                             <constraint firstItem="vxa-84-i3j" firstAttribute="leading" secondItem="jc9-81-xWM" secondAttribute="leading" id="h5u-rM-JXs"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="imageEmptyState" destination="XPE-dS-g0r" id="Xwv-rc-yoF"/>
                                             <outlet property="showImage" destination="vxa-84-i3j" id="7gq-zD-COQ"/>
                                             <outlet property="showTitle" destination="qLG-3Y-FtC" id="k8L-qQ-EJe"/>
                                         </connections>
@@ -286,7 +291,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cUL-vd-qVe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="550" y="900"/>
+            <point key="canvasLocation" x="549.60000000000002" y="899.55022488755628"/>
         </scene>
         <!--Cast Collection View Controller-->
         <scene sceneID="5UI-5m-QKz">
@@ -383,4 +388,7 @@
             <point key="canvasLocation" x="2461" y="882"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Television Icon" width="256" height="256"/>
+    </resources>
 </document>

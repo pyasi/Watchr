@@ -42,20 +42,6 @@ class MainViewController: UIViewController, UISearchBarDelegate {
         searchBar.keyboardAppearance = UIKeyboardAppearance.dark
         searchBar.tag = 5
         
-        let navBar = self.navigationController?.navigationBar
-        
-        let firstFrame = CGRect(x: 0, y: 0, width: (navBar?.frame.width)!/2, height: (navBar?.frame.height)!)
-        let secondFrame = CGRect(x: (navBar?.frame.width)!/2, y: 0, width: (navBar?.frame.width)!/2, height: (navBar?.frame.height)!)
-        
-        let firstLabel = UILabel(frame: firstFrame)
-        firstLabel.text = "First"
-        
-        let secondLabel = UILabel(frame: secondFrame)
-        secondLabel.text = "Second"
-        
-        navBar?.addSubview(firstLabel)
-        navBar?.addSubview(secondLabel)
-        
         self.navigationItem.titleView = searchBar
     }
     

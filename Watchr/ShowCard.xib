@@ -88,12 +88,17 @@
                             <action selector="favoriteTapped:" destination="qBe-dj-Sod" eventType="touchUpInside" id="5Lb-IK-CjS"/>
                         </connections>
                     </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Television Icon" translatesAutoresizingMaskIntoConstraints="NO" id="Bfo-B4-KPA">
+                        <rect key="frame" x="16" y="41" width="138" height="138"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
                 </subviews>
             </view>
             <color key="backgroundColor" red="0.16470588235294117" green="0.1803921568627451" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <size key="customSize" width="170" height="292"/>
             <connections>
                 <outlet property="favoriteButton" destination="Cnh-Tf-RA3" id="tSu-Bc-Fgc"/>
+                <outlet property="imageEmptyState" destination="Bfo-B4-KPA" id="Xse-tc-5sk"/>
                 <outlet property="numberOfSeasonsLabel" destination="g0W-88-NF1" id="pl1-OB-re7"/>
                 <outlet property="seasonLabel" destination="WIA-zD-UlA" id="kwF-IH-Jnv"/>
                 <outlet property="showImage" destination="fJ5-sc-wxv" id="lbL-fc-SEo"/>
@@ -103,6 +108,7 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="Television Icon" width="256" height="256"/>
         <image name="heart" width="32" height="32"/>
     </resources>
 </document>
