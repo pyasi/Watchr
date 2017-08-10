@@ -12,36 +12,33 @@ import Firebase
 import FBSDKLoginKit
 import AMScrollingNavbar
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
+class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
     
-    @IBOutlet var popularShowsCollectionView: UICollectionView!
+    @IBOutlet var showsCollectionView: UICollectionView!
     @IBOutlet var darkenedView: UIView!
     
     var showsToDisplay: [TVMDB] = []
     var showsFoundInSearch: [TVMDB] = []
     var onPage = 1
     var isSearching = false
+    var showListType: ShowListType?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadShows()
-        popularShowsCollectionView.delegate = self
-        popularShowsCollectionView.dataSource = self
+        showsCollectionView.delegate = self
+        showsCollectionView.dataSource = self
         
         let nibName = UINib(nibName: "ShowCard", bundle:nil)
-        popularShowsCollectionView.register(nibName, forCellWithReuseIdentifier: "ShowCell")
-        
-        if let navigationController = navigationController as? ScrollingNavigationController {
-            navigationController.followScrollView(popularShowsCollectionView, delay: 50.0)
-        }
+        showsCollectionView.register(nibName, forCellWithReuseIdentifier: "ShowCell")
         
         createSearchBar()
         setupViews()
-        shouldShowBlur(shouldShow: false)
+        //shouldShowBlur(shouldShow: false)
     }
     
     func setupViews(){
-        let tap = UITapGestureRecognizer(target: self, action: #selector(ViewController.darkenedViewTapped))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(ShowCollectionViewController.darkenedViewTapped))
         darkenedView.addGestureRecognizer(tap)
     }
     
@@ -57,72 +54,18 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         self.navigationItem.titleView = searchBar
     }
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.endEditing(true)
-    }
-    
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        isSearching = searchBar.text != "" ? true : false
-        if (!isSearching){
-            searchBar.showsCancelButton = false
-            self.popularShowsCollectionView.reloadData()
-        }
-        shouldShowBlur(shouldShow: false)
-    }
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = true
-        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = view.bounds
-        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        shouldShowBlur(shouldShow: true)
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.text = ""
-        searchBar.showsCancelButton = false
-        searchBar.endEditing(true)
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        isSearching = true
-        if (!searchBar.text!.isEmpty){
-            shouldShowBlur(shouldShow: false)
-            popularShowsCollectionView.setContentOffset(CGPoint.zero, animated: false)
-            searchForShowsWithQuery(query: searchBar.text!)
-        }
-        else{
-            shouldShowBlur(shouldShow: true)
-            /*
-             ***
-             Collection view empty state
-             ***
-             */
-        }
-    }
-    
-    func shouldShowBlur(shouldShow: Bool){
-        if(shouldShow){
-            popularShowsCollectionView.addSubview(darkenedView)
-        }
-        else{
-            darkenedView.removeFromSuperview()
-        }
-    }
-    
     func darkenedViewTapped(){
         self.view.viewWithTag(5)?.endEditing(true)
-        shouldShowBlur(shouldShow: false)
+        //shouldShowBlur(shouldShow: false)
     }
     
     func clearSearchEntries(){
         self.showsFoundInSearch.removeAll()
-        self.popularShowsCollectionView.reloadData()
+        self.showsCollectionView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        popularShowsCollectionView.reloadData()
+        //showsCollectionView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -137,20 +80,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
-    // Nav Bar
-    func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool {
-        if let navigationController = navigationController as? ScrollingNavigationController {
-            navigationController.showNavbar(animated: true)
-        }
-        return true
-    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return isSearching ? showsFoundInSearch.count : showsToDisplay.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = popularShowsCollectionView.dequeueReusableCell(withReuseIdentifier: "ShowCell", for: indexPath) as! ShowCollectionCellCollectionViewCell
+        let cell = showsCollectionView.dequeueReusableCell(withReuseIdentifier: "ShowCell", for: indexPath) as! ShowCollectionCellCollectionViewCell
         
         let showToCreate = isSearching ? showsFoundInSearch[indexPath.row] : showsToDisplay[indexPath.row]
         
@@ -195,6 +130,21 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func loadShows(){
+        
+        switch showListType! {
+        case .Popular:
+            loadPopularShows()
+        case .TopRated:
+            loadTopRatedShows()
+        case .OnTheAir:
+            loadCurrentlyAiringShows()
+        default:
+            break
+            
+        }
+    }
+    
+    func loadPopularShows(){
         TVMDB.popular(apiKey, page: onPage, language: "en"){
             apiReturn in
             let tv = apiReturn.1!
@@ -202,7 +152,31 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 self.showsToDisplay.append(tv[x])
                 self.getSeasonsForShow(show: tv[x], index: x)
             }
-            self.popularShowsCollectionView.reloadData()
+            self.showsCollectionView.reloadData()
+        }
+    }
+    
+    func loadTopRatedShows(){
+        TVMDB.toprated(apiKey, page: onPage, language: "en"){
+            apiReturn in
+            let tv = apiReturn.1!
+            for x in 0..<tv.count{
+                self.showsToDisplay.append(tv[x])
+                self.getSeasonsForShow(show: tv[x], index: x)
+            }
+            self.showsCollectionView.reloadData()
+        }
+    }
+    
+    func loadCurrentlyAiringShows(){
+        TVMDB.ontheair(apiKey, page: onPage, language: "en"){
+            apiReturn in
+            let tv = apiReturn.1!
+            for x in 0..<tv.count{
+                self.showsToDisplay.append(tv[x])
+                self.getSeasonsForShow(show: tv[x], index: x)
+            }
+            self.showsCollectionView.reloadData()
         }
     }
     
@@ -216,7 +190,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     self.showsFoundInSearch.append(shows[x])
                     //self.getSeasonsForShow(show: shows[x], index: x)
                 }
-                self.popularShowsCollectionView.reloadData()
+                self.showsCollectionView.reloadData()
             }
             else{
                 self.clearSearchEntries()
@@ -235,7 +209,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     if (numberOfSeasons == 0){
                         show.numberOfSeasons = 1
                     }
-                    let cell = self.popularShowsCollectionView.cellForItem(at: IndexPath(row: index, section: 0)) as? ShowCollectionCellCollectionViewCell
+                    let cell = self.showsCollectionView.cellForItem(at: IndexPath(row: index, section: 0)) as? ShowCollectionCellCollectionViewCell
                     cell?.numberOfSeasonsLabel.text = String(describing: show.numberOfSeasons!)
                     if (show.numberOfSeasons == 1){
                         cell?.seasonLabel.text = "Season"
@@ -249,18 +223,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         if let destinationVC = segue.destination as? ShowDetailViewController{
             let show = sender as! TVMDB
             destinationVC.show = show
-        }
-    }
-    
-    @IBAction func logOutTapped(_ sender: Any) {
-        let firebaseAuth = Auth.auth()
-        do {
-            try firebaseAuth.signOut()
-            let loginManager = FBSDKLoginManager()
-            loginManager.logOut()
-            self.performSegue(withIdentifier: "LogOutSegue", sender: nil)
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
         }
     }
 }

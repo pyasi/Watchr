@@ -62,7 +62,12 @@ open class TVDetailedMDB: TVMDB{
       createdBy = tv_created_By.init(id: results["created_by"][0]["id"].int, name: results["created_by"][0]["name"].string, profile_path: results["created_by"][0]["profile_path"].string)
     }
     
-    episode_run_time = results["episode_run_time"].arrayObject as! [Int]
+    if let runTime = results["episode_run_time"].arrayObject as? [Int]{
+        episode_run_time = runTime
+    }
+    else{
+        episode_run_time = [0]
+    }
     //        genres = KeywordsMDB.init(results: results["genres"])
     homepage = results["homepage"].string
     in_production = results["in_production"].bool

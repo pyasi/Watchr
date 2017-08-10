@@ -61,7 +61,7 @@
 	<string>Watchr</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
-		<string></string>
+		<string>fbauth2</string>
 	</array>
 </dict>
 </plist>
