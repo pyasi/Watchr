@@ -19,18 +19,26 @@ class DiscoverySwipingPageViewController: UIPageViewController, UIPageViewContro
         super.viewDidLoad()
         self.delegate = self
         self.dataSource = self
+    
+        initializeShowViewControllers()
+    }
+    
+    func initializeShowViewControllers(){
         
         let popularShows = storyboard?.instantiateViewController(withIdentifier: "PopularShowsId") as! ShowCollectionViewController
         let topRatedShows = storyboard?.instantiateViewController(withIdentifier: "PopularShowsId") as! ShowCollectionViewController
         let airingTonight = storyboard?.instantiateViewController(withIdentifier: "PopularShowsId") as! ShowCollectionViewController
+        let recommendedShows = storyboard?.instantiateViewController(withIdentifier: "PopularShowsId") as! ShowCollectionViewController
         
         popularShows.showListType = ShowListType.Popular
         topRatedShows.showListType = ShowListType.TopRated
         airingTonight.showListType = ShowListType.OnTheAir
+        recommendedShows.showListType = ShowListType.Recommended
         
         pages.append(popularShows)
         pages.append(topRatedShows)
         pages.append(airingTonight)
+        pages.append(recommendedShows)
         
         setViewControllers([popularShows], direction: UIPageViewControllerNavigationDirection.forward, animated: false, completion: nil)
     }

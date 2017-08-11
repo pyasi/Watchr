@@ -1,8 +1,8 @@
 //
-//  ShowCollectionCellCollectionViewCell.swift
+//  ShowTableViewCell.swift
 //  Watchr
 //
-//  Created by Peter Yasi on 7/7/17.
+//  Created by Peter Yasi on 8/10/17.
 //  Copyright © 2017 Peter Yasi. All rights reserved.
 //
 
@@ -10,53 +10,26 @@ import UIKit
 import TMDBSwift
 import FirebaseDatabase
 
-class ShowCollectionCellCollectionViewCell: UICollectionViewCell {
-    
-    @IBOutlet var imageEmptyState: UIImageView!
+class ShowTableViewCell: UITableViewCell {
+
+    @IBOutlet var showNameLabel: UILabel!
+    @IBOutlet var showGenres: UILabel!
     @IBOutlet var showImage: UIImageView!
-    @IBOutlet var showTitle: UILabel!
-    @IBOutlet var seasonLabel: UILabel!
-    @IBOutlet var numberOfSeasonsLabel: UILabel!
     @IBOutlet var favoriteButton: DOFavoriteButton!
     
     var showId: Int?
     
-    override func prepareForReuse() {
-        showImage.image = nil
-        imageEmptyState.image = nil
-        showTitle.text = nil
-        showId = nil
-    }
-    
-    func getImageForShow(showId: Int){
+    override func awakeFromNib() {
+        super.awakeFromNib()
         
-        TVMDB.images(apiKey, tvShowID: showId, language: "en"){
-            apiReturn in
-            let tvImages = apiReturn.1!
-            //print(showId)
-            
-            if (tvImages.posters.count > 0) {
-                let url = URL(string:"https://image.tmdb.org/t/p/w185//" + tvImages.posters[0].file_path!)
-                DispatchQueue.global().async {
-                    let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-                    DispatchQueue.main.async {
-                        self.showImage.image = UIImage(data: data!)
-                        self.imageEmptyState.image = nil
-                    }
-                }
-            }
-            else{
-                self.imageEmptyState.image = UIImage(named: "Television Icon")
-            }
-        }
+        showImage.layer.cornerRadius = 2
+        // Initialization code
     }
-    
-    func layoutViews(){
-        self.seasonLabel.layer.masksToBounds = true
-        self.numberOfSeasonsLabel.layer.masksToBounds = true
-        self.seasonLabel.layer.cornerRadius = 3
-        self.numberOfSeasonsLabel.layer.cornerRadius = 3
-        self.showImage.layer.cornerRadius = 2
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
     }
     
     @IBAction func favoriteTapped(_ sender: DOFavoriteButton) {
@@ -96,6 +69,5 @@ class ShowCollectionCellCollectionViewCell: UICollectionViewCell {
             }
         })
     }
-    
-    
+
 }

@@ -112,7 +112,7 @@ class FavoritesViewController: UIViewController, UICollectionViewDelegate, UICol
         TVDetailedMDB.tv(apiKey, tvShowID: show.id, language: "en"){
             apiReturn in
             if let data = apiReturn.1{
-                show.numberOfSeasons = data.seasons.count - 1
+                show.numberOfSeasons = data.number_of_seasons
                 if (show.numberOfSeasons == 0){
                     show.numberOfSeasons = 1
                 }

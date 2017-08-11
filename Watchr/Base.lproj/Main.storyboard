@@ -6,9 +6,18 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Search-->
+        <scene sceneID="fro-AQ-3pO">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Search" id="3yK-F8-ccw" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wO4-o5-TYN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1594" y="1040"/>
+        </scene>
         <!--Show Collection View Controller-->
         <scene sceneID="tYA-RB-002">
             <objects>
@@ -21,20 +30,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.75" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a7z-oZ-9Iw">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="610"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <collectionView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nQN-KZ-hK2">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="610"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <collectionView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nQN-KZ-hK2">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="0.086274509799999996" green="0.090196078430000007" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Knc-zf-eed">
                                     <size key="itemSize" width="170" height="292"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="50" height="75"/>
-                                    <inset key="sectionInset" minX="10" minY="8" maxX="10" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="8" maxX="10" maxY="8"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="Did-Cw-3qr" customClass="ShowCollectionCellCollectionViewCell" customModule="Watchr" customModuleProvider="target">
@@ -48,12 +51,11 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LoadMoreFooter" id="1nr-9y-7cs" customClass="LoadMoreFooterView" customModule="Watchr" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="300" width="375" height="75"/>
+                                    <rect key="frame" x="0.0" y="308" width="375" height="75"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3dy-Og-q9a">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3dy-Og-q9a">
                                             <rect key="frame" x="85" y="12" width="205" height="50"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="0.42655369640000002" green="0.475846082" blue="0.4802647531" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                             <state key="normal" title="Load More">
@@ -64,6 +66,12 @@
                                             </connections>
                                         </button>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="3dy-Og-q9a" secondAttribute="trailing" constant="77" id="2Op-r8-FO0"/>
+                                        <constraint firstItem="3dy-Og-q9a" firstAttribute="leading" secondItem="1nr-9y-7cs" secondAttribute="leadingMargin" constant="77" id="EdY-5e-ZvQ"/>
+                                        <constraint firstItem="3dy-Og-q9a" firstAttribute="top" secondItem="1nr-9y-7cs" secondAttribute="topMargin" constant="4" id="dgy-7E-aUo"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="3dy-Og-q9a" secondAttribute="bottom" constant="5" id="hPf-oP-aI6"/>
+                                    </constraints>
                                     <connections>
                                         <outlet property="loadMoreButton" destination="3dy-Og-q9a" id="PY4-9S-9Sb"/>
                                     </connections>
@@ -71,17 +79,22 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nQN-KZ-hK2" firstAttribute="leading" secondItem="RTv-mr-DHP" secondAttribute="leading" id="VdC-0E-J2H"/>
+                            <constraint firstItem="PdV-SF-qvj" firstAttribute="top" secondItem="nQN-KZ-hK2" secondAttribute="bottom" id="WTT-1w-ohD"/>
+                            <constraint firstAttribute="trailing" secondItem="nQN-KZ-hK2" secondAttribute="trailing" id="XoP-JU-z4h"/>
+                            <constraint firstItem="nQN-KZ-hK2" firstAttribute="top" secondItem="Eci-XC-kRL" secondAttribute="bottom" id="bGy-mR-eDs"/>
+                        </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
-                        <outlet property="darkenedView" destination="a7z-oZ-9Iw" id="dTJ-Rk-tI2"/>
                         <outlet property="showsCollectionView" destination="nQN-KZ-hK2" id="p59-Wn-ut6"/>
                         <segue destination="zJS-hB-okt" kind="show" identifier="ToShowDetailSegue" id="4jR-Sn-dPO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JjJ-za-q8D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1825" y="1513"/>
+            <point key="canvasLocation" x="1824.8" y="1512.5937031484259"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -114,6 +127,11 @@
                         <barButtonItem key="leftBarButtonItem" title="L" id="sFh-AA-JuH">
                             <connections>
                                 <action selector="logOutTapped:" destination="BYZ-38-t0r" id="qKc-1J-q7r"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="4mc-1C-Yac">
+                            <connections>
+                                <segue destination="3yK-F8-ccw" kind="show" id="kBh-yg-UrX"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -177,14 +195,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="idS-82-Lii">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.086274509799999996" green="0.090196078430000007" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LWe-6r-ORK">
                                     <size key="itemSize" width="170" height="292"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="8" minY="8" maxX="8" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="8" minY="8" maxX="8" maxY="8"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="zCJ-VV-vf2">

@@ -58,6 +58,9 @@ open class TVDetailedMDB: TVMDB{
   
   required public init(results: JSON) {
     super.init(results: results)
+    if(name == nil){
+        print("Found nil")
+        return}
     if(results["created_by"].count > 0 && results["created_by"][0].exists()){
       createdBy = tv_created_By.init(id: results["created_by"][0]["id"].int, name: results["created_by"][0]["name"].string, profile_path: results["created_by"][0]["profile_path"].string)
     }

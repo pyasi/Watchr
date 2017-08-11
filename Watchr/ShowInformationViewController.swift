@@ -73,7 +73,6 @@ class ShowInformationViewController: UIViewController, UICollectionViewDelegate,
     func getRecommendationsForShow(show: TVMDB){
         TVMDB.similar(apiKey, tvShowID: show.id, page: 1, language: "en"){
             apiReturn in
-            print(apiReturn)
             if let shows = apiReturn.1{
                 for show in shows{
                     self.recommendations.append(show)

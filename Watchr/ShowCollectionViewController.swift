@@ -15,12 +15,9 @@ import AMScrollingNavbar
 class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
     
     @IBOutlet var showsCollectionView: UICollectionView!
-    @IBOutlet var darkenedView: UIView!
     
     var showsToDisplay: [TVMDB] = []
-    var showsFoundInSearch: [TVMDB] = []
     var onPage = 1
-    var isSearching = false
     var showListType: ShowListType?
     
     override func viewDidLoad() {
@@ -31,37 +28,11 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
         
         let nibName = UINib(nibName: "ShowCard", bundle:nil)
         showsCollectionView.register(nibName, forCellWithReuseIdentifier: "ShowCell")
-        
-        createSearchBar()
-        setupViews()
-        //shouldShowBlur(shouldShow: false)
-    }
-    
-    func setupViews(){
-        let tap = UITapGestureRecognizer(target: self, action: #selector(ShowCollectionViewController.darkenedViewTapped))
-        darkenedView.addGestureRecognizer(tap)
-    }
-    
-    func createSearchBar(){
-        let searchBar = UISearchBar()
-        searchBar.showsCancelButton = false
-        searchBar.placeholder = "Search shows"
-        searchBar.delegate = self
-        searchBar.barStyle = UIBarStyle.black
-        searchBar.keyboardAppearance = UIKeyboardAppearance.dark
-        searchBar.tag = 5
-        
-        self.navigationItem.titleView = searchBar
-    }
-    
-    func darkenedViewTapped(){
-        self.view.viewWithTag(5)?.endEditing(true)
-        //shouldShowBlur(shouldShow: false)
-    }
-    
-    func clearSearchEntries(){
-        self.showsFoundInSearch.removeAll()
-        self.showsCollectionView.reloadData()
+                
+        if (showListType! == .Recommended){
+            NotificationCenter.default.addObserver(self, selector: #selector(self.favoritesChanged), name: NSNotification.Name(rawValue: favoriteRemovedKey), object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(self.favoritesChanged), name: NSNotification.Name(rawValue: favoriteAddedKey), object: nil)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -81,13 +52,13 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return isSearching ? showsFoundInSearch.count : showsToDisplay.count
+        return showsToDisplay.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = showsCollectionView.dequeueReusableCell(withReuseIdentifier: "ShowCell", for: indexPath) as! ShowCollectionCellCollectionViewCell
         
-        let showToCreate = isSearching ? showsFoundInSearch[indexPath.row] : showsToDisplay[indexPath.row]
+        let showToCreate = showsToDisplay[indexPath.row]
         
         cell.showTitle.text = showToCreate.name
         cell.getImageForShow(showId: showToCreate.id!)
@@ -104,7 +75,7 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let show = isSearching ? showsFoundInSearch[indexPath.row] : showsToDisplay[indexPath.row]
+        let show = showsToDisplay[indexPath.row]
         performSegue(withIdentifier: "ToShowDetailSegue", sender: show)
     }
     
@@ -124,6 +95,15 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
         }
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        if (offsetY > contentHeight - scrollView.frame.size.height && showListType! != .Recommended) {
+            onPage += 1
+            loadShows()
+        }
+    }
+    
     @IBAction func loadMoreTapped(_ sender: Any) {
         onPage += 1
         loadShows()
@@ -138,71 +118,107 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
             loadTopRatedShows()
         case .OnTheAir:
             loadCurrentlyAiringShows()
-        default:
-            break
-            
+        case .Recommended:
+            loadRecommendedShows()
         }
     }
     
     func loadPopularShows(){
         TVMDB.popular(apiKey, page: onPage, language: "en"){
             apiReturn in
-            let tv = apiReturn.1!
-            for x in 0..<tv.count{
-                self.showsToDisplay.append(tv[x])
-                self.getSeasonsForShow(show: tv[x], index: x)
+            if let tv = apiReturn.1{
+                for x in 0..<tv.count{
+                    self.showsToDisplay.append(tv[x])
+                    self.getSeasonsForShow(show: tv[x], index: x)
+                }
+                self.showsCollectionView.reloadData()
             }
-            self.showsCollectionView.reloadData()
         }
     }
     
     func loadTopRatedShows(){
         TVMDB.toprated(apiKey, page: onPage, language: "en"){
             apiReturn in
-            let tv = apiReturn.1!
-            for x in 0..<tv.count{
-                self.showsToDisplay.append(tv[x])
-                self.getSeasonsForShow(show: tv[x], index: x)
+            if let tv = apiReturn.1{
+                for x in 0..<tv.count{
+                    self.showsToDisplay.append(tv[x])
+                    self.getSeasonsForShow(show: tv[x], index: x)
+                }
+                self.showsCollectionView.reloadData()
             }
-            self.showsCollectionView.reloadData()
         }
     }
     
     func loadCurrentlyAiringShows(){
         TVMDB.ontheair(apiKey, page: onPage, language: "en"){
             apiReturn in
-            let tv = apiReturn.1!
-            for x in 0..<tv.count{
-                self.showsToDisplay.append(tv[x])
-                self.getSeasonsForShow(show: tv[x], index: x)
-            }
-            self.showsCollectionView.reloadData()
-        }
-    }
-    
-    func searchForShowsWithQuery(query: String){
-        self.showsFoundInSearch.removeAll()
-        SearchMDB.tv(apiKey, query: query, page: 1, language: "en", first_air_date_year: nil){
-            data, tvShows in
-            if(tvShows != nil){
-                let shows = tvShows!
-                for x in 0..<shows.count{
-                    self.showsFoundInSearch.append(shows[x])
-                    //self.getSeasonsForShow(show: shows[x], index: x)
+            if let tv = apiReturn.1{
+                for x in 0..<tv.count{
+                    self.showsToDisplay.append(tv[x])
+                    self.getSeasonsForShow(show: tv[x], index: x)
                 }
                 self.showsCollectionView.reloadData()
             }
-            else{
-                self.clearSearchEntries()
+        }
+    }
+    
+    func loadRecommendedShows(){
+        if (favorites.count < 1){
+            /*
+             TODO
+             SHOW FAVORITES EMPTY STATE
+             
+             Maybe say we need at least 4 to make good choices?
+             */
+            return
+        }
+        
+        //Divide up favorite so each gets into 40 loaded
+        if (favorites.count < 40){
+            let numberOfShowsForEach = 40 / favorites.count
+            for favorite in favorites{
+                getRecommendedShows(forShow: favorite, amountToGet: numberOfShowsForEach)
+            }
+        }
+        else{
+            
+        }
+    }
+    
+    func getRecommendedShows(forShow: Int, amountToGet: Int){
+        var showsAdded = 0
+        TVMDB.similar(apiKey, tvShowID: forShow, page: 1, language: "en"){
+            apiReturn in
+            if let shows = apiReturn.1{
+                for x in 0..<shows.count{
+                    if(showsAdded == amountToGet){
+                        break
+                    }
+                    
+                    // TODO make sure it doesn't add shows already added
+                    if(!favorites.contains(shows[x].id!)){
+                        self.showsToDisplay.append(shows[x])
+                        self.getSeasonsForShow(show: shows[x], index: self.showsToDisplay.count - 1)
+                        showsAdded += 1
+                    }
+                }
+                self.showsCollectionView.reloadData()
+                print("Number of recommendations: ", self.showsToDisplay.count)
             }
         }
     }
     
+    func favoritesChanged(){
+        self.showsToDisplay.removeAll()
+        self.showsCollectionView.reloadData()
+        loadShows()
+    }
+    
     func getSeasonsForShow(show: TVMDB, index: Int){
-        print("Starting: 2 - ", show.name)
+        //print("Starting: 2 - ", show.name)
         TVDetailedMDB.tv(apiKey, tvShowID: show.id, language: "en"){
             apiReturn in
-            print("Returned: 2 - ", show.name)
+            //print("Returned: 2 - ", show.name)
             if let data = apiReturn.1{
                 if let numberOfSeasons = data.number_of_seasons{
                     show.numberOfSeasons = numberOfSeasons
@@ -224,17 +240,5 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
             let show = sender as! TVMDB
             destinationVC.show = show
         }
-    }
-}
-
-extension UISearchBar {
-    func changeSearchBarColor(color: UIColor) {
-        UIGraphicsBeginImageContext(self.frame.size)
-        color.setFill()
-        UIBezierPath(rect: self.frame).fill()
-        let bgImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        
-        self.setSearchFieldBackgroundImage(bgImage, for: .normal)
     }
 }
