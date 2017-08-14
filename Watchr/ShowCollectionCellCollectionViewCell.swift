@@ -20,12 +20,15 @@ class ShowCollectionCellCollectionViewCell: UICollectionViewCell {
     @IBOutlet var favoriteButton: DOFavoriteButton!
     
     var showId: Int?
+    var initialLoad = true
+    var hasLoadedImage = false
     
     override func prepareForReuse() {
         showImage.image = nil
         imageEmptyState.image = nil
         showTitle.text = nil
         showId = nil
+        initialLoad = true
     }
     
     func getImageForShow(showId: Int){
@@ -33,15 +36,13 @@ class ShowCollectionCellCollectionViewCell: UICollectionViewCell {
         TVMDB.images(apiKey, tvShowID: showId, language: "en"){
             apiReturn in
             let tvImages = apiReturn.1!
-            //print(showId)
             
             if (tvImages.posters.count > 0) {
                 let url = URL(string:"https://image.tmdb.org/t/p/w185//" + tvImages.posters[0].file_path!)
                 DispatchQueue.global().async {
                     let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                     DispatchQueue.main.async {
-                        self.showImage.image = UIImage(data: data!)
-                        self.imageEmptyState.image = nil
+                        self.loadImageInCell(data: data!)
                     }
                 }
             }
@@ -51,12 +52,37 @@ class ShowCollectionCellCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    func loadImageInCell(data: Data){
+        if (!hasLoadedImage){
+            self.showImage.alpha = 0
+            self.imageEmptyState.image = nil
+            self.showImage.image = UIImage(data: data)
+            UIView.animate(withDuration: 1.5, animations: {
+                self.showImage.alpha = 1.0
+            })
+            hasLoadedImage = true
+        }
+        else{
+            self.showImage.image = UIImage(data: data)
+        }
+    }
+    
     func layoutViews(){
         self.seasonLabel.layer.masksToBounds = true
         self.numberOfSeasonsLabel.layer.masksToBounds = true
         self.seasonLabel.layer.cornerRadius = 3
         self.numberOfSeasonsLabel.layer.cornerRadius = 3
         self.showImage.layer.cornerRadius = 2
+    }
+    
+    internal func configureCell() {
+        
+        if initialLoad {
+            self.getImageForShow(showId: self.showId!)
+        }
+        
+        initialLoad = false
+        
     }
     
     @IBAction func favoriteTapped(_ sender: DOFavoriteButton) {

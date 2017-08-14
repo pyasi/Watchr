@@ -37,7 +37,9 @@ class ShowInformationViewController: UIViewController, UICollectionViewDelegate,
     
     func loadShowInformation(){
         
-        yearLabel.text = detailedShow!.first_air_date != nil ? detailedShow!.first_air_date : " - "
+        if let airDate = detailedShow?.first_air_date{
+            yearLabel.text = airDate
+        }
         genreLabel.text = getGenresString(show: detailedShow!)
         networkLabel.text = detailedShow!.networks.count > 0 ? detailedShow!.networks[0].name : " - "
         descriptionTextView.text = detailedShow!.overview != nil ? detailedShow!.overview : " - "

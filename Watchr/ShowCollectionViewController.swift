@@ -19,20 +19,34 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
     var showsToDisplay: [TVMDB] = []
     var onPage = 1
     var showListType: ShowListType?
+    var refresher: UIRefreshControl?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loadRefreshControl()
         loadShows()
         showsCollectionView.delegate = self
         showsCollectionView.dataSource = self
         
         let nibName = UINib(nibName: "ShowCard", bundle:nil)
         showsCollectionView.register(nibName, forCellWithReuseIdentifier: "ShowCell")
-                
+        
         if (showListType! == .Recommended){
             NotificationCenter.default.addObserver(self, selector: #selector(self.favoritesChanged), name: NSNotification.Name(rawValue: favoriteRemovedKey), object: nil)
             NotificationCenter.default.addObserver(self, selector: #selector(self.favoritesChanged), name: NSNotification.Name(rawValue: favoriteAddedKey), object: nil)
         }
+    }
+    
+    func loadRefreshControl(){
+        self.refresher = UIRefreshControl()
+        self.refresher!.addTarget(self, action: #selector(self.handleRefresh), for: .valueChanged)
+        self.showsCollectionView!.addSubview(refresher!)
+
+    }
+    
+    func stopRefreshing() {
+        self.refresher!.endRefreshing()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,18 +74,23 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
         
         let showToCreate = showsToDisplay[indexPath.row]
         
+        cell.showId = showToCreate.id
         cell.showTitle.text = showToCreate.name
-        cell.getImageForShow(showId: showToCreate.id!)
         cell.numberOfSeasonsLabel.text = showToCreate.numberOfSeasons != nil ? String(describing: showToCreate.numberOfSeasons!) : "10"
         if (showToCreate.numberOfSeasons == 1){
             cell.seasonLabel.text = "Season"
         }
-        cell.showId = showToCreate.id
         cell.favoriteButton.isSelected = favorites.contains(showToCreate.id!) ? true : false
         cell.layer.cornerRadius = 2
         cell.layoutViews()
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let cell = showsCollectionView.dequeueReusableCell(withReuseIdentifier: "ShowCell", for: indexPath) as! ShowCollectionCellCollectionViewCell
+        cell.configureCell() // LOADS IMAGE
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -109,6 +128,12 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
         loadShows()
     }
     
+    func handleRefresh(){
+        showsToDisplay.removeAll()
+        onPage = 1
+        loadShows()
+    }
+    
     func loadShows(){
         
         switch showListType! {
@@ -132,6 +157,7 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
                     self.getSeasonsForShow(show: tv[x], index: x)
                 }
                 self.showsCollectionView.reloadData()
+                self.stopRefreshing()
             }
         }
     }
@@ -145,6 +171,7 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
                     self.getSeasonsForShow(show: tv[x], index: x)
                 }
                 self.showsCollectionView.reloadData()
+                self.stopRefreshing()
             }
         }
     }
@@ -158,6 +185,7 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
                     self.getSeasonsForShow(show: tv[x], index: x)
                 }
                 self.showsCollectionView.reloadData()
+                self.stopRefreshing()
             }
         }
     }
@@ -203,6 +231,7 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
                     }
                 }
                 self.showsCollectionView.reloadData()
+                self.stopRefreshing()
                 print("Number of recommendations: ", self.showsToDisplay.count)
             }
         }

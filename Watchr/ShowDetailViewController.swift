@@ -39,7 +39,7 @@ class ShowDetailViewController: UIViewController, UIScrollViewDelegate {
     
     func fillBannerImage(){
         if let backdrop = show!.backdrop_path{
-            let url = URL(string:"https://image.tmdb.org/t/p/w185//" + backdrop)
+            let url = URL(string:"https://image.tmdb.org/t/p/w500_and_h281_bestv2/" + backdrop)
             DispatchQueue.global().async {
                 let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                 DispatchQueue.main.async {
@@ -64,9 +64,9 @@ class ShowDetailViewController: UIViewController, UIScrollViewDelegate {
         TVMDB.images(apiKey, tvShowID: show!.id, language: "en"){
             apiReturn in
             if let tvImages = apiReturn.1{
-                for still in tvImages.backdrops{
+                for still in tvImages.posters{
                     
-                    let url = URL(string:"https://image.tmdb.org/t/p/w185//" + still.file_path!)
+                    let url = URL(string:"https://image.tmdb.org/t/p/w500_and_h281_bestv2/" + still.file_path!)
                     DispatchQueue.global().async {
                         let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                         DispatchQueue.main.async {

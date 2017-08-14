@@ -27,7 +27,7 @@ class CastCollectionViewCell: UICollectionViewCell {
     }
     
     func fillCastImage(path: String){
-            let url = URL(string:"https://image.tmdb.org/t/p/w185//" + path)
+            let url = URL(string:"https://image.tmdb.org/t/p/w138_and_h175_bestv2" + path)
             DispatchQueue.global().async {
                 let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                 DispatchQueue.main.async {
