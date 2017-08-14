@@ -14,10 +14,13 @@ class ShowDetailViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var stillsImageView: UIImageView!
     @IBOutlet var showInfoView: UIView!
+    @IBOutlet var castInfoView: UIView!
     @IBOutlet var segmentControl: SWSegmentedControl!
     
     var show: TVMDB?
     var stills: [UIImage] = []
+    var castController: CastCollectionViewController?
+    var infoController: ShowInformationViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +28,8 @@ class ShowDetailViewController: UIViewController, UIScrollViewDelegate {
         scrollView.delegate = self
         self.title = show?.name
         fillBannerImage()
-        getStillsForShow()
+        //getStillsForShow()
+        castInfoView.isHidden = true
     }
     
     override func didReceiveMemoryWarning() {
@@ -34,14 +38,11 @@ class ShowDetailViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func fillBannerImage(){
-        if let backdrop = show!.backdrop_path{
-            let url = URL(string:"https://image.tmdb.org/t/p/w185//" + backdrop)
-            DispatchQueue.global().async {
-                let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-                DispatchQueue.main.async {
-                    self.stillsImageView.image = UIImage(data: data!)
-                }
-            }
+        if let path = show?.backdrop_path{
+            let url = URL(string:"https://image.tmdb.org/t/p/w500_and_h281_bestv2/" + path)
+            self.stillsImageView.sd_setShowActivityIndicatorView(true)
+            self.stillsImageView.sd_setIndicatorStyle(.whiteLarge)
+            self.stillsImageView.sd_setImage(with: url)
         }
     }
     
@@ -55,15 +56,15 @@ class ShowDetailViewController: UIViewController, UIScrollViewDelegate {
         
     }
     
+    /*
     func getStillsForShow(){
         
-        print(show!.id!)
-        TVEpisodesMDB.images(apiKey, tvShowId: show!.id!, seasonNumber: 1, episodeNumber: 1){
-            apiReturn, images in
-            if let images = images{
-                for still in images.stills{
+        TVMDB.images(apiKey, tvShowID: show!.id, language: "en"){
+            apiReturn in
+            if let tvImages = apiReturn.1{
+                for still in tvImages.posters{
                     
-                    let url = URL(string:"https://image.tmdb.org/t/p/w185//" + still.file_path!)
+                    let url = URL(string:"https://image.tmdb.org/t/p/w500_and_h281_bestv2/" + still.file_path!)
                     DispatchQueue.global().async {
                         let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                         DispatchQueue.main.async {
@@ -75,6 +76,7 @@ class ShowDetailViewController: UIViewController, UIScrollViewDelegate {
             }
         }
     }
+    */
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
@@ -86,10 +88,12 @@ class ShowDetailViewController: UIViewController, UIScrollViewDelegate {
         {
         case 0:
             showInfoView.isHidden = false
-            //locationContainerView.isHidden = true
+            castInfoView.isHidden = true
+            resizeScrollView()
         case 1:
             showInfoView.isHidden = true
-            //locationContainerView.isHidden = false
+            castInfoView.isHidden = false
+            castController?.resizeCollectionView()
         default:
             break
         }
@@ -97,8 +101,26 @@ class ShowDetailViewController: UIViewController, UIScrollViewDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            if let destinationVC = segue.destination  as? ShowInformationViewController{
-                destinationVC.show = show
-            }
+        if let destinationVC = segue.destination  as? ShowInformationViewController{
+            infoController = destinationVC
+            destinationVC.show = show
         }
+        if let destinationVC = segue.destination  as? CastCollectionViewController{
+            castController = destinationVC
+            destinationVC.show = show
+        }
+    }
+    
+    func resizeScrollView(){
+        var contentRect = CGRect(x: 0, y: 0, width: 0, height: 0)
+        for view in self.scrollView.subviews {
+            contentRect = contentRect.union(view.frame)
+        }
+        print(contentRect)
+        self.scrollView.contentSize = contentRect.size
+    }
+    
+    @IBAction func experimentalButtonTapped(_ sender: Any) {
+        fillStillsImageView(newStills: stills)
+    }
 }

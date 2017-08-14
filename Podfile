@@ -7,4 +7,10 @@ target 'Watchr' do
 
   # Pods for Watchr
   pod "TMDBSwift"
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
+  pod 'FacebookLogin'
+  pod 'AMScrollingNavbar'
+  pod 'SDWebImage', '~> 4.0'
 end

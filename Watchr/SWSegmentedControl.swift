@@ -240,6 +240,7 @@ open class SWSegmentedControl: UIControl {
     
     private func configureButton(_ button: UIButton) {
         button.titleLabel?.font = self.font
+        button.titleLabel?.font = self.font.withSize(20)
         button.setTitleColor(self.colorToUse(self.titleColor), for: .selected)
         button.setTitleColor(self.unselectedTitleColor, for: UIControlState())
         

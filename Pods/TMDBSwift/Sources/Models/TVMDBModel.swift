@@ -26,6 +26,7 @@ open class TVMDB: DiscoverTVMDB {
   open var first_air_date: String?
   open var genreIds: [Int]?
   open var genres = [genresType]()
+  open var numberOfSeasons: Int?
   public typealias genresType = (id: Int?, name: String?)
   
   
