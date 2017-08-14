@@ -128,6 +128,12 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
         let show = showsFoundInSearch[indexPath.row]
         
         cell.showNameLabel.text = show.name
+        
+        if let path = show.poster_path{
+            let url = URL(string: "https://image.tmdb.org/t/p/w92/" + path)
+            cell.showImage.sd_setImage(with: url)
+        }
+        
         var genreString = ""
         for x in 0..<show.genres.count{
             genreString = genreString + "\(String(describing: show.genres[x].name!))"

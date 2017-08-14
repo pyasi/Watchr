@@ -72,6 +72,7 @@
 		FB77F2011F1052A6003A1D46 /* ShowDetailView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ShowDetailView.storyboard; sourceTree = "<group>"; };
 		FB77F2031F1054B2003A1D46 /* ShowDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowDetailViewController.swift; sourceTree = "<group>"; };
 		FB93FD431F3AA4C3002DB84A /* ColorsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorsHelper.swift; sourceTree = "<group>"; };
+		FBBEFAF41F423F58007DC859 /* Watchr-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Watchr-Bridging-Header.h"; sourceTree = "<group>"; };
 		FBDC93121F10833600E515C8 /* SWSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWSegmentedControl.swift; sourceTree = "<group>"; };
 		FBDC93151F1085D200E515C8 /* ShowInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowInformationViewController.swift; sourceTree = "<group>"; };
 		FBDC93171F11452100E515C8 /* CastCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CastCollectionViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +133,7 @@
 		FB57CD7D1F10356100F98DAE = {
 			isa = PBXGroup;
 			children = (
+				FBBEFAF41F423F58007DC859 /* Watchr-Bridging-Header.h */,
 				FB57CD881F10356100F98DAE /* Watchr */,
 				FB57CD871F10356100F98DAE /* Products */,
 				7F5A19B5D13592B94E730ECB /* Pods */,
@@ -435,6 +437,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "Watchr-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -478,6 +481,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "Watchr-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;

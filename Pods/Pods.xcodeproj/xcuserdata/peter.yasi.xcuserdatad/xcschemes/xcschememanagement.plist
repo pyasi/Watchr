@@ -49,6 +49,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SDWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>TMDBSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -57,12 +62,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>07F172084F2266CBE550075FA7A70722</key>
+		<key>107A9565F9DF88517DFD3E28C05B2B96</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>107A9565F9DF88517DFD3E28C05B2B96</key>
+		<key>125DCDD177CB0E7566A501D5F83E96BA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>335700B385266123C290FD8C56416E45</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -87,6 +97,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>79E2469F2EC08152219B8405CA6CB3E2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>9B7BEF22A2D2E5C2E4174836475BC47B</key>
 		<dict>
 			<key>primary</key>
@@ -98,11 +113,6 @@
 			<true/>
 		</dict>
 		<key>DDBCFDE490CDFDABF6F16A26F346932D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F8BA916C2D8E1A08571A391D81BA617B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

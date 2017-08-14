@@ -28,7 +28,7 @@ class ShowDetailViewController: UIViewController, UIScrollViewDelegate {
         scrollView.delegate = self
         self.title = show?.name
         fillBannerImage()
-        getStillsForShow()
+        //getStillsForShow()
         castInfoView.isHidden = true
     }
     
@@ -38,14 +38,11 @@ class ShowDetailViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func fillBannerImage(){
-        if let backdrop = show!.backdrop_path{
-            let url = URL(string:"https://image.tmdb.org/t/p/w500_and_h281_bestv2/" + backdrop)
-            DispatchQueue.global().async {
-                let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-                DispatchQueue.main.async {
-                    self.stillsImageView.image = UIImage(data: data!)
-                }
-            }
+        if let path = show?.backdrop_path{
+            let url = URL(string:"https://image.tmdb.org/t/p/w500_and_h281_bestv2/" + path)
+            self.stillsImageView.sd_setShowActivityIndicatorView(true)
+            self.stillsImageView.sd_setIndicatorStyle(.whiteLarge)
+            self.stillsImageView.sd_setImage(with: url)
         }
     }
     
@@ -59,6 +56,7 @@ class ShowDetailViewController: UIViewController, UIScrollViewDelegate {
         
     }
     
+    /*
     func getStillsForShow(){
         
         TVMDB.images(apiKey, tvShowID: show!.id, language: "en"){
@@ -78,6 +76,7 @@ class ShowDetailViewController: UIViewController, UIScrollViewDelegate {
             }
         }
     }
+    */
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         

@@ -64,7 +64,11 @@ class FavoritesViewController: UIViewController, UICollectionViewDelegate, UICol
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = favoritesCollectionsView.dequeueReusableCell(withReuseIdentifier: "ShowCell", for: indexPath) as! ShowCollectionCellCollectionViewCell
         cell.showTitle.text = favoriteShows[indexPath.row].name
-        cell.getImageForShow(showId: favoriteShows[indexPath.row].id!)
+        if let path = favoriteShows[indexPath.row].poster_path{
+            let url = URL(string: "https://image.tmdb.org/t/p/w185//" + path)
+            cell.showImage.sd_setImage(with: url)
+            cell.imageEmptyState.image = nil
+        }
         cell.numberOfSeasonsLabel.text = favoriteShows[indexPath.row].numberOfSeasons != nil ? String(describing: favoriteShows[indexPath.row].numberOfSeasons!) : "-"
         if (favoriteShows[indexPath.row].numberOfSeasons == 1){
             cell.seasonLabel.text = "Season"

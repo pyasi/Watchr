@@ -35,7 +35,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Television Icon" translatesAutoresizingMaskIntoConstraints="NO" id="HZx-cT-ScE">
-                                                    <rect key="frame" x="16" y="8" width="60" height="59"/>
+                                                    <rect key="frame" x="16" y="3" width="56" height="69"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7BV-8j-DdR" customClass="DOFavoriteButton" customModule="Watchr" customModuleProvider="target">

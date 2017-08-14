@@ -42,7 +42,7 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
         self.refresher = UIRefreshControl()
         self.refresher!.addTarget(self, action: #selector(self.handleRefresh), for: .valueChanged)
         self.showsCollectionView!.addSubview(refresher!)
-
+        
     }
     
     func stopRefreshing() {
@@ -75,6 +75,13 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
         let showToCreate = showsToDisplay[indexPath.row]
         
         cell.showId = showToCreate.id
+        
+        if let path = showToCreate.poster_path{
+            let url = URL(string: "https://image.tmdb.org/t/p/w185//" + path)
+            cell.showImage.sd_setImage(with: url)
+            cell.imageEmptyState.image = nil
+        }
+        
         cell.showTitle.text = showToCreate.name
         cell.numberOfSeasonsLabel.text = showToCreate.numberOfSeasons != nil ? String(describing: showToCreate.numberOfSeasons!) : "10"
         if (showToCreate.numberOfSeasons == 1){
@@ -85,12 +92,6 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
         cell.layoutViews()
         
         return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        let cell = showsCollectionView.dequeueReusableCell(withReuseIdentifier: "ShowCell", for: indexPath) as! ShowCollectionCellCollectionViewCell
-        cell.configureCell() // LOADS IMAGE
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -113,6 +114,7 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
             assert(false, "Unexpected element kind")
         }
     }
+    
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y

@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/ShowDetailViewController.swift"
-            timestampString = "521235181.235914"
+            timestampString = "524437426.396635"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "fillStillsImageView(newStills:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,13 +74,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/ShowDetailViewController.swift"
-            timestampString = "521269882.630322"
+            timestampString = "524437426.396635"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "getStillsForShow()"
-            landmarkType = "7">
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "ShowDetailViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/SearchViewController.swift"
-            timestampString = "524098066.563991"
+            timestampString = "524436599.684837"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190">
+            startingLineNumber = "196"
+            endingLineNumber = "196">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -104,11 +104,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/SearchViewController.swift"
-            timestampString = "524098066.563991"
+            timestampString = "524436599.684837"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211">
+            startingLineNumber = "217"
+            endingLineNumber = "217">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -118,11 +118,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/SearchViewController.swift"
-            timestampString = "524098066.563991"
+            timestampString = "524436599.684837"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194">
+            startingLineNumber = "200"
+            endingLineNumber = "200">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -132,11 +132,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/SearchViewController.swift"
-            timestampString = "524098066.563991"
+            timestampString = "524436599.684837"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174">
+            startingLineNumber = "180"
+            endingLineNumber = "180">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -146,11 +146,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/SearchViewController.swift"
-            timestampString = "524098066.563991"
+            timestampString = "524436599.684837"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192">
+            startingLineNumber = "198"
+            endingLineNumber = "198">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -160,11 +160,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/SearchViewController.swift"
-            timestampString = "524098066.563991"
+            timestampString = "524436599.684837"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213">
+            startingLineNumber = "219"
+            endingLineNumber = "219">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -174,13 +174,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/ShowCollectionCellCollectionViewCell.swift"
-            timestampString = "524430818.177567"
+            timestampString = "524436166.715193"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "getImageForShow(showId:)"
-            landmarkType = "7">
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "ShowCollectionCellCollectionViewCell"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -190,11 +190,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/ShowInformationViewController.swift"
-            timestampString = "524428456.19639"
+            timestampString = "524436813.896292"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "getGenresString(show:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -206,11 +206,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/ShowInformationViewController.swift"
-            timestampString = "524428456.19639"
+            timestampString = "524436813.896292"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "getGenresString(show:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -254,11 +254,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/ShowInformationViewController.swift"
-            timestampString = "524428456.19639"
+            timestampString = "524436813.896292"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "getRecommendationsForShow(show:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -270,11 +270,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/ShowInformationViewController.swift"
-            timestampString = "524428456.19639"
+            timestampString = "524436813.896292"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
             landmarkName = "getShowDetailedInformation(show:)"
             landmarkType = "7">
             <Locations>
@@ -318,11 +318,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/ShowDetailViewController.swift"
-            timestampString = "521269882.630322"
+            timestampString = "524437426.396635"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -334,11 +334,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/ShowInformationViewController.swift"
-            timestampString = "524428456.19639"
+            timestampString = "524436813.896292"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
             landmarkName = "getRecommendationsForShow(show:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -382,11 +382,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/ShowInformationViewController.swift"
-            timestampString = "524428456.19639"
+            timestampString = "524436813.896292"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
             landmarkName = "getShowDetailedInformation(show:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -398,11 +398,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/ShowInformationViewController.swift"
-            timestampString = "524428456.19639"
+            timestampString = "524436813.896292"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "getRecommendationsForShow(show:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -430,11 +430,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/ShowDetailViewController.swift"
-            timestampString = "521269976.744433"
+            timestampString = "524437426.396635"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
             landmarkName = "experimentalButtonTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -670,13 +670,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/ShowDetailViewController.swift"
-            timestampString = "521269882.630322"
+            timestampString = "524437426.396635"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "getStillsForShow()"
-            landmarkType = "7">
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "ShowDetailViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -686,13 +686,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/ShowDetailViewController.swift"
-            timestampString = "521269682.147078"
+            timestampString = "524437426.396635"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "getStillsForShow()"
-            landmarkType = "7">
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "ShowDetailViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1086,11 +1086,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/ShowCollectionCellCollectionViewCell.swift"
-            timestampString = "524430818.177567"
+            timestampString = "524436166.715193"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
             landmarkName = "removeFromFavorites()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1118,11 +1118,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/FavoritesViewController.swift"
-            timestampString = "521334298.086349"
+            timestampString = "524436813.896292"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "collectionView(_:didSelectItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1134,11 +1134,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/FavoritesViewController.swift"
-            timestampString = "521334298.086349"
+            timestampString = "524436813.896292"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "collectionView(_:didSelectItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1166,11 +1166,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/ShowInformationViewController.swift"
-            timestampString = "524428456.19639"
+            timestampString = "524436813.896292"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
             landmarkName = "getGenresString(show:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1198,11 +1198,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/ShowInformationViewController.swift"
-            timestampString = "524428456.19639"
+            timestampString = "524436813.896292"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
             landmarkName = "ShowInformationViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -1214,11 +1214,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/ShowInformationViewController.swift"
-            timestampString = "524428456.19639"
+            timestampString = "524436813.896292"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
             landmarkName = "getGenresString(show:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1230,11 +1230,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/ShowInformationViewController.swift"
-            timestampString = "524428456.19639"
+            timestampString = "524436813.896292"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "getRecommendationsForShow(show:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1262,11 +1262,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/ShowInformationViewController.swift"
-            timestampString = "524428456.19639"
+            timestampString = "524436813.896292"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
             landmarkName = "ShowInformationViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -1278,11 +1278,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/ShowInformationViewController.swift"
-            timestampString = "524428456.19639"
+            timestampString = "524436813.896292"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "collectionView(_:didSelectItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1310,28 +1310,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/ShowInformationViewController.swift"
-            timestampString = "524428456.19639"
+            timestampString = "524436813.896292"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "collectionView(_:didSelectItemAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Watchr/ShowDetailViewController.swift"
-            timestampString = "521346772.117273"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "fillBannerImage()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1470,13 +1454,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/ShowCollectionCellCollectionViewCell.swift"
-            timestampString = "524430818.177567"
+            timestampString = "524436166.715193"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "getImageForShow(showId:)"
-            landmarkType = "7">
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "ShowCollectionCellCollectionViewCell"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1486,11 +1470,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/ShowCollectionViewController.swift"
-            timestampString = "524429677.738642"
+            timestampString = "524437367.526733"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
+            startingLineNumber = "206"
+            endingLineNumber = "206"
             landmarkName = "loadRecommendedShows()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1502,11 +1486,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/ShowCollectionViewController.swift"
-            timestampString = "524429677.738642"
+            timestampString = "524437367.526733"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "201"
-            endingLineNumber = "201"
+            startingLineNumber = "204"
+            endingLineNumber = "204"
             landmarkName = "loadRecommendedShows()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1518,12 +1502,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/ShowCollectionViewController.swift"
-            timestampString = "524429677.738642"
+            timestampString = "524437367.526733"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
-            landmarkName = "loadRecommendedShows()"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
+            landmarkName = "loadCurrentlyAiringShows()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1534,28 +1518,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/ShowCollectionViewController.swift"
-            timestampString = "524429677.738642"
+            timestampString = "524437367.526733"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "236"
-            endingLineNumber = "236"
-            landmarkName = "favoritesChanged()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Watchr/ShowCollectionViewController.swift"
-            timestampString = "524429677.738642"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "212"
-            endingLineNumber = "212"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
             landmarkName = "getRecommendedShows(forShow:amountToGet:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Watchr/ShowCollectionViewController.swift"
+            timestampString = "524437367.526733"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
+            landmarkName = "loadRecommendedShows()"
             landmarkType = "7">
             <Locations>
                <Location
@@ -1614,11 +1598,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/ShowCollectionViewController.swift"
-            timestampString = "524429677.738642"
+            timestampString = "524437367.526733"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "217"
-            endingLineNumber = "217"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
             landmarkName = "getRecommendedShows(forShow:amountToGet:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1630,12 +1614,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/ShowCollectionViewController.swift"
-            timestampString = "524429677.738642"
+            timestampString = "524437367.526733"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
-            landmarkName = "loadRecommendedShows()"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
+            landmarkName = "loadCurrentlyAiringShows()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1918,11 +1902,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/SearchViewController.swift"
-            timestampString = "524098066.563991"
+            timestampString = "524436599.684837"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1982,13 +1966,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/ShowDetailViewController.swift"
-            timestampString = "524426145.474454"
+            timestampString = "524437426.396635"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "getStillsForShow()"
-            landmarkType = "7">
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "ShowDetailViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2045,13 +2029,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Watchr/ShowCollectionCellCollectionViewCell.swift"
-            timestampString = "524430818.177567"
+            filePath = "Watchr/ShowCollectionViewController.swift"
+            timestampString = "524431963.059849"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "loadImageInCell(data:)"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2061,13 +2045,109 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Watchr/ShowCollectionCellCollectionViewCell.swift"
-            timestampString = "524430818.177567"
+            filePath = "Watchr/ShowDetailViewController.swift"
+            timestampString = "524432930.169235"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "loadImageInCell(data:)"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Watchr/ShowDetailViewController.swift"
+            timestampString = "524437426.396635"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "fillBannerImage()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Watchr/ShowDetailViewController.swift"
+            timestampString = "524437426.396635"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "fillBannerImage()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Watchr/ShowCollectionViewController.swift"
+            timestampString = "524437367.526733"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
+            landmarkName = "loadPopularShows()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Watchr/ShowCollectionViewController.swift"
+            timestampString = "524437367.526733"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
+            landmarkName = "loadPopularShows()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Watchr/SearchViewController.swift"
+            timestampString = "524436599.684837"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Watchr/ShowDetailViewController.swift"
+            timestampString = "524437513.511879"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "fillBannerImage()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

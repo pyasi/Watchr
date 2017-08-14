@@ -54,7 +54,11 @@ class ShowInformationViewController: UIViewController, UICollectionViewDelegate,
         let cell = recommendationCollectionView.dequeueReusableCell(withReuseIdentifier: "RecommendationCell", for: indexPath) as! ShowCollectionCellCollectionViewCell
         cell.showTitle.text = recommendations[indexPath.row].name != nil ? recommendations[indexPath.row].name : ""
         if( recommendations[indexPath.row].id != nil){
-        cell.getImageForShow(showId: recommendations[indexPath.row].id!)
+            if let path = recommendations[indexPath.row].poster_path{
+                let url = URL(string: "https://image.tmdb.org/t/p/w185//" + path)
+                cell.showImage.sd_setImage(with: url)
+                cell.imageEmptyState.image = nil
+            }
         }
         else{
             cell.showImage.image = UIImage(named: "default")
