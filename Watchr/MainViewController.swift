@@ -9,7 +9,6 @@
 import UIKit
 import Firebase
 import FBSDKLoginKit
-import AMScrollingNavbar
 
 enum ShowListType {
     case Popular
@@ -33,16 +32,11 @@ class MainViewController: UIViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let navigationController = navigationController as? ScrollingNavigationController {
-            navigationController.followScrollView(containerView, delay: 50.0)
-        }
-        
     }
     
     // Nav Bar
     func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool {
-        if let navigationController = navigationController as? ScrollingNavigationController {
-            navigationController.showNavbar(animated: true)
+        if let navigationController = navigationController as? UINavigationController {
         }
         return true
     }

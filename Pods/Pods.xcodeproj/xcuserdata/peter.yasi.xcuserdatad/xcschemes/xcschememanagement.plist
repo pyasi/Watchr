@@ -4,11 +4,6 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>AMScrollingNavbar.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Bolts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -67,16 +62,6 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>125DCDD177CB0E7566A501D5F83E96BA</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>335700B385266123C290FD8C56416E45</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>44CAD6CE523055ED339E87154473A254</key>
 		<dict>
 			<key>primary</key>
@@ -97,12 +82,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>79E2469F2EC08152219B8405CA6CB3E2</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9B7BEF22A2D2E5C2E4174836475BC47B</key>
+		<key>8C206937E283267B5BF5EF043E71E095</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -113,6 +93,16 @@
 			<true/>
 		</dict>
 		<key>DDBCFDE490CDFDABF6F16A26F346932D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E24CE06AA2EE85924072692E44254A32</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E2C94C215B99BCE23C48163D119EB567</key>
 		<dict>
 			<key>primary</key>
 			<true/>

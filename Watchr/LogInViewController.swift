@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AMScrollingNavbar
 import Firebase
 import FirebaseDatabase
 import FBSDKLoginKit
@@ -148,7 +147,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate, InitialLo
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let tabVC = segue.destination as? UITabBarController{
-            if let navVC = tabVC.viewControllers?[0] as? ScrollingNavigationController{
+            if let navVC = tabVC.viewControllers?[0] as? UINavigationController{
                 if let destinationVC = navVC.viewControllers[0] as? MainViewController{
                     
                     //destinationVC.initialLoadDelegate = self

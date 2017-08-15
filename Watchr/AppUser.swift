@@ -15,6 +15,7 @@ class AppUser{
     let userId: String
     var displayName: String?
     var email: String?
+    var photoURL: URL?
     var prefferedCategories: [String]?
     var watchedKey: String?
     var watchListKey: String?
@@ -26,7 +27,6 @@ class AppUser{
     var watching: [Int] = []
     var watchList: [Int] = []
 
-    
     init(user: User){
         self.userId = user.uid
         if user.email != nil{
@@ -38,6 +38,12 @@ class AppUser{
             self.displayName = user.displayName!
         }else{
             self.displayName = ""
+        }
+        if user.photoURL != nil{
+            self.photoURL = user.photoURL!
+        }
+        else{
+            self.photoURL = URL(string: "")
         }
         self.watchedKey = ref.child("watched").childByAutoId().key
         self.watchListKey = ref.child("watchList").childByAutoId().key
@@ -54,7 +60,7 @@ class AppUser{
         self.watchedKey = value["watchedKey"] as? String
         self.watchListKey = value["watchListKey"] as? String
         self.watchingNowKey = value["watchingNowKey"] as? String
-
+        self.photoURL = URL(string: (value["photoURL"] as? String)!)
     }
     
     func toDictionary() -> NSDictionary {
@@ -64,7 +70,9 @@ class AppUser{
             "displayName": displayName,
             "watchedKey": watchedKey,
             "watchListKey": watchListKey,
-            "watchingNowKey": watchingNowKey
+            "watchingNowKey": watchingNowKey,
+            "photoURL": photoURL?.absoluteString
+            
         ]
     }
 }
