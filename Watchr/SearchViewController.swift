@@ -133,6 +133,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
             let url = URL(string: "https://image.tmdb.org/t/p/w92/" + path)
             cell.showImage.sd_setImage(with: url)
         }
+        //cell.showImage.image
         
         var genreString = ""
         for x in 0..<show.genres.count{

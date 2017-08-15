@@ -21,9 +21,9 @@ class ShowTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        showImage.layer.cornerRadius = 2
-        // Initialization code
+        showImage.layer.masksToBounds = false
+        showImage.layer.cornerRadius = 3
+        showImage.clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

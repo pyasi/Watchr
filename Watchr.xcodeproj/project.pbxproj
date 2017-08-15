@@ -16,6 +16,7 @@
 		FB5648FD1F427A430023E0A2 /* ShowHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5648FC1F427A430023E0A2 /* ShowHelper.swift */; };
 		FB5648FF1F4284760023E0A2 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB5648FE1F4284760023E0A2 /* Profile.storyboard */; };
 		FB5649021F428E630023E0A2 /* ProfileMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5649011F428E630023E0A2 /* ProfileMainViewController.swift */; };
+		FB5649061F429A650023E0A2 /* ProfilePagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5649051F429A650023E0A2 /* ProfilePagingViewController.swift */; };
 		FB57CD8A1F10356100F98DAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB57CD891F10356100F98DAE /* AppDelegate.swift */; };
 		FB57CD8C1F10356100F98DAE /* ShowCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB57CD8B1F10356100F98DAE /* ShowCollectionViewController.swift */; };
 		FB57CD8F1F10356100F98DAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB57CD8D1F10356100F98DAE /* Main.storyboard */; };
@@ -67,6 +68,7 @@
 		FB5648FC1F427A430023E0A2 /* ShowHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowHelper.swift; sourceTree = "<group>"; };
 		FB5648FE1F4284760023E0A2 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		FB5649011F428E630023E0A2 /* ProfileMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileMainViewController.swift; sourceTree = "<group>"; };
+		FB5649051F429A650023E0A2 /* ProfilePagingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePagingViewController.swift; sourceTree = "<group>"; };
 		FB57CD861F10356100F98DAE /* Watchr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Watchr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB57CD891F10356100F98DAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB57CD8B1F10356100F98DAE /* ShowCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCollectionViewController.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				FB5649011F428E630023E0A2 /* ProfileMainViewController.swift */,
+				FB5649051F429A650023E0A2 /* ProfilePagingViewController.swift */,
 			);
 			name = Profiles;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				FBDC93201F11DF9E00E515C8 /* DOFavoriteButton.swift in Sources */,
 				FBBEFAF61F4252AD007DC859 /* MoreOptionsAlertViewController.swift in Sources */,
 				FBDC93131F10833600E515C8 /* SWSegmentedControl.swift in Sources */,
+				FB5649061F429A650023E0A2 /* ProfilePagingViewController.swift in Sources */,
 				FBDC93161F1085D200E515C8 /* ShowInformationViewController.swift in Sources */,
 				FBF583C11F12BD7C00950C96 /* AppUser.swift in Sources */,
 				FBDC93181F11452100E515C8 /* CastCollectionViewController.swift in Sources */,

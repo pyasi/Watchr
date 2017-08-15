@@ -241,7 +241,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="akp-wx-M6Q" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="mostViewed" id="kD0-KP-r5D"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="sXb-lo-Wv0">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="sXb-lo-Wv0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.92538958790000003" green="0.92554813619999998" blue="0.92537957429999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -300,7 +300,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="m9v-Qh-VnT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" cyan="0.84740632770000002" magenta="0.74705207350000002" yellow="0.49682036039999999" black="0.55295857349999999" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
+                        <color key="barTintColor" red="0.11764705882352941" green="0.14117647058823529" blue="0.1803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" red="0.92538958790000003" green="0.92554813619999998" blue="0.92537957429999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </textAttributes>
@@ -316,6 +316,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="jUl-Nc-i8g"/>
+        <segue reference="4jR-Sn-dPO"/>
     </inferredMetricsTieBreakers>
 </document>
