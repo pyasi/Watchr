@@ -18,6 +18,12 @@ enum ShowListType {
     case Recommended
 }
 
+/*public enum WatchrShowStatus {
+    case Watched
+    case Watching
+    case WatchList
+}*/
+
 class MainViewController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet var containerView: UIView!
@@ -40,7 +46,7 @@ class MainViewController: UIViewController, UISearchBarDelegate {
         }
         return true
     }
-
+    
     @IBAction func logOutTapped(_ sender: Any) {
         let firebaseAuth = Auth.auth()
         do {

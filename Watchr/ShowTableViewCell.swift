@@ -32,6 +32,7 @@ class ShowTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    /*
     @IBAction func favoriteTapped(_ sender: DOFavoriteButton) {
         if sender.isSelected {
             // deselect
@@ -69,5 +70,6 @@ class ShowTableViewCell: UITableViewCell {
             }
         })
     }
+ */
 
 }

@@ -7,15 +7,26 @@
 //
 
 import UIKit
+import AMScrollingNavbar
 import Firebase
 import FirebaseDatabase
 import FBSDKLoginKit
 
-class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
+protocol InitialLoadingProtocol : NSObjectProtocol {
+    var hasLoadedWatched: Bool  { get set }
+    var hasLoadedWatchList: Bool  { get set }
+    var hasLoadedWatchingNow: Bool  { get set }
+    func shouldLoadViews() -> Bool
+}
+
+class LogInViewController: UIViewController, FBSDKLoginButtonDelegate, InitialLoadingProtocol {
     
     @IBOutlet var facebookLoginButton: FBSDKLoginButton!
     
     var authListener: AuthStateDidChangeListenerHandle?
+    var hasLoadedWatched: Bool = false
+    var hasLoadedWatchList: Bool = false
+    var hasLoadedWatchingNow: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,14 +58,36 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
                     ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
                         if(snapshot.exists()){
                             currentUser = AppUser.init(snapshot: snapshot)
-                            ref.child("favorites").child(currentUser!.favoritesKey!).observeSingleEvent(of: .value, with: {
+                            
+                            
+                            // TODO Clean up this logic
+                            ref.child("watched").child(currentUser!.watchedKey!).observeSingleEvent(of: .value, with: {
                                 (snapshot) in
                                 for child in snapshot.children{
                                     let thisChild = child as! DataSnapshot
-                                    favorites.append(thisChild.value as! Int)
+                                    currentUser?.watched.append(thisChild.value as! Int)
                                 }
-                                print("Favorites: ", favorites)
+                                self.hasLoadedWatched = true
                             })
+                            
+                            ref.child("watchList").child(currentUser!.watchListKey!).observeSingleEvent(of: .value, with: {
+                                (snapshot) in
+                                for child in snapshot.children{
+                                    let thisChild = child as! DataSnapshot
+                                    currentUser?.watchList.append(thisChild.value as! Int)
+                                }
+                                self.hasLoadedWatchList = true
+                            })
+                            
+                            ref.child("watchingNow").child(currentUser!.watchingNowKey!).observeSingleEvent(of: .value, with: {
+                                (snapshot) in
+                                for child in snapshot.children{
+                                    let thisChild = child as! DataSnapshot
+                                    currentUser?.watching.append(thisChild.value as! Int)
+                                }
+                                self.hasLoadedWatchingNow = true
+                            })
+                            
                         }
                         
                     }) { (error) in
@@ -66,6 +99,13 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
                 self.performSegue(withIdentifier: "LoggedInSegue", sender: nil)
             }
         }
+    }
+    
+    func shouldLoadViews() -> Bool{
+        if (hasLoadedWatched && hasLoadedWatchList && hasLoadedWatchingNow){
+            return true
+        }
+        return false
     }
     
     override func didReceiveMemoryWarning() {
@@ -104,6 +144,17 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("logged out")
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let tabVC = segue.destination as? UITabBarController{
+            if let navVC = tabVC.viewControllers?[0] as? ScrollingNavigationController{
+                if let destinationVC = navVC.viewControllers[0] as? MainViewController{
+                    
+                    //destinationVC.initialLoadDelegate = self
+                }
+            }
+        }
     }
 }
 

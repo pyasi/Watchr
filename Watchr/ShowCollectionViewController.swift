@@ -12,7 +12,7 @@ import Firebase
 import FBSDKLoginKit
 import AMScrollingNavbar
 
-class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
+class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate, MoreOptionsProtocol {
     
     @IBOutlet var showsCollectionView: UICollectionView!
     
@@ -20,7 +20,7 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
     var onPage = 1
     var showListType: ShowListType?
     var refresher: UIRefreshControl?
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -73,6 +73,7 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
         let cell = showsCollectionView.dequeueReusableCell(withReuseIdentifier: "ShowCell", for: indexPath) as! ShowCollectionCellCollectionViewCell
         
         let showToCreate = showsToDisplay[indexPath.row]
+        getShowStatus(show: showToCreate)
         
         cell.showId = showToCreate.id
         
@@ -88,8 +89,12 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
             cell.seasonLabel.text = "Season"
         }
         cell.favoriteButton.isSelected = favorites.contains(showToCreate.id!) ? true : false
+        
+        cell.statusIndicator.titleLabel?.text = stringForShowStatus(show: showToCreate)
+        cell.statusIndicator.contentHorizontalAlignment = .left
         cell.layer.cornerRadius = 2
         cell.layoutViews()
+        cell.delegate = self
         
         return cell
     }
@@ -99,29 +104,18 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
         performSegue(withIdentifier: "ToShowDetailSegue", sender: show)
     }
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
-        switch kind {
-            
-        case UICollectionElementKindSectionFooter:
-            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "LoadMoreFooter", for: indexPath as IndexPath) as! LoadMoreFooterView
-            
-            footerView.layoutView()
-            return footerView
-            
-        default:
-            
-            assert(false, "Unexpected element kind")
-        }
-    }
-    
-    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
         if (offsetY > contentHeight - scrollView.frame.size.height && showListType! != .Recommended) {
             onPage += 1
             loadShows()
+        }
+    }
+    
+    func loadMoreOptions(controller: UIViewController) {
+        self.present(controller, animated: true) { () -> Void in
+            
         }
     }
     
@@ -137,7 +131,7 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
     }
     
     func loadShows(){
-        
+                
         switch showListType! {
         case .Popular:
             loadPopularShows()
@@ -270,6 +264,16 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
         if let destinationVC = segue.destination as? ShowDetailViewController{
             let show = sender as! TVMDB
             destinationVC.show = show
+        }
+    }
+    
+    func goToShowDetailsFromOptions(showId: Int){
+        
+        TVMDB.tv(apiKey, tvShowID: showId, language: "en"){
+            apiReturn in
+            if let show = apiReturn.1{
+                self.performSegue(withIdentifier: "ToShowDetailSegue", sender: show)
+            }
         }
     }
 }

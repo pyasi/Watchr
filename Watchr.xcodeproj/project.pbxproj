@@ -13,6 +13,7 @@
 		FB267C341F3CEA7900DCCE71 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB267C331F3CEA7900DCCE71 /* Search.storyboard */; };
 		FB267C361F3CEAC100DCCE71 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB267C351F3CEAC100DCCE71 /* SearchViewController.swift */; };
 		FB267C3A1F3CEF3700DCCE71 /* ShowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB267C391F3CEF3700DCCE71 /* ShowTableViewCell.swift */; };
+		FB5648FD1F427A430023E0A2 /* ShowHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5648FC1F427A430023E0A2 /* ShowHelper.swift */; };
 		FB57CD8A1F10356100F98DAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB57CD891F10356100F98DAE /* AppDelegate.swift */; };
 		FB57CD8C1F10356100F98DAE /* ShowCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB57CD8B1F10356100F98DAE /* ShowCollectionViewController.swift */; };
 		FB57CD8F1F10356100F98DAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB57CD8D1F10356100F98DAE /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 		FB77F2021F1052A6003A1D46 /* ShowDetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB77F2011F1052A6003A1D46 /* ShowDetailView.storyboard */; };
 		FB77F2041F1054B2003A1D46 /* ShowDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB77F2031F1054B2003A1D46 /* ShowDetailViewController.swift */; };
 		FB93FD441F3AA4C3002DB84A /* ColorsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93FD431F3AA4C3002DB84A /* ColorsHelper.swift */; };
+		FBBEFAF61F4252AD007DC859 /* MoreOptionsAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBEFAF51F4252AD007DC859 /* MoreOptionsAlertViewController.swift */; };
 		FBDC93131F10833600E515C8 /* SWSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC93121F10833600E515C8 /* SWSegmentedControl.swift */; };
 		FBDC93161F1085D200E515C8 /* ShowInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC93151F1085D200E515C8 /* ShowInformationViewController.swift */; };
 		FBDC93181F11452100E515C8 /* CastCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC93171F11452100E515C8 /* CastCollectionViewController.swift */; };
@@ -29,7 +31,6 @@
 		FBDC931C1F11999000E515C8 /* CastDetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBDC931B1F11999000E515C8 /* CastDetailView.storyboard */; };
 		FBDC931E1F119BC000E515C8 /* ActorDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC931D1F119BC000E515C8 /* ActorDetailViewController.swift */; };
 		FBDC93201F11DF9E00E515C8 /* DOFavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC931F1F11DF9E00E515C8 /* DOFavoriteButton.swift */; };
-		FBF583B81F12995E00950C96 /* LoadMoreFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF583B71F12995E00950C96 /* LoadMoreFooterView.swift */; };
 		FBF583BA1F12A5E800950C96 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FBF583B91F12A5E800950C96 /* GoogleService-Info.plist */; };
 		FBF583BC1F12ADC000950C96 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF583BB1F12ADC000950C96 /* LogInViewController.swift */; };
 		FBF583BE1F12AEEE00950C96 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF583BD1F12AEEE00950C96 /* FBSDKLoginKit.framework */; };
@@ -61,6 +62,7 @@
 		FB267C331F3CEA7900DCCE71 /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		FB267C351F3CEAC100DCCE71 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		FB267C391F3CEF3700DCCE71 /* ShowTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowTableViewCell.swift; sourceTree = "<group>"; };
+		FB5648FC1F427A430023E0A2 /* ShowHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowHelper.swift; sourceTree = "<group>"; };
 		FB57CD861F10356100F98DAE /* Watchr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Watchr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB57CD891F10356100F98DAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB57CD8B1F10356100F98DAE /* ShowCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCollectionViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 		FB77F2031F1054B2003A1D46 /* ShowDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowDetailViewController.swift; sourceTree = "<group>"; };
 		FB93FD431F3AA4C3002DB84A /* ColorsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorsHelper.swift; sourceTree = "<group>"; };
 		FBBEFAF41F423F58007DC859 /* Watchr-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Watchr-Bridging-Header.h"; sourceTree = "<group>"; };
+		FBBEFAF51F4252AD007DC859 /* MoreOptionsAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreOptionsAlertViewController.swift; sourceTree = "<group>"; };
 		FBDC93121F10833600E515C8 /* SWSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWSegmentedControl.swift; sourceTree = "<group>"; };
 		FBDC93151F1085D200E515C8 /* ShowInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowInformationViewController.swift; sourceTree = "<group>"; };
 		FBDC93171F11452100E515C8 /* CastCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CastCollectionViewController.swift; sourceTree = "<group>"; };
@@ -80,7 +83,6 @@
 		FBDC931B1F11999000E515C8 /* CastDetailView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CastDetailView.storyboard; sourceTree = "<group>"; };
 		FBDC931D1F119BC000E515C8 /* ActorDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActorDetailViewController.swift; sourceTree = "<group>"; };
 		FBDC931F1F11DF9E00E515C8 /* DOFavoriteButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DOFavoriteButton.swift; sourceTree = "<group>"; };
-		FBF583B71F12995E00950C96 /* LoadMoreFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadMoreFooterView.swift; sourceTree = "<group>"; };
 		FBF583B91F12A5E800950C96 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FBF583BB1F12ADC000950C96 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		FBF583BD1F12AEEE00950C96 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				FBF583B91F12A5E800950C96 /* GoogleService-Info.plist */,
 				FBF583C61F12E10200950C96 /* NotificationKeys.swift */,
 				FB93FD431F3AA4C3002DB84A /* ColorsHelper.swift */,
+				FB5648FC1F427A430023E0A2 /* ShowHelper.swift */,
 			);
 			path = Watchr;
 			sourceTree = "<group>";
@@ -174,7 +177,7 @@
 				FB57CD8B1F10356100F98DAE /* ShowCollectionViewController.swift */,
 				FBF583C41F12D6AC00950C96 /* FavoritesViewController.swift */,
 				FB77F1FE1F104323003A1D46 /* ShowCollectionCellCollectionViewCell.swift */,
-				FBF583B71F12995E00950C96 /* LoadMoreFooterView.swift */,
+				FBBEFAF51F4252AD007DC859 /* MoreOptionsAlertViewController.swift */,
 				FBF583BB1F12ADC000950C96 /* LogInViewController.swift */,
 				FBDC93141F1085A900E515C8 /* Show Details */,
 				FB267C321F3CE9D600DCCE71 /* Search */,
@@ -348,10 +351,11 @@
 			files = (
 				FB77F2041F1054B2003A1D46 /* ShowDetailViewController.swift in Sources */,
 				FBDC931E1F119BC000E515C8 /* ActorDetailViewController.swift in Sources */,
-				FBF583B81F12995E00950C96 /* LoadMoreFooterView.swift in Sources */,
+				FB5648FD1F427A430023E0A2 /* ShowHelper.swift in Sources */,
 				FB57CD8C1F10356100F98DAE /* ShowCollectionViewController.swift in Sources */,
 				FB267C361F3CEAC100DCCE71 /* SearchViewController.swift in Sources */,
 				FBDC93201F11DF9E00E515C8 /* DOFavoriteButton.swift in Sources */,
+				FBBEFAF61F4252AD007DC859 /* MoreOptionsAlertViewController.swift in Sources */,
 				FBDC93131F10833600E515C8 /* SWSegmentedControl.swift in Sources */,
 				FBDC93161F1085D200E515C8 /* ShowInformationViewController.swift in Sources */,
 				FBF583C11F12BD7C00950C96 /* AppUser.swift in Sources */,

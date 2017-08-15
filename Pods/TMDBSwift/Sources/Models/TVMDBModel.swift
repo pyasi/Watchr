@@ -8,6 +8,13 @@
 
 import Foundation
 
+public enum WatchrShowStatus {
+    case Watched
+    case Watching
+    case WatchList
+    case NotWatched
+}
+
 open class Content_RatingsMDB: ArrayObject{
   open  var iso_3166_1: String?
   open var rating: String?
@@ -27,6 +34,7 @@ open class TVMDB: DiscoverTVMDB {
   open var genreIds: [Int]?
   open var genres = [genresType]()
   open var numberOfSeasons: Int?
+  public var watchrStatus: WatchrShowStatus?
   public typealias genresType = (id: Int?, name: String?)
   
   

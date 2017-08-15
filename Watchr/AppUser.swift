@@ -16,7 +16,16 @@ class AppUser{
     var displayName: String?
     var email: String?
     var prefferedCategories: [String]?
-    var favoritesKey: String?
+    var watchedKey: String?
+    var watchListKey: String?
+    var watchingNowKey: String?
+    
+    
+    // In App Show Id Lists
+    var watched: [Int] = []
+    var watching: [Int] = []
+    var watchList: [Int] = []
+
     
     init(user: User){
         self.userId = user.uid
@@ -30,7 +39,10 @@ class AppUser{
         }else{
             self.displayName = ""
         }
-        self.favoritesKey = ref.child("favorites").childByAutoId().key
+        self.watchedKey = ref.child("watched").childByAutoId().key
+        self.watchListKey = ref.child("watchList").childByAutoId().key
+        self.watchingNowKey = ref.child("watchingNow").childByAutoId().key
+
     }
     
     init(snapshot: DataSnapshot){
@@ -39,7 +51,10 @@ class AppUser{
         self.userId = value["uid"] as! String
         self.email = value["email"] as? String
         self.displayName = value["displayName"] as? String
-        self.favoritesKey = value["favoritesKey"] as? String
+        self.watchedKey = value["watchedKey"] as? String
+        self.watchListKey = value["watchListKey"] as? String
+        self.watchingNowKey = value["watchingNowKey"] as? String
+
     }
     
     func toDictionary() -> NSDictionary {
@@ -47,7 +62,9 @@ class AppUser{
             "uid": userId,
             "email": email,
             "displayName": displayName,
-            "favoritesKey": favoritesKey
+            "watchedKey": watchedKey,
+            "watchListKey": watchListKey,
+            "watchingNowKey": watchingNowKey
         ]
     }
 }
