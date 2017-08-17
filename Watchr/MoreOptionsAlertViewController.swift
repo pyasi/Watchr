@@ -21,6 +21,7 @@ class MoreOptionsAlertViewController: UIAlertController {
         self.message = nil
         
         configureView()
+        colorViews()
         addAppropriateActions()
     }
     
@@ -29,21 +30,36 @@ class MoreOptionsAlertViewController: UIAlertController {
         let rect = CGRect(x: margin, y: margin, width: self.view.bounds.size.width - margin * 4.0, height: 120)
         let customView = UIView(frame: rect)
         
-        customView.backgroundColor = .green
+        customView.backgroundColor = mediumTheme
         self.view.addSubview(customView)
         
         let gotToShowDetails = UIAlertAction(title: "Go to Show Details", style: .default, handler: {(alert: UIAlertAction!) in self.goToShowDetailsClicked()})
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {(alert: UIAlertAction!) in print("cancel")})
+        cancelAction.setValue(mediumTheme, forKey: "titleTextColor")
         
         self.addAction(gotToShowDetails)
         self.addAction(cancelAction)
+    }
+    
+    func colorViews(){
+        let subview = self.view.subviews.first! as UIView
+        let alertContentView = subview.subviews.first! as UIView
+        for view in alertContentView.subviews{
+            view.backgroundColor = darkTheme
+        }
+        self.view.tintColor = whiteTheme
+        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.75)
+        alertContentView.layer.cornerRadius = 15
+        
     }
     
     func addAppropriateActions(){
         
         if(!(currentUser?.watched.contains(self.showId!))!){
             let addToWatched = UIAlertAction(title: "Watched", style: .default, handler: {(alert: UIAlertAction!) in self.addToWatched()})
+            
+            addToWatched.setValue(UIImage(named: "heart"), forKey: "image")
             self.addAction(addToWatched)
         }
         
@@ -61,20 +77,20 @@ class MoreOptionsAlertViewController: UIAlertController {
     
     func addShowToWatchList(){
         ref.child("watchList").child(currentUser!.watchListKey!).childByAutoId().setValue(self.showId)
-        removeWhereNecessary(newStatus: .WatchList)
         currentUser?.watchList.append(self.showId!)
+        removeWhereNecessary(newStatus: .WatchList)
     }
     
     func addToWatchingNow(){
         ref.child("watchingNow").child(currentUser!.watchingNowKey!).childByAutoId().setValue(self.showId)
-        removeWhereNecessary(newStatus: .Watching)
         currentUser?.watching.append(self.showId!)
+        removeWhereNecessary(newStatus: .Watching)
     }
     
     func addToWatched(){
         ref.child("watched").child(currentUser!.watchedKey!).childByAutoId().setValue(self.showId)
-        removeWhereNecessary(newStatus: .Watched)
         currentUser?.watched.append(self.showId!)
+        removeWhereNecessary(newStatus: .Watched)
     }
     
     func removeWhereNecessary(newStatus: WatchrShowStatus){
@@ -97,6 +113,8 @@ class MoreOptionsAlertViewController: UIAlertController {
         case .NotWatched:
             break
         }
+        
+        NotificationCenter.default.post(name: Notification.Name(rawValue: showStatusListsChanged), object: nil)
         print("In App Watched: ", currentUser?.watched)
         print("In App Watch List: ", currentUser?.watchList)
         print("In App Watching: ", currentUser?.watching)

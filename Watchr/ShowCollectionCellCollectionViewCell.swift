@@ -55,7 +55,6 @@ class ShowCollectionCellCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    
     @IBAction func favoriteTapped(_ sender: DOFavoriteButton) {
         if sender.isSelected {
             // deselect

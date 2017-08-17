@@ -6,6 +6,8 @@
 //  Copyright © 2017 Peter Yasi. All rights reserved.
 //
 
+
+/*
 import UIKit
 import Firebase
 import FBSDKLoginKit
@@ -19,7 +21,7 @@ class DiscoverySwipingPageViewController: UIPageViewController, UIPageViewContro
         self.delegate = self
         self.dataSource = self
     
-        initializeShowViewControllers()
+        //initializeShowViewControllers()
     }
     
     func initializeShowViewControllers(){
@@ -80,4 +82,4 @@ class DiscoverySwipingPageViewController: UIPageViewController, UIPageViewContro
     func presentationIndex(for pageViewController: UIPageViewController)-> Int {
         return pages.count
     }
-}
+}*/

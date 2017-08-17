@@ -16,7 +16,6 @@
 		FB5648FD1F427A430023E0A2 /* ShowHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5648FC1F427A430023E0A2 /* ShowHelper.swift */; };
 		FB5648FF1F4284760023E0A2 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB5648FE1F4284760023E0A2 /* Profile.storyboard */; };
 		FB5649021F428E630023E0A2 /* ProfileMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5649011F428E630023E0A2 /* ProfileMainViewController.swift */; };
-		FB5649061F429A650023E0A2 /* ProfilePagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5649051F429A650023E0A2 /* ProfilePagingViewController.swift */; };
 		FB57CD8A1F10356100F98DAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB57CD891F10356100F98DAE /* AppDelegate.swift */; };
 		FB57CD8C1F10356100F98DAE /* ShowCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB57CD8B1F10356100F98DAE /* ShowCollectionViewController.swift */; };
 		FB57CD8F1F10356100F98DAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB57CD8D1F10356100F98DAE /* Main.storyboard */; };
@@ -34,6 +33,8 @@
 		FBDC931C1F11999000E515C8 /* CastDetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBDC931B1F11999000E515C8 /* CastDetailView.storyboard */; };
 		FBDC931E1F119BC000E515C8 /* ActorDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC931D1F119BC000E515C8 /* ActorDetailViewController.swift */; };
 		FBDC93201F11DF9E00E515C8 /* DOFavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC931F1F11DF9E00E515C8 /* DOFavoriteButton.swift */; };
+		FBE6328E1F4519A200B00748 /* ShowProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE6328D1F4519A200B00748 /* ShowProfileTableViewCell.swift */; };
+		FBE632901F451A4D00B00748 /* ProfileShowsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE6328F1F451A4D00B00748 /* ProfileShowsListViewController.swift */; };
 		FBF583BA1F12A5E800950C96 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FBF583B91F12A5E800950C96 /* GoogleService-Info.plist */; };
 		FBF583BC1F12ADC000950C96 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF583BB1F12ADC000950C96 /* LogInViewController.swift */; };
 		FBF583BE1F12AEEE00950C96 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF583BD1F12AEEE00950C96 /* FBSDKLoginKit.framework */; };
@@ -68,7 +69,6 @@
 		FB5648FC1F427A430023E0A2 /* ShowHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowHelper.swift; sourceTree = "<group>"; };
 		FB5648FE1F4284760023E0A2 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		FB5649011F428E630023E0A2 /* ProfileMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileMainViewController.swift; sourceTree = "<group>"; };
-		FB5649051F429A650023E0A2 /* ProfilePagingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePagingViewController.swift; sourceTree = "<group>"; };
 		FB57CD861F10356100F98DAE /* Watchr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Watchr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB57CD891F10356100F98DAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB57CD8B1F10356100F98DAE /* ShowCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCollectionViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +89,8 @@
 		FBDC931B1F11999000E515C8 /* CastDetailView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CastDetailView.storyboard; sourceTree = "<group>"; };
 		FBDC931D1F119BC000E515C8 /* ActorDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActorDetailViewController.swift; sourceTree = "<group>"; };
 		FBDC931F1F11DF9E00E515C8 /* DOFavoriteButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DOFavoriteButton.swift; sourceTree = "<group>"; };
+		FBE6328D1F4519A200B00748 /* ShowProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowProfileTableViewCell.swift; sourceTree = "<group>"; };
+		FBE6328F1F451A4D00B00748 /* ProfileShowsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileShowsListViewController.swift; sourceTree = "<group>"; };
 		FBF583B91F12A5E800950C96 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FBF583BB1F12ADC000950C96 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		FBF583BD1F12AEEE00950C96 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -142,7 +144,8 @@
 			isa = PBXGroup;
 			children = (
 				FB5649011F428E630023E0A2 /* ProfileMainViewController.swift */,
-				FB5649051F429A650023E0A2 /* ProfilePagingViewController.swift */,
+				FBE6328F1F451A4D00B00748 /* ProfileShowsListViewController.swift */,
+				FBE6328D1F4519A200B00748 /* ShowProfileTableViewCell.swift */,
 			);
 			name = Profiles;
 			sourceTree = "<group>";
@@ -373,14 +376,15 @@
 				FB57CD8C1F10356100F98DAE /* ShowCollectionViewController.swift in Sources */,
 				FB267C361F3CEAC100DCCE71 /* SearchViewController.swift in Sources */,
 				FBDC93201F11DF9E00E515C8 /* DOFavoriteButton.swift in Sources */,
+				FBE632901F451A4D00B00748 /* ProfileShowsListViewController.swift in Sources */,
 				FBBEFAF61F4252AD007DC859 /* MoreOptionsAlertViewController.swift in Sources */,
 				FBDC93131F10833600E515C8 /* SWSegmentedControl.swift in Sources */,
-				FB5649061F429A650023E0A2 /* ProfilePagingViewController.swift in Sources */,
 				FBDC93161F1085D200E515C8 /* ShowInformationViewController.swift in Sources */,
 				FBF583C11F12BD7C00950C96 /* AppUser.swift in Sources */,
 				FBDC93181F11452100E515C8 /* CastCollectionViewController.swift in Sources */,
 				FBF583C51F12D6AD00950C96 /* FavoritesViewController.swift in Sources */,
 				FB93FD441F3AA4C3002DB84A /* ColorsHelper.swift in Sources */,
+				FBE6328E1F4519A200B00748 /* ShowProfileTableViewCell.swift in Sources */,
 				FBF583BC1F12ADC000950C96 /* LogInViewController.swift in Sources */,
 				FBDC931A1F11467500E515C8 /* CastCollectionViewCell.swift in Sources */,
 				FBF583C71F12E10200950C96 /* NotificationKeys.swift in Sources */,

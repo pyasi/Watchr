@@ -19,7 +19,7 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
     var onPage = 1
     var showListType: ShowListType?
     var refresher: UIRefreshControl?
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -94,9 +94,46 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let show = showsToDisplay[indexPath.row]
         performSegue(withIdentifier: "ToShowDetailSegue", sender: show)
+        
+        /*
+        let storyboard = UIStoryboard(name: "ShowDetailView", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "ShowDetailViewController") as! ShowDetailViewController
+        controller.show = show
+        let navController = UINavigationController(rootViewController: controller) // Creating a navigation controller with VC1 at the root of the navigation stack.
+        self.present(navController, animated:true, completion: nil)
+         */
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        /*
+        if(velocity.y>0) {
+            //Code will work without the animation block.I am using animation block incase if you want to set any delay to it.
+            UIView.animate(withDuration: 2.5, delay: 0, options: UIViewAnimationOptions(), animations: {
+                self.navigationController?.setNavigationBarHidden(true, animated: true)
+                print("Hide")
+            }, completion: nil)
+            
+        } else {
+            UIView.animate(withDuration: 2.5, delay: 0, options: UIViewAnimationOptions(), animations: {
+                self.navigationController?.setNavigationBarHidden(false, animated: true)
+                print("Unhide")
+            }, completion: nil)    
+        }*/
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let currentOffset = scrollView.contentOffset.y;
+        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height;
+        
+        // Change 10.0 to adjust the distance from bottom
+        if (maximumOffset - currentOffset <= 10.0) {
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
+        }
+        else{
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
+        }
+        
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
         if (offsetY > contentHeight - scrollView.frame.size.height && showListType! != .Recommended) {

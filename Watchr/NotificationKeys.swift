@@ -10,3 +10,4 @@ import Foundation
 
 let favoriteRemovedKey = "com.peteryasi.watchr.favoriteRemoved"
 let favoriteAddedKey = "com.peteryasi.watchr.favoriteAdded"
+let showStatusListsChanged = "com.peteryasi.watchr.showStatusListsChanged"

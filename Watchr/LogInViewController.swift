@@ -89,7 +89,8 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate, InitialLo
                             
                         }
                         
-                    }) { (error) in
+                    })
+                    { (error) in
                         print(error.localizedDescription)
                     }
                 }

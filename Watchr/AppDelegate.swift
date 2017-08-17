@@ -16,6 +16,10 @@ var ref: DatabaseReference!
 var currentUser: AppUser?
 var favorites: [Int] = []
 
+let darkTheme = hexStringToUIColor(hex: "16171C")
+let mediumTheme = hexStringToUIColor(hex: "1E242E")
+let whiteTheme = hexStringToUIColor(hex: "E8ECEE")
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

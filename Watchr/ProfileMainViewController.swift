@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TMDBSwift
 import PageMenu
 
 class ProfileMainViewController: UIViewController {
@@ -14,6 +15,8 @@ class ProfileMainViewController: UIViewController {
     @IBOutlet var profileDetailsView: UIView!
     @IBOutlet var profilePhoto: UIImageView!
     @IBOutlet var displayNameLabel: UILabel!
+    @IBOutlet var followButton: UIButton!
+    @IBOutlet var viewToSizeContainer: UIView!
     
     var pageMenu : CAPSPageMenu?
     
@@ -25,55 +28,61 @@ class ProfileMainViewController: UIViewController {
     }
     
     func loadProfileInformation(){
-        let url = URL(string: "http://graph.facebook.com/\(String(describing: currentUser?.userId))/picture?type=large")
+        let url = currentUser?.photoURL
         profilePhoto.sd_setImage(with: url, placeholderImage: UIImage(named: "profile"))
         displayNameLabel.text = currentUser?.displayName
         
-        //profilePhoto.layer.cornerRadius =
+        followButton.layer.borderColor = hexStringToUIColor(hex: "6058FF").cgColor
+        followButton.layer.borderWidth = 0.5
+        followButton.layer.cornerRadius = 3
+        
+        profilePhoto.layer.masksToBounds = false
+        profilePhoto.layer.borderWidth = 0.0
+        profilePhoto.layer.cornerRadius = profilePhoto.frame.height / 2
+        profilePhoto.clipsToBounds = true
     }
     
     func loadPagingController(){
         // Array to keep track of controllers in page menu
         var controllerArray : [UIViewController] = []
         
-        // Create variables for all view controllers you want to put in the
-        // page menu, initialize them, and add each to the controller array.
-        // (Can be any UIViewController subclass)
-        // Make sure the title property of all view controllers is set
-        // Example:
-        let controller = storyboard?.instantiateViewController(withIdentifier: "testing") as! ShowCollectionViewController
-        controller.title = "Popular"
-        controller.showListType = ShowListType.Popular
-        controllerArray.append(controller)
+        let watchedController = storyboard?.instantiateViewController(withIdentifier: "ProfileShowStoryboardId") as! ProfileShowsListViewController
+        watchedController.title = "Watched"
+        watchedController.showStatus = WatchrShowStatus.Watched
+        controllerArray.append(watchedController)
         
-        let controller2 = storyboard?.instantiateViewController(withIdentifier: "testing") as! ShowCollectionViewController
-        controller2.title = "Other"
-        controller2.showListType = ShowListType.Popular
-        controllerArray.append(controller2)
+        let watchingController = storyboard?.instantiateViewController(withIdentifier: "ProfileShowStoryboardId") as! ProfileShowsListViewController
+        watchingController.title = "Watching"
+        watchingController.showStatus = WatchrShowStatus.Watching
+        controllerArray.append(watchingController)
         
-        // Customize page menu to your liking (optional) or use default settings by sending nil for 'options' in the init
-        // Example:
-        let backgroundColor = hexStringToUIColor(hex: "16171C")
-        let selectionColor = hexStringToUIColor(hex: "1E242E")
+        let watchListController = storyboard?.instantiateViewController(withIdentifier: "ProfileShowStoryboardId") as! ProfileShowsListViewController
+        watchListController.title = "Watch List"
+        watchListController.showStatus = WatchrShowStatus.WatchList
+        controllerArray.append(watchListController)
         
         let parameters: [CAPSPageMenuOption] = [
             .menuItemSeparatorWidth(0.0),
-            .useMenuLikeSegmentedControl(true),
+            .useMenuLikeSegmentedControl(false),
             .menuItemSeparatorPercentageHeight(0.0),
             .menuItemSeparatorWidth(0.0),
-            .viewBackgroundColor(backgroundColor),
-            .scrollMenuBackgroundColor(selectionColor),
+            .viewBackgroundColor(darkTheme),
+            .scrollMenuBackgroundColor(mediumTheme),
             .scrollAnimationDurationOnMenuItemTap(250),
-            .menuItemFont(UIFont(name: "Silom", size: 15)!)
+            .addBottomMenuHairline(false),
             ]
+                
+        let rect = CGRect(x: 0, y: profileDetailsView.frame.height, width: viewToSizeContainer.frame.width, height: viewToSizeContainer.frame.height)
         
-        let rect = CGRect(x: 0, y: profileDetailsView.frame.height, width: self.view.frame.width, height: self.view.frame.height)
         // Initialize page menu with controller array, frame, and optional parameters
         pageMenu = CAPSPageMenu(viewControllers: controllerArray, frame: rect, pageMenuOptions: parameters)
         
         // Lastly add page menu as subview of base view controller view
         // or use pageMenu controller in you view hierachy as desired
+        self.addChildViewController(pageMenu!)
         self.view.addSubview(pageMenu!.view)
+        
+        pageMenu!.didMove(toParentViewController: self)
     }
 
     override func didReceiveMemoryWarning() {
