@@ -34,7 +34,7 @@
                                                     <constraint firstAttribute="height" constant="195" id="hCD-MN-hXo"/>
                                                 </constraints>
                                             </imageView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hpE-ZE-Czk" customClass="SWSegmentedControl" customModule="Watchr" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hpE-ZE-Czk" customClass="SWSegmentedControl" customModule="Watchr" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="195" width="375" height="55"/>
                                                 <color key="backgroundColor" red="0.086274509799999996" green="0.090196078430000007" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="tintColor" red="0.086274509799999996" green="0.090196078430000007" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -59,13 +59,13 @@
                                                     <action selector="segmentControlValueChanged:" destination="kdb-ab-HYf" eventType="valueChanged" id="fC6-wM-gHN"/>
                                                 </connections>
                                             </view>
-                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TzA-3Q-oRZ">
+                                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TzA-3Q-oRZ">
                                                 <rect key="frame" x="0.0" y="250" width="375" height="566"/>
                                                 <connections>
                                                     <segue destination="pHz-i0-xKi" kind="embed" id="1oA-DV-b03"/>
                                                 </connections>
                                             </containerView>
-                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mld-9d-w5m">
+                                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mld-9d-w5m">
                                                 <rect key="frame" x="0.0" y="250" width="375" height="566"/>
                                                 <connections>
                                                     <segue destination="ZOU-lj-fMY" kind="embed" id="aQ4-UA-Sj1"/>

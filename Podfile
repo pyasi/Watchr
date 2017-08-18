@@ -13,4 +13,5 @@ target 'Watchr' do
   pod 'FacebookLogin'
   pod 'SDWebImage', '~> 4.0'
   pod 'PageMenu'
+  pod 'AMScrollingNavbar'
 end

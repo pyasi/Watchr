@@ -8,6 +8,8 @@
 
 import UIKit
 import TMDBSwift
+import PageMenu
+import AMScrollingNavbar
 
 class ProfileShowsListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MoreOptionsProtocol {
     
@@ -26,6 +28,38 @@ class ProfileShowsListViewController: UIViewController, UITableViewDelegate, UIT
         NotificationCenter.default.addObserver(self, selector: #selector(self.statusListChanged), name: NSNotification.Name(rawValue: showStatusListsChanged), object: nil)
         
         loadShows()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        /*  Uncomment to user scrolling nav bar
+         if let navigationController = self.navigationController as? ScrollingNavigationController {
+         navigationController.followScrollView(showsTableView, delay: 75.0, scrollSpeedFactor: 2, followers: [((self.parent?.parent as! ProfileMainViewController).profileDetailsView)!, (self.parent as! CAPSPageMenu).view])
+         }
+         */
+    }
+    
+    func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool {
+        return true
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let profileView = (self.parent?.parent as! ProfileMainViewController).profileDetailsView
+        let scrollMenuView = (self.parent as! CAPSPageMenu).view
+        let offsetY = scrollView.contentOffset.y
+
+        if (offsetY > 0) {
+            profileView?.frame.origin.y = (profileView?.frame.origin.y)! - 1
+            
+            /*
+            if((scrollMenuView?.frame.origin.y)! > CGFloat(0)){
+                scrollMenuView?.frame.origin.y = (scrollMenuView?.frame.origin.y)! - 1
+                scrollMenuView?.frame = CGRect(x: (scrollMenuView?.frame.origin.x)!, y: (scrollMenuView?.frame.origin.y)!, width: (scrollMenuView?.frame.width)!, height: (scrollMenuView?.frame.height)! + 1)
+            */
+                print(scrollMenuView?.frame.origin.y)
+            
+        }
     }
     
     func statusListChanged(){

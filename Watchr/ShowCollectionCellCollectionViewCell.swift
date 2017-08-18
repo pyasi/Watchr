@@ -32,6 +32,8 @@ class ShowCollectionCellCollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         showTitle.text = nil
         showId = nil
+        numberOfSeasonsLabel.isHidden = false
+        seasonLabel.isHidden = false
     }
     
     func layoutViews(){
@@ -77,7 +79,7 @@ class ShowCollectionCellCollectionViewCell: UICollectionViewCell {
     }
     
     func removeFromFavorites(){
-        //print(favorites)
+        
         ref.child("watched").child(currentUser!.watchedKey!).observeSingleEvent(of: .value, with: {
             (snapshot) in
             for child in snapshot.children{

@@ -10,6 +10,7 @@ import UIKit
 import TMDBSwift
 import Firebase
 import FBSDKLoginKit
+import AMScrollingNavbar
 
 class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate, MoreOptionsProtocol {
     
@@ -37,6 +38,12 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if let navigationController = self.navigationController as? ScrollingNavigationController {
+            navigationController.followScrollView(showsCollectionView, delay: 75.0, scrollSpeedFactor: 1)
+        }
+    }
+    
     func loadRefreshControl(){
         self.refresher = UIRefreshControl()
         self.refresher!.addTarget(self, action: #selector(self.handleRefresh), for: .valueChanged)
@@ -46,10 +53,6 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
     
     func stopRefreshing() {
         self.refresher!.endRefreshing()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        //showsCollectionView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -66,7 +69,7 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
         
         let showToCreate = showsToDisplay[indexPath.row]
         getShowStatus(show: showToCreate)
-        
+
         cell.showId = showToCreate.id
         
         if let path = showToCreate.poster_path{
@@ -76,7 +79,12 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
         }
         
         cell.showTitle.text = showToCreate.name
-        cell.numberOfSeasonsLabel.text = showToCreate.numberOfSeasons != nil ? String(describing: showToCreate.numberOfSeasons!) : "10"
+        
+        if (showToCreate.numberOfSeasons == nil){
+            cell.seasonLabel.isHidden = true
+            cell.numberOfSeasonsLabel.isHidden = true
+        }
+        cell.numberOfSeasonsLabel.text = showToCreate.numberOfSeasons != nil ? String(describing: showToCreate.numberOfSeasons!) : "-"
         if (showToCreate.numberOfSeasons == 1){
             cell.seasonLabel.text = "Season"
         }
@@ -91,34 +99,23 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let cellToDisplay = cell as! ShowCollectionCellCollectionViewCell
+        cellToDisplay.numberOfSeasonsLabel.isHidden = false
+        cellToDisplay.seasonLabel.isHidden = false
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let show = showsToDisplay[indexPath.row]
         performSegue(withIdentifier: "ToShowDetailSegue", sender: show)
         
         /*
-        let storyboard = UIStoryboard(name: "ShowDetailView", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "ShowDetailViewController") as! ShowDetailViewController
-        controller.show = show
-        let navController = UINavigationController(rootViewController: controller) // Creating a navigation controller with VC1 at the root of the navigation stack.
-        self.present(navController, animated:true, completion: nil)
+         let storyboard = UIStoryboard(name: "ShowDetailView", bundle: nil)
+         let controller = storyboard.instantiateViewController(withIdentifier: "ShowDetailViewController") as! ShowDetailViewController
+         controller.show = show
+         let navController = UINavigationController(rootViewController: controller) // Creating a navigation controller with VC1 at the root of the navigation stack.
+         self.present(navController, animated:true, completion: nil)
          */
-    }
-    
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        /*
-        if(velocity.y>0) {
-            //Code will work without the animation block.I am using animation block incase if you want to set any delay to it.
-            UIView.animate(withDuration: 2.5, delay: 0, options: UIViewAnimationOptions(), animations: {
-                self.navigationController?.setNavigationBarHidden(true, animated: true)
-                print("Hide")
-            }, completion: nil)
-            
-        } else {
-            UIView.animate(withDuration: 2.5, delay: 0, options: UIViewAnimationOptions(), animations: {
-                self.navigationController?.setNavigationBarHidden(false, animated: true)
-                print("Unhide")
-            }, completion: nil)    
-        }*/
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -126,20 +123,19 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
         let currentOffset = scrollView.contentOffset.y;
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height;
         
-        // Change 10.0 to adjust the distance from bottom
-        if (maximumOffset - currentOffset <= 10.0) {
-            self.navigationController?.setNavigationBarHidden(true, animated: true)
-        }
-        else{
-            self.navigationController?.setNavigationBarHidden(false, animated: true)
-        }
-        
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
         if (offsetY > contentHeight - scrollView.frame.size.height && showListType! != .Recommended) {
             onPage += 1
             loadShows()
         }
+    }
+    
+    func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool {
+        if let navigationController = navigationController as? ScrollingNavigationController {
+            navigationController.showNavbar(animated: true)
+        }
+        return true
     }
     
     func loadMoreOptions(controller: UIViewController) {
@@ -160,7 +156,7 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
     }
     
     func loadShows(){
-                
+        
         switch showListType! {
         case .Popular:
             loadPopularShows()
@@ -284,12 +280,19 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
                     if (show.numberOfSeasons == 1){
                         cell?.seasonLabel.text = "Season"
                     }
+                    cell?.numberOfSeasonsLabel.isHidden = false
+                    cell?.seasonLabel.isHidden = false
                 }
             }
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let navigationController = navigationController as? ScrollingNavigationController {
+            navigationController.showNavbar(animated: true)
+        }
+        
         if let destinationVC = segue.destination as? ShowDetailViewController{
             let show = sender as! TVMDB
             destinationVC.show = show

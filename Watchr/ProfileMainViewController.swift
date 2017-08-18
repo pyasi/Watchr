@@ -17,6 +17,8 @@ class ProfileMainViewController: UIViewController {
     @IBOutlet var displayNameLabel: UILabel!
     @IBOutlet var followButton: UIButton!
     @IBOutlet var viewToSizeContainer: UIView!
+    @IBOutlet var numberOfFollowersLabel: UILabel!
+    @IBOutlet var numberFollowingLabel: UILabel!
     
     var pageMenu : CAPSPageMenu?
     
@@ -62,20 +64,20 @@ class ProfileMainViewController: UIViewController {
         controllerArray.append(watchListController)
         
         let parameters: [CAPSPageMenuOption] = [
-            .menuItemSeparatorWidth(0.0),
-            .useMenuLikeSegmentedControl(false),
-            .menuItemSeparatorPercentageHeight(0.0),
-            .menuItemSeparatorWidth(0.0),
+            .centerMenuItems(false),
             .viewBackgroundColor(darkTheme),
             .scrollMenuBackgroundColor(mediumTheme),
             .scrollAnimationDurationOnMenuItemTap(250),
             .addBottomMenuHairline(false),
-            ]
+            .selectionIndicatorHeight(2.0)
+        ]
                 
         let rect = CGRect(x: 0, y: profileDetailsView.frame.height, width: viewToSizeContainer.frame.width, height: viewToSizeContainer.frame.height)
         
         // Initialize page menu with controller array, frame, and optional parameters
         pageMenu = CAPSPageMenu(viewControllers: controllerArray, frame: rect, pageMenuOptions: parameters)
+        
+        //let verticalConstraint = NSLayoutConstraint(item: pageMenu?.view, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: profileDetailsView, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 0)
         
         // Lastly add page menu as subview of base view controller view
         // or use pageMenu controller in you view hierachy as desired
@@ -83,6 +85,8 @@ class ProfileMainViewController: UIViewController {
         self.view.addSubview(pageMenu!.view)
         
         pageMenu!.didMove(toParentViewController: self)
+        //pageMenu!.view.addConstraints([verticalConstraint])
+
     }
 
     override func didReceiveMemoryWarning() {

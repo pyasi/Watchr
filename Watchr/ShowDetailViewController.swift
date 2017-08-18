@@ -30,6 +30,8 @@ class ShowDetailViewController: UIViewController, UIScrollViewDelegate {
         fillBannerImage()
         //getStillsForShow()
         castInfoView.isHidden = true
+        
+        self.navigationController?.navigationBar.tintColor = whiteTheme
     }
     
     override func didReceiveMemoryWarning() {

@@ -235,10 +235,10 @@
             </objects>
             <point key="canvasLocation" x="2" y="157"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Scrolling Navigation Controller-->
         <scene sceneID="5Ox-OZ-U52">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="akp-wx-M6Q" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="akp-wx-M6Q" customClass="ScrollingNavigationController" customModule="AMScrollingNavbar" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="mostViewed" id="kD0-KP-r5D"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="sXb-lo-Wv0">
@@ -291,13 +291,13 @@
             </objects>
             <point key="canvasLocation" x="814" y="2315"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Scrolling Navigation Controller-->
         <scene sceneID="FNi-mY-js3">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eeG-SO-dmz" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eeG-SO-dmz" customClass="ScrollingNavigationController" customModule="AMScrollingNavbar" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="contacts" id="ahB-E2-IOg"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="m9v-Qh-VnT">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="m9v-Qh-VnT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.11764705882352941" green="0.14117647058823529" blue="0.1803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
