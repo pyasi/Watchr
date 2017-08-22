@@ -16,7 +16,7 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
     
     @IBOutlet var showsCollectionView: UICollectionView!
     
-    var showsToDisplay: [TVMDB] = []
+    var showsToDisplay: [TVDetailedMDB] = []
     var onPage = 1
     var showListType: ShowListType?
     var refresher: UIRefreshControl?
@@ -25,7 +25,8 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
         super.viewDidLoad()
         
         loadRefreshControl()
-        loadShows()
+        tryToLoadShows()
+        //loadShows()
         showsCollectionView.delegate = self
         showsCollectionView.dataSource = self
         
@@ -42,6 +43,26 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
         if let navigationController = self.navigationController as? ScrollingNavigationController {
             navigationController.followScrollView(showsCollectionView, delay: 75.0, scrollSpeedFactor: 1)
         }
+    }
+    
+    func tryToLoadShows(){
+        loadWatched(completionHandler: {
+            success in
+            print("user is a member of a team")
+            self.loadShows()
+        })
+    }
+    
+    func loadWatched(completionHandler: @escaping (Bool) -> ()){
+        // TODO Clean up this logic
+        ref.child("watched").child(currentUser!.watchedKey!).observeSingleEvent(of: .value, with: {
+            (snapshot) in
+            for child in snapshot.children{
+                let thisChild = child as! DataSnapshot
+                //currentUser?.watched.append(thisChild.value as! Int)
+            }
+            completionHandler(true)
+        })
     }
     
     func loadRefreshControl(){
@@ -69,7 +90,8 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
         
         let showToCreate = showsToDisplay[indexPath.row]
         getShowStatus(show: showToCreate)
-
+        print(showToCreate.name + " - " + stringForShowStatus(show: showToCreate))
+        
         cell.showId = showToCreate.id
         
         if let path = showToCreate.poster_path{
@@ -84,8 +106,8 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
             cell.seasonLabel.isHidden = true
             cell.numberOfSeasonsLabel.isHidden = true
         }
-        cell.numberOfSeasonsLabel.text = showToCreate.numberOfSeasons != nil ? String(describing: showToCreate.numberOfSeasons!) : "-"
-        if (showToCreate.numberOfSeasons == 1){
+        cell.numberOfSeasonsLabel.text = String(describing: showToCreate.number_of_seasons!)
+        if (showToCreate.number_of_seasons == 1){
             cell.seasonLabel.text = "Season"
         }
         cell.favoriteButton.isSelected = favorites.contains(showToCreate.id!) ? true : false
@@ -108,14 +130,6 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let show = showsToDisplay[indexPath.row]
         performSegue(withIdentifier: "ToShowDetailSegue", sender: show)
-        
-        /*
-         let storyboard = UIStoryboard(name: "ShowDetailView", bundle: nil)
-         let controller = storyboard.instantiateViewController(withIdentifier: "ShowDetailViewController") as! ShowDetailViewController
-         controller.show = show
-         let navController = UINavigationController(rootViewController: controller) // Creating a navigation controller with VC1 at the root of the navigation stack.
-         self.present(navController, animated:true, completion: nil)
-         */
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -156,6 +170,8 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
     
     func loadShows(){
         
+        
+        
         switch showListType! {
         case .Popular:
             loadPopularShows()
@@ -172,11 +188,9 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
         TVMDB.popular(apiKey, page: onPage, language: "en"){
             apiReturn in
             if let tv = apiReturn.1{
-                for x in 0..<tv.count{
-                    self.showsToDisplay.append(tv[x])
-                    self.getSeasonsForShow(show: tv[x], index: x)
+                for show in tv{
+                    self.getShowDetails(show: show)
                 }
-                self.showsCollectionView.reloadData()
                 self.stopRefreshing()
             }
         }
@@ -186,11 +200,9 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
         TVMDB.toprated(apiKey, page: onPage, language: "en"){
             apiReturn in
             if let tv = apiReturn.1{
-                for x in 0..<tv.count{
-                    self.showsToDisplay.append(tv[x])
-                    self.getSeasonsForShow(show: tv[x], index: x)
+                for show in tv{
+                    self.getShowDetails(show: show)
                 }
-                self.showsCollectionView.reloadData()
                 self.stopRefreshing()
             }
         }
@@ -200,11 +212,9 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
         TVMDB.ontheair(apiKey, page: onPage, language: "en"){
             apiReturn in
             if let tv = apiReturn.1{
-                for x in 0..<tv.count{
-                    self.showsToDisplay.append(tv[x])
-                    self.getSeasonsForShow(show: tv[x], index: x)
+                for show in tv{
+                    self.getShowDetails(show: show)
                 }
-                self.showsCollectionView.reloadData()
                 self.stopRefreshing()
             }
         }
@@ -238,19 +248,17 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
         TVMDB.similar(apiKey, tvShowID: forShow, page: 1, language: "en"){
             apiReturn in
             if let shows = apiReturn.1{
-                for x in 0..<shows.count{
+                for show in shows{
                     if(showsAdded == amountToGet){
                         break
                     }
                     
                     // TODO make sure it doesn't add shows already added
-                    if(!favorites.contains(shows[x].id!)){
-                        self.showsToDisplay.append(shows[x])
-                        self.getSeasonsForShow(show: shows[x], index: self.showsToDisplay.count - 1)
+                    if(!favorites.contains(show.id!)){
+                        self.getShowDetails(show: show)
                         showsAdded += 1
                     }
                 }
-                self.showsCollectionView.reloadData()
                 self.stopRefreshing()
                 print("Number of recommendations: ", self.showsToDisplay.count)
             }
@@ -263,25 +271,12 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
         loadShows()
     }
     
-    func getSeasonsForShow(show: TVMDB, index: Int){
-        //print("Starting: 2 - ", show.name)
+    func getShowDetails(show: TVMDB){
         TVDetailedMDB.tv(apiKey, tvShowID: show.id, language: "en"){
             apiReturn in
-            //print("Returned: 2 - ", show.name)
-            if let data = apiReturn.1{
-                if let numberOfSeasons = data.number_of_seasons{
-                    show.numberOfSeasons = numberOfSeasons
-                    if (numberOfSeasons == 0){
-                        show.numberOfSeasons = 1
-                    }
-                    let cell = self.showsCollectionView.cellForItem(at: IndexPath(row: index, section: 0)) as? ShowCollectionCellCollectionViewCell
-                    cell?.numberOfSeasonsLabel.text = String(describing: show.numberOfSeasons!)
-                    if (show.numberOfSeasons == 1){
-                        cell?.seasonLabel.text = "Season"
-                    }
-                    cell?.numberOfSeasonsLabel.isHidden = false
-                    cell?.seasonLabel.isHidden = false
-                }
+            if let show = apiReturn.1{
+                self.showsToDisplay.append(show)
+                self.showsCollectionView.reloadData()
             }
         }
     }

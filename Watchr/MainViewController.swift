@@ -19,12 +19,6 @@ enum ShowListType {
     case Recommended
 }
 
-/*public enum WatchrShowStatus {
-    case Watched
-    case Watching
-    case WatchList
-}*/
-
 class MainViewController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet var containerView: UIView!
@@ -37,6 +31,7 @@ class MainViewController: UIViewController, UISearchBarDelegate {
         super.viewDidLoad()
         
         self.title = "Discovery"
+        
         
         loadPagingController()
     }
@@ -57,7 +52,7 @@ class MainViewController: UIViewController, UISearchBarDelegate {
         popularShows.title = "Popular"
         topRatedShows.title = "Top Rated"
         onTheAir.title = "On the Air"
-        recommendedShows.title = "Recommended"
+        recommendedShows.title = "For You"
         
         controllerArray.append(popularShows)
         controllerArray.append(topRatedShows)
@@ -66,11 +61,14 @@ class MainViewController: UIViewController, UISearchBarDelegate {
         
         let parameters: [CAPSPageMenuOption] = [
             .centerMenuItems(false),
+            .menuItemWidth(75.0),
+            .menuMargin(8.0),
             .viewBackgroundColor(darkTheme),
             .scrollMenuBackgroundColor(mediumTheme),
             .scrollAnimationDurationOnMenuItemTap(250),
             .addBottomMenuHairline(false),
-            .selectionIndicatorHeight(2.0)
+            .selectionIndicatorHeight(2.0),
+            .enableHorizontalBounce(false)
         ]
         
         let rect = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
@@ -85,24 +83,6 @@ class MainViewController: UIViewController, UISearchBarDelegate {
         
         pageMenu!.didMove(toParentViewController: self)
     }
-    
-    /*
-    func didTapGoToLeft() {
-        let currentIndex = pageMenu!.currentPageIndex
-        
-        if currentIndex > 0 {
-            pageMenu!.moveToPage(currentIndex - 1)
-        }
-    }
-    
-    func didTapGoToRight() {
-        let currentIndex = pageMenu!.currentPageIndex
-        
-        if currentIndex < pageMenu!.controllerArray.count {
-            pageMenu!.moveToPage(currentIndex + 1)
-        }
-    }
-*/
     
     // Nav Bar
     func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool {

@@ -98,7 +98,7 @@
                         <rect key="frame" x="103" y="254" width="39" height="38"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="image" keyPath="image" value="heart"/>
+                            <userDefinedRuntimeAttribute type="image" keyPath="image" value="list"/>
                             <userDefinedRuntimeAttribute type="color" keyPath="imageColorOn">
                                 <color key="value" red="0.37647058823529411" green="0.34509803921568627" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </userDefinedRuntimeAttribute>
@@ -109,7 +109,7 @@
                                 <color key="value" red="0.38823529411764707" green="0.41176470588235292" blue="0.47058823529411764" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="color" keyPath="circleColor">
-                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="value" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                         <connections>
@@ -135,7 +135,7 @@
     </objects>
     <resources>
         <image name="Television Icon" width="256" height="256"/>
-        <image name="heart" width="32" height="32"/>
+        <image name="list" width="64" height="64"/>
         <image name="more-options" width="128" height="128"/>
     </resources>
 </document>

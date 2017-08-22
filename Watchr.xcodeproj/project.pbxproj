@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1FE8579BD747C4BA36A6360B /* Pods_Watchr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12F09ACFC0CF3DB1006ADAC2 /* Pods_Watchr.framework */; };
-		FB267C2E1F3BEC8600DCCE71 /* DiscoverySwipingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB267C2D1F3BEC8600DCCE71 /* DiscoverySwipingPageViewController.swift */; };
 		FB267C301F3BF08400DCCE71 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB267C2F1F3BF08400DCCE71 /* MainViewController.swift */; };
 		FB267C341F3CEA7900DCCE71 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB267C331F3CEA7900DCCE71 /* Search.storyboard */; };
 		FB267C361F3CEAC100DCCE71 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB267C351F3CEAC100DCCE71 /* SearchViewController.swift */; };
@@ -63,7 +62,6 @@
 		0EA5E84CA3B91162AEFD8373 /* Pods-Watchr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Watchr.release.xcconfig"; path = "Pods/Target Support Files/Pods-Watchr/Pods-Watchr.release.xcconfig"; sourceTree = "<group>"; };
 		12F09ACFC0CF3DB1006ADAC2 /* Pods_Watchr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Watchr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B74895813BE16481199A0CA /* Pods-Watchr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Watchr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Watchr/Pods-Watchr.debug.xcconfig"; sourceTree = "<group>"; };
-		FB267C2D1F3BEC8600DCCE71 /* DiscoverySwipingPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverySwipingPageViewController.swift; sourceTree = "<group>"; };
 		FB267C2F1F3BF08400DCCE71 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		FB267C331F3CEA7900DCCE71 /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		FB267C351F3CEAC100DCCE71 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -195,7 +193,6 @@
 			isa = PBXGroup;
 			children = (
 				FB267C2F1F3BF08400DCCE71 /* MainViewController.swift */,
-				FB267C2D1F3BEC8600DCCE71 /* DiscoverySwipingPageViewController.swift */,
 				FB57CD8B1F10356100F98DAE /* ShowCollectionViewController.swift */,
 				FBF583C41F12D6AC00950C96 /* FavoritesViewController.swift */,
 				FB77F1FE1F104323003A1D46 /* ShowCollectionCellCollectionViewCell.swift */,
@@ -395,7 +392,6 @@
 				FBF583BC1F12ADC000950C96 /* LogInViewController.swift in Sources */,
 				FBDC931A1F11467500E515C8 /* CastCollectionViewCell.swift in Sources */,
 				FBF583C71F12E10200950C96 /* NotificationKeys.swift in Sources */,
-				FB267C2E1F3BEC8600DCCE71 /* DiscoverySwipingPageViewController.swift in Sources */,
 				FB5649021F428E630023E0A2 /* ProfileMainViewController.swift in Sources */,
 				FB267C301F3BF08400DCCE71 /* MainViewController.swift in Sources */,
 				FB77F1FF1F104323003A1D46 /* ShowCollectionCellCollectionViewCell.swift in Sources */,

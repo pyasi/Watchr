@@ -58,27 +58,28 @@ class MoreOptionsAlertViewController: UIAlertController {
     
     func addAppropriateActions(){
         
-        var shouldAddUnwatched = false
-        
         if(!(currentUser?.watched.contains(self.showId!))!){
             let addToWatched = UIAlertAction(title: "Watched", style: .default, handler: {(alert: UIAlertAction!) in self.addToWatched()})
             
             addToWatched.setValue(UIImage(named: "heart"), forKey: "image")
             self.addAction(addToWatched)
-            shouldAddUnwatched = true
         }
         
         if(!(currentUser?.watching.contains(self.showId!))!){
             let addToWatchingNowAction = UIAlertAction(title: "Watching Now", style: .default, handler: {(alert: UIAlertAction!) in self.addToWatchingNow()})
+            
+            //addToWatchingNowAction.setValue(UIImage(named: "eye"), forKey: "image")
             self.addAction(addToWatchingNowAction)
-            shouldAddUnwatched = true
         }
         
         if(!(currentUser?.watchList.contains(self.showId!))!){
             let addToWatchListAction = UIAlertAction(title: "Add to Watch List", style: .default, handler: {(alert: UIAlertAction!) in self.addShowToWatchList()})
+            
+            //addToWatchListAction.setValue(UIImage(named: "list"), forKey: "image")
             self.addAction(addToWatchListAction)
-            shouldAddUnwatched = true
         }
+        
+        let shouldAddUnwatched = (currentUser?.watchList.contains(self.showId!))! || (currentUser?.watched.contains(self.showId!))! || (currentUser?.watching.contains(self.showId!))!
         
         if (shouldAddUnwatched){
             let unwatchedAction = UIAlertAction(title: "Unwatched", style: .default, handler: {(alert: UIAlertAction!) in self.removeWhereNecessary(newStatus: .NotWatched)})

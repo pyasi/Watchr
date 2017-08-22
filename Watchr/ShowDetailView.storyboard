@@ -34,12 +34,24 @@
                                                     <constraint firstAttribute="height" constant="195" id="hCD-MN-hXo"/>
                                                 </constraints>
                                             </imageView>
-                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hpE-ZE-Czk" customClass="SWSegmentedControl" customModule="Watchr" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="195" width="375" height="55"/>
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TzA-3Q-oRZ">
+                                                <rect key="frame" x="0.0" y="310" width="375" height="506"/>
+                                                <connections>
+                                                    <segue destination="pHz-i0-xKi" kind="embed" id="1oA-DV-b03"/>
+                                                </connections>
+                                            </containerView>
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mld-9d-w5m">
+                                                <rect key="frame" x="0.0" y="310" width="375" height="506"/>
+                                                <connections>
+                                                    <segue destination="ZOU-lj-fMY" kind="embed" id="aQ4-UA-Sj1"/>
+                                                </connections>
+                                            </containerView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hpE-ZE-Czk" customClass="SWSegmentedControl" customModule="Watchr" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="274" width="375" height="36"/>
                                                 <color key="backgroundColor" red="0.086274509799999996" green="0.090196078430000007" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="tintColor" red="0.086274509799999996" green="0.090196078430000007" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="55" id="WvX-dM-IIL"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="36" id="WvX-dM-IIL"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="indicatorColor">
@@ -59,34 +71,130 @@
                                                     <action selector="segmentControlValueChanged:" destination="kdb-ab-HYf" eventType="valueChanged" id="fC6-wM-gHN"/>
                                                 </connections>
                                             </view>
-                                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TzA-3Q-oRZ">
-                                                <rect key="frame" x="0.0" y="250" width="375" height="566"/>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lq6-a5-Ers" customClass="DOFavoriteButton" customModule="Watchr" customModuleProvider="target">
+                                                <rect key="frame" x="82" y="203" width="44" height="44"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="image" value="eye"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="imageColorOn">
+                                                        <color key="value" red="0.37647058820000001" green="0.34509803919999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="imageColorOff">
+                                                        <color key="value" red="0.38823529410000002" green="0.41176470590000003" blue="0.47058823529999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="circleColor">
+                                                        <color key="value" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <segue destination="pHz-i0-xKi" kind="embed" id="1oA-DV-b03"/>
+                                                    <action selector="watchingButtonTapped:" destination="kdb-ab-HYf" eventType="touchUpInside" id="Tqh-3L-rhK"/>
                                                 </connections>
-                                            </containerView>
-                                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mld-9d-w5m">
-                                                <rect key="frame" x="0.0" y="250" width="375" height="566"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vCR-pA-AOU" customClass="DOFavoriteButton" customModule="Watchr" customModuleProvider="target">
+                                                <rect key="frame" x="8" y="203" width="44" height="44"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="image" value="list"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="imageColorOn">
+                                                        <color key="value" red="0.37647058820000001" green="0.34509803919999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="imageColorOff">
+                                                        <color key="value" red="0.38823529410000002" green="0.41176470590000003" blue="0.47058823529999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="circleColor">
+                                                        <color key="value" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <segue destination="ZOU-lj-fMY" kind="embed" id="aQ4-UA-Sj1"/>
+                                                    <action selector="watchlistButtonTapped:" destination="kdb-ab-HYf" eventType="touchUpInside" id="Qd9-hF-dJI"/>
                                                 </connections>
-                                            </containerView>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0mn-cl-Ku9" customClass="DOFavoriteButton" customModule="Watchr" customModuleProvider="target">
+                                                <rect key="frame" x="156" y="203" width="44" height="44"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="image" value="heart"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="imageColorOn">
+                                                        <color key="value" red="0.37647058820000001" green="0.34509803919999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="imageColorOff">
+                                                        <color key="value" red="0.38823529410000002" green="0.41176470590000003" blue="0.47058823529999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="circleColor">
+                                                        <color key="value" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="watchedButtonTapped:" destination="kdb-ab-HYf" eventType="touchUpInside" id="dBL-5S-RGd"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Jtb-2V-fZ8">
+                                                <rect key="frame" x="10" y="251" width="42" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Watch List">
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.68888300657272339" green="0.71366006135940552" blue="0.73448425531387329" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <font key="NSFont" size="12" name="Silom"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="JFj-PG-hXK">
+                                                <rect key="frame" x="82" y="251" width="44" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Watching">
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.68888300660000001" green="0.71366006140000005" blue="0.73448425530000006" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <font key="NSFont" size="12" name="Silom"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="pGh-wb-mPu">
+                                                <rect key="frame" x="156" y="251" width="44" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Watched">
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.68888300660000001" green="0.71366006140000005" blue="0.73448425530000006" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <font key="NSFont" size="12" name="Silom"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.086274509799999996" green="0.090196078430000007" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstItem="hpE-ZE-Czk" firstAttribute="top" secondItem="3op-yG-D8G" secondAttribute="bottom" id="50s-GT-PLy"/>
-                                            <constraint firstItem="hpE-ZE-Czk" firstAttribute="leading" secondItem="cOr-as-2g9" secondAttribute="leading" id="5E6-Bl-tTe"/>
-                                            <constraint firstItem="TzA-3Q-oRZ" firstAttribute="top" secondItem="hpE-ZE-Czk" secondAttribute="bottom" id="B2J-2A-KWd"/>
+                                            <constraint firstItem="hpE-ZE-Czk" firstAttribute="leading" secondItem="cOr-as-2g9" secondAttribute="leading" id="D5L-w1-BKs"/>
                                             <constraint firstAttribute="bottom" secondItem="TzA-3Q-oRZ" secondAttribute="bottom" constant="-149" id="Hvs-X0-pvM"/>
                                             <constraint firstItem="3op-yG-D8G" firstAttribute="leading" secondItem="cOr-as-2g9" secondAttribute="leading" id="Ioo-WE-OIj"/>
+                                            <constraint firstAttribute="trailing" secondItem="hpE-ZE-Czk" secondAttribute="trailing" id="KNV-P3-cQd"/>
                                             <constraint firstAttribute="trailing" secondItem="TzA-3Q-oRZ" secondAttribute="trailing" id="PEF-hF-fac"/>
                                             <constraint firstItem="Mld-9d-w5m" firstAttribute="leading" secondItem="cOr-as-2g9" secondAttribute="leading" id="QrF-Kk-Jbp"/>
+                                            <constraint firstItem="Mld-9d-w5m" firstAttribute="top" secondItem="hpE-ZE-Czk" secondAttribute="bottom" id="VJG-R2-iEC"/>
                                             <constraint firstItem="TzA-3Q-oRZ" firstAttribute="leading" secondItem="cOr-as-2g9" secondAttribute="leading" id="ZwE-mT-Q9i"/>
-                                            <constraint firstAttribute="trailing" secondItem="hpE-ZE-Czk" secondAttribute="trailing" id="aU7-It-vMN"/>
                                             <constraint firstAttribute="bottom" secondItem="Mld-9d-w5m" secondAttribute="bottom" constant="-149" id="cGh-FE-Ksp"/>
+                                            <constraint firstItem="TzA-3Q-oRZ" firstAttribute="top" secondItem="hpE-ZE-Czk" secondAttribute="bottom" id="cqX-cq-Tw9"/>
                                             <constraint firstAttribute="trailing" secondItem="Mld-9d-w5m" secondAttribute="trailing" id="dsh-5n-l42"/>
                                             <constraint firstAttribute="trailing" secondItem="3op-yG-D8G" secondAttribute="trailing" id="oKA-4q-Xk8"/>
-                                            <constraint firstItem="Mld-9d-w5m" firstAttribute="top" secondItem="hpE-ZE-Czk" secondAttribute="bottom" id="upY-qi-rPi"/>
+                                            <constraint firstItem="hpE-ZE-Czk" firstAttribute="top" secondItem="3op-yG-D8G" secondAttribute="bottom" constant="79" id="to2-0A-AqT"/>
                                             <constraint firstItem="3op-yG-D8G" firstAttribute="top" secondItem="cOr-as-2g9" secondAttribute="top" id="yHK-Jh-3hT"/>
                                         </constraints>
                                     </view>
@@ -280,7 +388,7 @@
                         <viewControllerLayoutGuide type="bottom" id="voN-nx-mP8"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="73m-zj-nno">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="566"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="506"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" fixedFrame="YES" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1ha-YH-IFm">
@@ -368,5 +476,8 @@
     </scenes>
     <resources>
         <image name="Television Icon" width="256" height="256"/>
+        <image name="eye" width="64" height="64"/>
+        <image name="heart" width="32" height="32"/>
+        <image name="list" width="64" height="64"/>
     </resources>
 </document>

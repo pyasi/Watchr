@@ -54,51 +54,57 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate, InitialLo
             if let user = user {
                 if currentUser == nil{
                     let userID = Auth.auth().currentUser?.uid
-                    ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-                        if(snapshot.exists()){
-                            currentUser = AppUser.init(snapshot: snapshot)
-                            
-                            
-                            // TODO Clean up this logic
-                            ref.child("watched").child(currentUser!.watchedKey!).observeSingleEvent(of: .value, with: {
-                                (snapshot) in
-                                for child in snapshot.children{
-                                    let thisChild = child as! DataSnapshot
-                                    currentUser?.watched.append(thisChild.value as! Int)
-                                }
-                                self.hasLoadedWatched = true
-                            })
-                            
-                            ref.child("watchList").child(currentUser!.watchListKey!).observeSingleEvent(of: .value, with: {
-                                (snapshot) in
-                                for child in snapshot.children{
-                                    let thisChild = child as! DataSnapshot
-                                    currentUser?.watchList.append(thisChild.value as! Int)
-                                }
-                                self.hasLoadedWatchList = true
-                            })
-                            
-                            ref.child("watchingNow").child(currentUser!.watchingNowKey!).observeSingleEvent(of: .value, with: {
-                                (snapshot) in
-                                for child in snapshot.children{
-                                    let thisChild = child as! DataSnapshot
-                                    currentUser?.watching.append(thisChild.value as! Int)
-                                }
-                                self.hasLoadedWatchingNow = true
-                            })
-                            
-                        }
+                    self.loadUser(userId: userID!, completionHandler: {
+                        success in
                         
-                    })
-                    { (error) in
-                        print(error.localizedDescription)
-                    }
+                        // TODO Clean up this logic
+                        ref.child("watched").child(currentUser!.watchedKey!).observeSingleEvent(of: .value, with: {
+                            (snapshot) in
+                            for child in snapshot.children{
+                                let thisChild = child as! DataSnapshot
+                                currentUser?.watched.append(thisChild.value as! Int)
+                            }
+                            self.hasLoadedWatched = true
+                        })
+                        
+                        ref.child("watchList").child(currentUser!.watchListKey!).observeSingleEvent(of: .value, with: {
+                            (snapshot) in
+                            for child in snapshot.children{
+                                let thisChild = child as! DataSnapshot
+                                currentUser?.watchList.append(thisChild.value as! Int)
+                            }
+                            self.hasLoadedWatchList = true
+                        })
+                        
+                        ref.child("watchingNow").child(currentUser!.watchingNowKey!).observeSingleEvent(of: .value, with: {
+                            (snapshot) in
+                            for child in snapshot.children{
+                                let thisChild = child as! DataSnapshot
+                                currentUser?.watching.append(thisChild.value as! Int)
+                            }
+                            self.hasLoadedWatchingNow = true
+                        })
+                    
+                        print("User is signed in with uid:", user.uid)
+                        print("User is ", user.displayName)
+                        self.performSegue(withIdentifier: "LoggedInSegue", sender: nil)
+                })
                 }
-                print("User is signed in with uid:", user.uid)
-                print("User is ", user.displayName)
-                self.performSegue(withIdentifier: "LoggedInSegue", sender: nil)
             }
         }
+    }
+    
+    func loadUser(userId: String, completionHandler: @escaping (Bool) -> ()){
+        ref.child("users").child(userId).observeSingleEvent(of: .value, with: { (snapshot) in
+            if(snapshot.exists()){
+                currentUser = AppUser.init(snapshot: snapshot)
+                completionHandler(true)
+            }
+            else{
+                // COULD NOT CONNECT TO FIREBASE CHANGE THIS
+                completionHandler(true)
+            }
+        })
     }
     
     func shouldLoadViews() -> Bool{

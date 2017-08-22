@@ -65,6 +65,7 @@ class ProfileMainViewController: UIViewController {
         
         let parameters: [CAPSPageMenuOption] = [
             .centerMenuItems(false),
+            .menuItemWidth(75.0),
             .viewBackgroundColor(darkTheme),
             .scrollMenuBackgroundColor(mediumTheme),
             .scrollAnimationDurationOnMenuItemTap(250),
