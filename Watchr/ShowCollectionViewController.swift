@@ -140,7 +140,6 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
     
     func loadMoreOptions(controller: UIViewController) {
         self.present(controller, animated: true) { () -> Void in
-            
         }
     }
     

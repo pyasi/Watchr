@@ -14,6 +14,7 @@ class MoreOptionsAlertViewController: UIAlertController {
     
     var showId : Int?
     weak var delegate: MoreOptionsProtocol?
+    var customHeader: MoreOptionsHeader?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,15 +24,17 @@ class MoreOptionsAlertViewController: UIAlertController {
         configureView()
         colorViews()
         addAppropriateActions()
+        loadShowDetails(showId: showId!)
     }
     
     func configureView(){
         let margin:CGFloat = 10.0
         let rect = CGRect(x: margin, y: margin, width: self.view.bounds.size.width - margin * 4.0, height: 120)
-        let customView = UIView(frame: rect)
-        
-        customView.backgroundColor = mediumTheme
-        self.view.addSubview(customView)
+        customHeader = MoreOptionsHeader.instanceFromNib()
+        customHeader?.frame = rect
+        customHeader?.backgroundColor = mediumTheme
+        customHeader?.backgroundView.layer.cornerRadius = 2
+        self.view.addSubview(customHeader!)
         
         let gotToShowDetails = UIAlertAction(title: "Go to Show Details", style: .default, handler: {(alert: UIAlertAction!) in self.goToShowDetailsClicked()})
         
@@ -51,28 +54,36 @@ class MoreOptionsAlertViewController: UIAlertController {
         self.view.tintColor = whiteTheme
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.75)
         alertContentView.layer.cornerRadius = 15
-        
     }
     
     func addAppropriateActions(){
+        
+        var shouldAddUnwatched = false
         
         if(!(currentUser?.watched.contains(self.showId!))!){
             let addToWatched = UIAlertAction(title: "Watched", style: .default, handler: {(alert: UIAlertAction!) in self.addToWatched()})
             
             addToWatched.setValue(UIImage(named: "heart"), forKey: "image")
             self.addAction(addToWatched)
+            shouldAddUnwatched = true
         }
         
         if(!(currentUser?.watching.contains(self.showId!))!){
             let addToWatchingNowAction = UIAlertAction(title: "Watching Now", style: .default, handler: {(alert: UIAlertAction!) in self.addToWatchingNow()})
             self.addAction(addToWatchingNowAction)
+            shouldAddUnwatched = true
         }
         
         if(!(currentUser?.watchList.contains(self.showId!))!){
             let addToWatchListAction = UIAlertAction(title: "Add to Watch List", style: .default, handler: {(alert: UIAlertAction!) in self.addShowToWatchList()})
             self.addAction(addToWatchListAction)
+            shouldAddUnwatched = true
         }
         
+        if (shouldAddUnwatched){
+            let unwatchedAction = UIAlertAction(title: "Unwatched", style: .default, handler: {(alert: UIAlertAction!) in self.removeWhereNecessary(newStatus: .NotWatched)})
+            self.addAction(unwatchedAction)
+        }
     }
     
     func addShowToWatchList(){
@@ -111,6 +122,12 @@ class MoreOptionsAlertViewController: UIAlertController {
             currentUser?.watching = (currentUser?.watching.filter({$0 != self.showId}))!
             currentUser?.watched = (currentUser?.watched.filter({$0 != self.showId}))!
         case .NotWatched:
+            removeFromWatched(showId: self.showId!)
+            removeFromWatchingNow(showId: self.showId!)
+            removeFromWatched(showId: self.showId!)
+            currentUser?.watching = (currentUser?.watching.filter({$0 != self.showId}))!
+            currentUser?.watched = (currentUser?.watched.filter({$0 != self.showId}))!
+            currentUser?.watchList = (currentUser?.watchList.filter({$0 != self.showId}))!
             break
         }
         
@@ -160,6 +177,23 @@ class MoreOptionsAlertViewController: UIAlertController {
         if((self.delegate?.responds(to: Selector(("goToShowDetailsFromOptions:")))) != nil)
         {
             self.delegate?.goToShowDetailsFromOptions(showId: self.showId!)
+        }
+    }
+    
+    func loadShowDetails(showId: Int){
+        TVDetailedMDB.tv(apiKey, tvShowID: showId, language: "en"){
+            apiReturn in
+            if let show = apiReturn.1{
+                self.customHeader?.showName.text = show.name
+                getShowStatus(show: show)
+                self.customHeader?.showStatus.text = stringForShowStatus(show: show)
+                if let path = show.poster_path{
+                    let url = URL(string: "https://image.tmdb.org/t/p/w185//" + path)
+                    self.customHeader?.showImage.sd_setImage(with: url)
+                }
+                // set image status
+                //self.customHeader?.showStatusImage.image = UIImage(named: <#T##String#>)
+            }
         }
     }
     

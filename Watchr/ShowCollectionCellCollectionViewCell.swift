@@ -94,6 +94,4 @@ class ShowCollectionCellCollectionViewCell: UICollectionViewCell {
             }
         })
     }
-    
-    
 }

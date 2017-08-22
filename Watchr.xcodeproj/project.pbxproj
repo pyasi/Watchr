@@ -33,6 +33,8 @@
 		FBDC931C1F11999000E515C8 /* CastDetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBDC931B1F11999000E515C8 /* CastDetailView.storyboard */; };
 		FBDC931E1F119BC000E515C8 /* ActorDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC931D1F119BC000E515C8 /* ActorDetailViewController.swift */; };
 		FBDC93201F11DF9E00E515C8 /* DOFavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC931F1F11DF9E00E515C8 /* DOFavoriteButton.swift */; };
+		FBE0BA681F4BAF99000D4D93 /* MoreOptionsHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBE0BA671F4BAF99000D4D93 /* MoreOptionsHeader.xib */; };
+		FBE0BA6A1F4BB03A000D4D93 /* MoreOptionsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE0BA691F4BB03A000D4D93 /* MoreOptionsHeader.swift */; };
 		FBE6328E1F4519A200B00748 /* ShowProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE6328D1F4519A200B00748 /* ShowProfileTableViewCell.swift */; };
 		FBE632901F451A4D00B00748 /* ProfileShowsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE6328F1F451A4D00B00748 /* ProfileShowsListViewController.swift */; };
 		FBF583BA1F12A5E800950C96 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FBF583B91F12A5E800950C96 /* GoogleService-Info.plist */; };
@@ -89,6 +91,8 @@
 		FBDC931B1F11999000E515C8 /* CastDetailView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CastDetailView.storyboard; sourceTree = "<group>"; };
 		FBDC931D1F119BC000E515C8 /* ActorDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActorDetailViewController.swift; sourceTree = "<group>"; };
 		FBDC931F1F11DF9E00E515C8 /* DOFavoriteButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DOFavoriteButton.swift; sourceTree = "<group>"; };
+		FBE0BA671F4BAF99000D4D93 /* MoreOptionsHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreOptionsHeader.xib; sourceTree = "<group>"; };
+		FBE0BA691F4BB03A000D4D93 /* MoreOptionsHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreOptionsHeader.swift; sourceTree = "<group>"; };
 		FBE6328D1F4519A200B00748 /* ShowProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowProfileTableViewCell.swift; sourceTree = "<group>"; };
 		FBE6328F1F451A4D00B00748 /* ProfileShowsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileShowsListViewController.swift; sourceTree = "<group>"; };
 		FBF583B91F12A5E800950C96 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -213,8 +217,10 @@
 				FB5648FE1F4284760023E0A2 /* Profile.storyboard */,
 				FBDC931B1F11999000E515C8 /* CastDetailView.storyboard */,
 				FBF583C21F12D55B00950C96 /* ShowCard.xib */,
+				FBE0BA671F4BAF99000D4D93 /* MoreOptionsHeader.xib */,
 				FBDC93121F10833600E515C8 /* SWSegmentedControl.swift */,
 				FBDC931F1F11DF9E00E515C8 /* DOFavoriteButton.swift */,
+				FBE0BA691F4BB03A000D4D93 /* MoreOptionsHeader.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -309,6 +315,7 @@
 				FB57CD911F10356100F98DAE /* Assets.xcassets in Resources */,
 				FBDC931C1F11999000E515C8 /* CastDetailView.storyboard in Resources */,
 				FB57CD8F1F10356100F98DAE /* Main.storyboard in Resources */,
+				FBE0BA681F4BAF99000D4D93 /* MoreOptionsHeader.xib in Resources */,
 				FB5648FF1F4284760023E0A2 /* Profile.storyboard in Resources */,
 				FB267C341F3CEA7900DCCE71 /* Search.storyboard in Resources */,
 				FB77F2021F1052A6003A1D46 /* ShowDetailView.storyboard in Resources */,
@@ -393,6 +400,7 @@
 				FB267C301F3BF08400DCCE71 /* MainViewController.swift in Sources */,
 				FB77F1FF1F104323003A1D46 /* ShowCollectionCellCollectionViewCell.swift in Sources */,
 				FB267C3A1F3CEF3700DCCE71 /* ShowTableViewCell.swift in Sources */,
+				FBE0BA6A1F4BB03A000D4D93 /* MoreOptionsHeader.swift in Sources */,
 				FB57CD8A1F10356100F98DAE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

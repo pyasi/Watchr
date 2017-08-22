@@ -50,7 +50,7 @@ class ProfileShowsListViewController: UIViewController, UITableViewDelegate, UIT
         let offsetY = scrollView.contentOffset.y
 
         if (offsetY > 0) {
-            profileView?.frame.origin.y = (profileView?.frame.origin.y)! - 1
+            //profileView?.frame.origin.y = (profileView?.frame.origin.y)! - 1
             
             /*
             if((scrollMenuView?.frame.origin.y)! > CGFloat(0)){
