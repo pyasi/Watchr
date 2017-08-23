@@ -25,6 +25,7 @@
 		FB77F2041F1054B2003A1D46 /* ShowDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB77F2031F1054B2003A1D46 /* ShowDetailViewController.swift */; };
 		FB93FD441F3AA4C3002DB84A /* ColorsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93FD431F3AA4C3002DB84A /* ColorsHelper.swift */; };
 		FBBEFAF61F4252AD007DC859 /* MoreOptionsAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBEFAF51F4252AD007DC859 /* MoreOptionsAlertViewController.swift */; };
+		FBC3BA691F4D22D10022A0A6 /* PreviewShowDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC3BA681F4D22D10022A0A6 /* PreviewShowDetailViewController.swift */; };
 		FBDC93131F10833600E515C8 /* SWSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC93121F10833600E515C8 /* SWSegmentedControl.swift */; };
 		FBDC93161F1085D200E515C8 /* ShowInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC93151F1085D200E515C8 /* ShowInformationViewController.swift */; };
 		FBDC93181F11452100E515C8 /* CastCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC93171F11452100E515C8 /* CastCollectionViewController.swift */; };
@@ -82,6 +83,7 @@
 		FB93FD431F3AA4C3002DB84A /* ColorsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorsHelper.swift; sourceTree = "<group>"; };
 		FBBEFAF41F423F58007DC859 /* Watchr-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Watchr-Bridging-Header.h"; sourceTree = "<group>"; };
 		FBBEFAF51F4252AD007DC859 /* MoreOptionsAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreOptionsAlertViewController.swift; sourceTree = "<group>"; };
+		FBC3BA681F4D22D10022A0A6 /* PreviewShowDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewShowDetailViewController.swift; sourceTree = "<group>"; };
 		FBDC93121F10833600E515C8 /* SWSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWSegmentedControl.swift; sourceTree = "<group>"; };
 		FBDC93151F1085D200E515C8 /* ShowInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowInformationViewController.swift; sourceTree = "<group>"; };
 		FBDC93171F11452100E515C8 /* CastCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CastCollectionViewController.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				FB77F2031F1054B2003A1D46 /* ShowDetailViewController.swift */,
+				FBC3BA681F4D22D10022A0A6 /* PreviewShowDetailViewController.swift */,
 				FBDC93151F1085D200E515C8 /* ShowInformationViewController.swift */,
 				FBDC93171F11452100E515C8 /* CastCollectionViewController.swift */,
 				FBDC93191F11467500E515C8 /* CastCollectionViewCell.swift */,
@@ -384,6 +387,7 @@
 				FBBEFAF61F4252AD007DC859 /* MoreOptionsAlertViewController.swift in Sources */,
 				FBDC93131F10833600E515C8 /* SWSegmentedControl.swift in Sources */,
 				FBDC93161F1085D200E515C8 /* ShowInformationViewController.swift in Sources */,
+				FBC3BA691F4D22D10022A0A6 /* PreviewShowDetailViewController.swift in Sources */,
 				FBF583C11F12BD7C00950C96 /* AppUser.swift in Sources */,
 				FBDC93181F11452100E515C8 /* CastCollectionViewController.swift in Sources */,
 				FBF583C51F12D6AD00950C96 /* FavoritesViewController.swift in Sources */,

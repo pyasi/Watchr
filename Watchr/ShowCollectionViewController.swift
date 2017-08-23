@@ -12,7 +12,7 @@ import Firebase
 import FBSDKLoginKit
 import AMScrollingNavbar
 
-class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate, MoreOptionsProtocol {
+class ShowCollectionViewController: UIViewController, UIViewControllerPreviewingDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate, MoreOptionsProtocol {
     
     @IBOutlet var showsCollectionView: UICollectionView!
     
@@ -36,6 +36,19 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
         if (showListType! == .Recommended){
             NotificationCenter.default.addObserver(self, selector: #selector(self.favoritesChanged), name: NSNotification.Name(rawValue: favoriteRemovedKey), object: nil)
             NotificationCenter.default.addObserver(self, selector: #selector(self.favoritesChanged), name: NSNotification.Name(rawValue: favoriteAddedKey), object: nil)
+        }
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        
+        super.traitCollectionDidChange(previousTraitCollection)
+        switch traitCollection.forceTouchCapability {
+        case .available:
+            registerForPreviewing(with: self, sourceView: view)
+        case .unavailable:
+            print("Unavailable")
+        case .unknown:
+            print("Unknown")
         }
     }
     
@@ -150,6 +163,30 @@ class ShowCollectionViewController: UIViewController, UICollectionViewDelegate, 
             navigationController.showNavbar(animated: true)
         }
         return true
+    }
+    
+    // 3d Touch Peeking
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        guard let indexPath = showsCollectionView?.indexPathForItem(at: location) else { return nil }
+        
+        guard let cell = showsCollectionView?.cellForItem(at: indexPath) else { return nil }
+        
+        let storyboard = UIStoryboard(name: "ShowDetailView", bundle: nil)
+        guard let detailVC = storyboard.instantiateViewController(withIdentifier: "PreviewShowDetailController") as? PreviewShowDetailViewController else { return nil }
+        
+        let show = showsToDisplay[indexPath.row]
+        detailVC.show = show
+        detailVC.preferredContentSize = CGSize(width: 0.0, height: 500)
+        previewingContext.sourceRect = cell.frame
+        
+        return detailVC
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        
+        guard let viewController = viewControllerToCommit as? PreviewShowDetailViewController else{ return }
+        
+        performSegue(withIdentifier: "ToShowDetailSegue", sender: viewController.show)
     }
     
     func loadMoreOptions(controller: UIViewController) {

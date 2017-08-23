@@ -43,7 +43,6 @@ class ShowInformationViewController: UIViewController, UICollectionViewDelegate,
         genreLabel.text = getGenresString(show: detailedShow!)
         networkLabel.text = detailedShow!.networks.count > 0 ? detailedShow!.networks[0].name : " - "
         descriptionTextView.text = detailedShow!.overview != nil ? detailedShow!.overview : " - "
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
