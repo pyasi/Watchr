@@ -42,7 +42,7 @@ class CastCollectionViewController: UIViewController, UICollectionViewDelegate, 
             cell.fillCastImage(path: castMembers[indexPath.row].profile_path!)
         }
         else{
-            cell.castImage.image = UIImage(named: "default")
+            cell.castImage.image = UIImage(named: "Television Icon")
         }
         
         cell.mainBackground.layer.cornerRadius = 5

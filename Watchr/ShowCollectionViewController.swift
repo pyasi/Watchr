@@ -16,7 +16,7 @@ class ShowCollectionViewController: UIViewController, UIViewControllerPreviewing
     
     @IBOutlet var showsCollectionView: UICollectionView!
     
-    var showsToDisplay: [TVDetailedMDB] = []
+    var showsToDisplay: [TVMDB] = []
     var onPage = 1
     var showListType: ShowListType?
     var refresher: UIRefreshControl?
@@ -119,8 +119,9 @@ class ShowCollectionViewController: UIViewController, UIViewControllerPreviewing
             cell.seasonLabel.isHidden = true
             cell.numberOfSeasonsLabel.isHidden = true
         }
-        cell.numberOfSeasonsLabel.text = String(describing: showToCreate.number_of_seasons!)
-        if (showToCreate.number_of_seasons == 1){
+        
+        cell.numberOfSeasonsLabel.text = showToCreate.numberOfSeasons != nil ? String(describing: showToCreate.numberOfSeasons!) : "-"
+        if (showToCreate.numberOfSeasons == 1){
             cell.seasonLabel.text = "Season"
         }
         cell.favoriteButton.isSelected = favorites.contains(showToCreate.id!) ? true : false
@@ -167,6 +168,7 @@ class ShowCollectionViewController: UIViewController, UIViewControllerPreviewing
     
     // 3d Touch Peeking
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        
         guard let indexPath = showsCollectionView?.indexPathForItem(at: location) else { return nil }
         
         guard let cell = showsCollectionView?.cellForItem(at: indexPath) else { return nil }
@@ -225,9 +227,11 @@ class ShowCollectionViewController: UIViewController, UIViewControllerPreviewing
         TVMDB.popular(apiKey, page: onPage, language: "en"){
             apiReturn in
             if let tv = apiReturn.1{
-                for show in tv{
-                    self.getShowDetails(show: show)
+                for x in 0..<tv.count{
+                    self.showsToDisplay.append(tv[x])
+                    self.getSeasonsForShow(show: tv[x], index: x)
                 }
+                self.showsCollectionView.reloadData()
                 self.stopRefreshing()
             }
         }
@@ -237,9 +241,11 @@ class ShowCollectionViewController: UIViewController, UIViewControllerPreviewing
         TVMDB.toprated(apiKey, page: onPage, language: "en"){
             apiReturn in
             if let tv = apiReturn.1{
-                for show in tv{
-                    self.getShowDetails(show: show)
+                for x in 0..<tv.count{
+                    self.showsToDisplay.append(tv[x])
+                    self.getSeasonsForShow(show: tv[x], index: x)
                 }
+                self.showsCollectionView.reloadData()
                 self.stopRefreshing()
             }
         }
@@ -249,9 +255,11 @@ class ShowCollectionViewController: UIViewController, UIViewControllerPreviewing
         TVMDB.ontheair(apiKey, page: onPage, language: "en"){
             apiReturn in
             if let tv = apiReturn.1{
-                for show in tv{
-                    self.getShowDetails(show: show)
+                for x in 0..<tv.count{
+                    self.showsToDisplay.append(tv[x])
+                    self.getSeasonsForShow(show: tv[x], index: x)
                 }
+                self.showsCollectionView.reloadData()
                 self.stopRefreshing()
             }
         }
@@ -285,17 +293,19 @@ class ShowCollectionViewController: UIViewController, UIViewControllerPreviewing
         TVMDB.similar(apiKey, tvShowID: forShow, page: 1, language: "en"){
             apiReturn in
             if let shows = apiReturn.1{
-                for show in shows{
+                for x in 0..<shows.count{
                     if(showsAdded == amountToGet){
                         break
                     }
                     
                     // TODO make sure it doesn't add shows already added
-                    if(!favorites.contains(show.id!)){
-                        self.getShowDetails(show: show)
+                    if(!favorites.contains(shows[x].id!)){
+                        self.showsToDisplay.append(shows[x])
+                        self.getSeasonsForShow(show: shows[x], index: self.showsToDisplay.count - 1)
                         showsAdded += 1
                     }
                 }
+                self.showsCollectionView.reloadData()
                 self.stopRefreshing()
                 print("Number of recommendations: ", self.showsToDisplay.count)
             }
@@ -314,6 +324,27 @@ class ShowCollectionViewController: UIViewController, UIViewControllerPreviewing
             if let show = apiReturn.1{
                 self.showsToDisplay.append(show)
                 self.showsCollectionView.reloadData()
+            }
+        }
+    }
+    
+    func getSeasonsForShow(show: TVMDB, index: Int){
+        //print("Starting: 2 - ", show.name)
+        TVDetailedMDB.tv(apiKey, tvShowID: show.id, language: "en"){
+            apiReturn in
+            //print("Returned: 2 - ", show.name)
+            if let data = apiReturn.1{
+                if let numberOfSeasons = data.number_of_seasons{
+                    show.numberOfSeasons = numberOfSeasons
+                    if (numberOfSeasons == 0){
+                        show.numberOfSeasons = 1
+                    }
+                    let cell = self.showsCollectionView.cellForItem(at: IndexPath(row: index, section: 0)) as? ShowCollectionCellCollectionViewCell
+                    cell?.numberOfSeasonsLabel.text = String(describing: show.numberOfSeasons!)
+                    if (show.numberOfSeasons == 1){
+                        cell?.seasonLabel.text = "Season"
+                    }
+                }
             }
         }
     }

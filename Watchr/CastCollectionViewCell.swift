@@ -19,7 +19,7 @@ class CastCollectionViewCell: UICollectionViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-    
+        
     }
     
     override func prepareForReuse() {
@@ -27,7 +27,10 @@ class CastCollectionViewCell: UICollectionViewCell {
     }
     
     func fillCastImage(path: String){
-            let url = URL(string:"https://image.tmdb.org/t/p/w138_and_h175_bestv2" + path)
-            self.castImage.sd_setImage(with: url)
+        if let url = URL(string:"https://image.tmdb.org/t/p/w138_and_h175_bestv2" + path){
+            self.castImage.sd_setShowActivityIndicatorView(true)
+            self.castImage.sd_setIndicatorStyle(.whiteLarge)
+            self.castImage.sd_setImage(with: url, placeholderImage: UIImage(named: "Television Icon"))
         }
+    }
 }
