@@ -107,7 +107,7 @@ class ShowCollectionViewController: UIViewController, UIViewControllerPreviewing
         let cell = showsCollectionView.dequeueReusableCell(withReuseIdentifier: "ShowCell", for: indexPath) as! ShowCollectionCellCollectionViewCell
         
         let showToCreate = showsToDisplay[indexPath.row]
-        getShowStatus(show: showToCreate)
+        //getShowStatus(show: showToCreate)
         print(showToCreate.name + " - " + stringForShowStatus(show: showToCreate))
         
         cell.showId = showToCreate.id
@@ -129,7 +129,7 @@ class ShowCollectionViewController: UIViewController, UIViewControllerPreviewing
             cell.seasonLabel.text = "Season"
         }
         
-        cell.showWatchrStatus = showToCreate.watchrStatus
+        cell.displayExpectedViews()
         cell.delegate = self
         
         return cell
@@ -376,5 +376,6 @@ class ShowCollectionViewController: UIViewController, UIViewControllerPreviewing
     
     @IBAction func unwindToShowCollection(_ sender: UIStoryboardSegue) {
         dim(.out, speed: dimSpeed)
+        self.showsCollectionView.reloadData()
     }
 }

@@ -29,6 +29,10 @@ class MoreOptionsAlertViewController: UIAlertController {
         loadShowDetails(showId: showId!)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        
+    }
+    
     func configureView(){
         let margin:CGFloat = 10.0
         let rect = CGRect(x: margin, y: margin, width: self.view.bounds.size.width - margin * 4.0, height: 120)
@@ -117,8 +121,4 @@ class MoreOptionsAlertViewController: UIAlertController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-    
-    
 }

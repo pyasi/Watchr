@@ -148,6 +148,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
         cell.showGenres.text = genreString
         
         cell.showId = show.id
+        cell.displayExpectedViews()
         //cell.favoriteButton.isSelected = favorites.contains(show.id!) ? true : false
         
         cell.selectionStyle = .none

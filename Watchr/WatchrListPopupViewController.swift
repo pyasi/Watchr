@@ -17,7 +17,7 @@ class WatchrListPopupViewController: UIViewController {
     @IBOutlet var watchedButton: DOFavoriteButton!
     @IBOutlet var cancelButton: UIButton!
     
-    var showStatus: WatchrShowStatus?
+    var showWatchrStatus: WatchrShowStatus?
     var showId: Int?
     
     var watchrStatusDelegate: WatchrStatusProtocol = WatchrStatusDelegate()
@@ -33,6 +33,8 @@ class WatchrListPopupViewController: UIViewController {
         popupView.layer.masksToBounds = false
         
         layoutCancelButton()
+        showWatchrStatus = getStatusForShowId(showId: showId!)
+        setSelectedButtonWhereAppropriate()
     }
     
     func layoutCancelButton(){
@@ -54,7 +56,7 @@ class WatchrListPopupViewController: UIViewController {
     }
     
     func setSelectedButtonWhereAppropriate(){
-        switch showStatus!{
+        switch showWatchrStatus!{
         case .Watched:
             watchedButton.isSelected = true
         case .Watching:
@@ -73,7 +75,10 @@ class WatchrListPopupViewController: UIViewController {
             watchrStatusDelegate.removeWhereNecessary(newStatus: .NotWatched, showId: showId!)
         } else {
             watchrStatusDelegate.addShowToWatchList(showId: showId!)
+            self.view.isUserInteractionEnabled = false
             sender.select()
+            watchingButton.deselect()
+            watchedButton.deselect()
             let generator = UIImpactFeedbackGenerator(style: .medium)
             generator.impactOccurred()
             dismissAfterAnimation()
@@ -86,7 +91,10 @@ class WatchrListPopupViewController: UIViewController {
             watchrStatusDelegate.removeWhereNecessary(newStatus: .NotWatched, showId: showId!)
         } else {
             watchrStatusDelegate.addShowToWatchingNow(showId: showId!)
+            self.view.isUserInteractionEnabled = false
             sender.select()
+            watchedButton.deselect()
+            watchListButton.deselect()
             let generator = UIImpactFeedbackGenerator(style: .medium)
             generator.impactOccurred()
             dismissAfterAnimation()
@@ -99,7 +107,10 @@ class WatchrListPopupViewController: UIViewController {
             watchrStatusDelegate.removeWhereNecessary(newStatus: .NotWatched, showId: showId!)
         } else {
             watchrStatusDelegate.addShowToWatched(showId: showId!)
+            self.view.isUserInteractionEnabled = false
             sender.select()
+            watchingButton.deselect()
+            watchListButton.deselect()
             let generator = UIImpactFeedbackGenerator(style: .medium)
             generator.impactOccurred()
             dismissAfterAnimation()

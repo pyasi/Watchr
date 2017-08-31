@@ -15,9 +15,10 @@ class ShowTableViewCell: UITableViewCell {
     @IBOutlet var showNameLabel: UILabel!
     @IBOutlet var showGenres: UILabel!
     @IBOutlet var showImage: UIImageView!
-    @IBOutlet var favoriteButton: DOFavoriteButton!
+    @IBOutlet var watchrStatusButton: DOFavoriteButton!
     
     var showId: Int?
+    var showWatchrStatus: WatchrShowStatus?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,48 +29,33 @@ class ShowTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
-    /*
-    @IBAction func favoriteTapped(_ sender: DOFavoriteButton) {
-        if sender.isSelected {
-            // deselect
-            sender.deselect()
-            removeFromFavorites()
-        } else {
-            // select with animation
-            sender.select()
-            
-            let generator = UIImpactFeedbackGenerator(style: .medium)
-            generator.impactOccurred()
-            addShowToFavorites()
+    func displayExpectedViews(){
+        showWatchrStatus = getStatusForShowId(showId: showId!)
+        if (showWatchrStatus != nil){
+            displayCorrectWatchrStatusButton()
         }
     }
     
-    func addShowToFavorites(){
-        ref.child("favorites").child(currentUser!.favoritesKey!).childByAutoId().setValue(self.showId)
-        favorites.append(self.showId!)
-        NotificationCenter.default.post(name: Notification.Name(rawValue: favoriteAddedKey), object: nil)
+    func displayCorrectWatchrStatusButton(){
+        
+        switch showWatchrStatus!{
+        case .Watched:
+            watchrStatusButton.image = UIImage(named: "heart")
+        //watchrStatusButton.isSelected = true
+        case .Watching:
+            watchrStatusButton.image = UIImage(named: "eye")
+        //watchrStatusButton.isSelected = true
+        case .WatchList:
+            watchrStatusButton.image = UIImage(named: "list")
+        //watchrStatusButton.isSelected = true
+        case .NotWatched:
+            watchrStatusButton.image = UIImage(named: "add")
+            //watchrStatusButton.isSelected = false
+        }
     }
-    
-    func removeFromFavorites(){
-        //print(favorites)
-        ref.child("favorites").child(currentUser!.favoritesKey!).observeSingleEvent(of: .value, with: {
-            (snapshot) in
-            for child in snapshot.children{
-                let thisChild = child as! DataSnapshot
-                if (thisChild.value as? Int == self.showId){
-                    ref.child("favorites").child(currentUser!.favoritesKey!).child(thisChild.key).removeValue()
-                    let indexToRemove = favorites.index(of: self.showId!)!
-                    favorites.remove(at: indexToRemove)
-                    let indexInfo:[String: Int] = ["index": indexToRemove]
-                    NotificationCenter.default.post(name: Notification.Name(rawValue: favoriteRemovedKey), object: indexToRemove, userInfo: indexInfo)
-                }
-            }
-        })
-    }
- */
 
 }

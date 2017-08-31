@@ -35,14 +35,12 @@ class ShowCollectionCellCollectionViewCell: UICollectionViewCell {
         
         self.layer.cornerRadius = 2
         self.layoutViews()
-        if let status = showWatchrStatus{
-            displayCorrectWatchrStatusButton()
-        }
     }
     
     override func prepareForReuse() {
         showTitle.text = nil
         showId = nil
+        showWatchrStatus = nil
         numberOfSeasonsLabel.isHidden = false
         seasonLabel.isHidden = false
     }
@@ -55,16 +53,28 @@ class ShowCollectionCellCollectionViewCell: UICollectionViewCell {
         self.showImage.layer.cornerRadius = 2
     }
     
+    func displayExpectedViews(){
+        showWatchrStatus = getStatusForShowId(showId: showId!)
+        if (showWatchrStatus != nil){
+            displayCorrectWatchrStatusButton()
+        }
+    }
+    
     func displayCorrectWatchrStatusButton(){
+        
         switch showWatchrStatus!{
         case .Watched:
             watchrStatusButton.image = UIImage(named: "heart")
+            //watchrStatusButton.isSelected = true
         case .Watching:
             watchrStatusButton.image = UIImage(named: "eye")
+            //watchrStatusButton.isSelected = true
         case .WatchList:
             watchrStatusButton.image = UIImage(named: "list")
+            //watchrStatusButton.isSelected = true
         case .NotWatched:
             watchrStatusButton.image = UIImage(named: "add")
+            //watchrStatusButton.isSelected = false
         }
     }
     
