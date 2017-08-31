@@ -11,7 +11,7 @@ import TMDBSwift
 import PageMenu
 import AMScrollingNavbar
 
-class ProfileShowsListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MoreOptionsProtocol {
+class ProfileShowsListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CellActionsProtocol {
     
     @IBOutlet var showsTableView: UITableView!
     
@@ -165,6 +165,10 @@ class ProfileShowsListViewController: UIViewController, UITableViewDelegate, UIT
         self.present(controller, animated: true) { () -> Void in
             
         }
+    }
+    
+    func loadWatchrStatusPopup(showId: Int) {
+    
     }
     
     func goToShowDetailsFromOptions(showId: Int){

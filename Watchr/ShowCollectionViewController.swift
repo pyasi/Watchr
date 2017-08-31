@@ -12,11 +12,16 @@ import Firebase
 import FBSDKLoginKit
 import AMScrollingNavbar
 
-class ShowCollectionViewController: UIViewController, UIViewControllerPreviewingDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate, MoreOptionsProtocol {
+class ShowCollectionViewController: UIViewController, UIViewControllerPreviewingDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate, CellActionsProtocol, Dimmable {
     
     @IBOutlet var showsCollectionView: UICollectionView!
     
-    var showsToDisplay: [TVMDB] = []
+    var showsToDisplay: [TVMDB] = []{
+        didSet{
+            self.showsCollectionView.reloadData()
+        }
+    }
+    
     var onPage = 1
     var showListType: ShowListType?
     var refresher: UIRefreshControl?
@@ -106,7 +111,6 @@ class ShowCollectionViewController: UIViewController, UIViewControllerPreviewing
         print(showToCreate.name + " - " + stringForShowStatus(show: showToCreate))
         
         cell.showId = showToCreate.id
-        
         if let path = showToCreate.poster_path{
             let url = URL(string: "https://image.tmdb.org/t/p/w185//" + path)
             cell.showImage.sd_setImage(with: url)
@@ -126,8 +130,6 @@ class ShowCollectionViewController: UIViewController, UIViewControllerPreviewing
         }
         cell.favoriteButton.isSelected = favorites.contains(showToCreate.id!) ? true : false
         
-        cell.statusIndicator.titleLabel?.text = stringForShowStatus(show: showToCreate)
-        cell.statusIndicator.contentHorizontalAlignment = .left
         cell.layer.cornerRadius = 2
         cell.layoutViews()
         cell.delegate = self
@@ -196,6 +198,10 @@ class ShowCollectionViewController: UIViewController, UIViewControllerPreviewing
         }
     }
     
+    func loadWatchrStatusPopup(showId: Int){
+        self.performSegue(withIdentifier: "WatchrStatusPopupViewControllerSegue", sender: showId)
+    }
+    
     @IBAction func loadMoreTapped(_ sender: Any) {
         onPage += 1
         loadShows()
@@ -231,7 +237,6 @@ class ShowCollectionViewController: UIViewController, UIViewControllerPreviewing
                     self.showsToDisplay.append(tv[x])
                     self.getSeasonsForShow(show: tv[x], index: x)
                 }
-                self.showsCollectionView.reloadData()
                 self.stopRefreshing()
             }
         }
@@ -245,7 +250,6 @@ class ShowCollectionViewController: UIViewController, UIViewControllerPreviewing
                     self.showsToDisplay.append(tv[x])
                     self.getSeasonsForShow(show: tv[x], index: x)
                 }
-                self.showsCollectionView.reloadData()
                 self.stopRefreshing()
             }
         }
@@ -259,7 +263,6 @@ class ShowCollectionViewController: UIViewController, UIViewControllerPreviewing
                     self.showsToDisplay.append(tv[x])
                     self.getSeasonsForShow(show: tv[x], index: x)
                 }
-                self.showsCollectionView.reloadData()
                 self.stopRefreshing()
             }
         }
@@ -305,7 +308,6 @@ class ShowCollectionViewController: UIViewController, UIViewControllerPreviewing
                         showsAdded += 1
                     }
                 }
-                self.showsCollectionView.reloadData()
                 self.stopRefreshing()
                 print("Number of recommendations: ", self.showsToDisplay.count)
             }
@@ -314,7 +316,6 @@ class ShowCollectionViewController: UIViewController, UIViewControllerPreviewing
     
     func favoritesChanged(){
         self.showsToDisplay.removeAll()
-        self.showsCollectionView.reloadData()
         loadShows()
     }
     
@@ -323,7 +324,6 @@ class ShowCollectionViewController: UIViewController, UIViewControllerPreviewing
             apiReturn in
             if let show = apiReturn.1{
                 self.showsToDisplay.append(show)
-                self.showsCollectionView.reloadData()
             }
         }
     }
@@ -359,6 +359,11 @@ class ShowCollectionViewController: UIViewController, UIViewControllerPreviewing
             let show = sender as! TVMDB
             destinationVC.show = show
         }
+        
+        if let destinationVC = segue.destination as? WatchrListPopupViewController {
+            destinationVC.showId = sender as? Int
+            dim(.in, alpha: dimLevel, speed: dimSpeed)
+        }
     }
     
     func goToShowDetailsFromOptions(showId: Int){
@@ -369,5 +374,9 @@ class ShowCollectionViewController: UIViewController, UIViewControllerPreviewing
                 self.performSegue(withIdentifier: "ToShowDetailSegue", sender: show)
             }
         }
+    }
+    
+    @IBAction func unwindToShowCollection(_ sender: UIStoryboardSegue) {
+        dim(.out, speed: dimSpeed)
     }
 }

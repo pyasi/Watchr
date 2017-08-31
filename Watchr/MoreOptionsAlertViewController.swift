@@ -13,7 +13,7 @@ import FirebaseDatabase
 class MoreOptionsAlertViewController: UIAlertController {
     
     var showId : Int?
-    weak var delegate: MoreOptionsProtocol?
+    weak var delegate: CellActionsProtocol?
     var customHeader: MoreOptionsHeader?
     
     override func viewDidLoad() {
@@ -88,6 +88,7 @@ class MoreOptionsAlertViewController: UIAlertController {
     }
     
     func addShowToWatchList(){
+        
         ref.child("watchList").child(currentUser!.watchListKey!).childByAutoId().setValue(self.showId)
         currentUser?.watchList.append(self.showId!)
         removeWhereNecessary(newStatus: .WatchList)

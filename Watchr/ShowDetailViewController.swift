@@ -77,7 +77,6 @@ class ShowDetailViewController: UIViewController, UIScrollViewDelegate {
         default:
             break
         }
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

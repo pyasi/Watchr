@@ -15,7 +15,7 @@ class ShowProfileTableViewCell: UITableViewCell {
     @IBOutlet var showNameLabel: UILabel!
     
     var showId: Int?
-    var delegate: MoreOptionsProtocol?
+    var delegate: CellActionsProtocol?
     
     override func awakeFromNib() {
         super.awakeFromNib()

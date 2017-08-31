@@ -10,9 +10,10 @@ import UIKit
 import TMDBSwift
 import FirebaseDatabase
 
-protocol MoreOptionsProtocol : NSObjectProtocol {
+protocol CellActionsProtocol : NSObjectProtocol {
     func loadMoreOptions(controller: UIViewController) -> Void
     func goToShowDetailsFromOptions(showId: Int)
+    func loadWatchrStatusPopup(showId: Int)
 }
 
 class ShowCollectionCellCollectionViewCell: UICollectionViewCell {
@@ -24,10 +25,9 @@ class ShowCollectionCellCollectionViewCell: UICollectionViewCell {
     @IBOutlet var numberOfSeasonsLabel: UILabel!
     @IBOutlet var favoriteButton: DOFavoriteButton!
     @IBOutlet var optionsMenuButton: UIButton!
-    @IBOutlet var statusIndicator: UIButton!
     
     var showId: Int?
-    weak var delegate: MoreOptionsProtocol?
+    weak var delegate: CellActionsProtocol?
     
     override func prepareForReuse() {
         showTitle.text = nil
@@ -57,21 +57,30 @@ class ShowCollectionCellCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    @IBAction func changeWatchrStatusTapped(_ sender: Any) {
+        
+        DispatchQueue.main.async {
+            if((self.delegate?.responds(to: Selector(("loadWatchrStatusPopup:")))) != nil)
+            {
+                self.delegate?.loadWatchrStatusPopup(showId: self.showId!)
+            }
+        }
+    }
+    
     @IBAction func favoriteTapped(_ sender: DOFavoriteButton) {
         if sender.isSelected {
             // deselect
             sender.deselect()
-            removeFromFavorites()
         } else {
             // select with animation
             sender.select()
             
             let generator = UIImpactFeedbackGenerator(style: .medium)
             generator.impactOccurred()
-            addShowToFavorites()
         }
     }
     
+    /*
     func addShowToFavorites(){
         ref.child("watched").child(currentUser!.watchedKey!).childByAutoId().setValue(self.showId)
         favorites.append(self.showId!)
@@ -94,4 +103,5 @@ class ShowCollectionCellCollectionViewCell: UICollectionViewCell {
             }
         })
     }
+    */
 }
