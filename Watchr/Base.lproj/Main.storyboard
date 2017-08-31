@@ -109,7 +109,6 @@
                                         </state>
                                         <connections>
                                             <action selector="cancelTapped:" destination="YrL-aU-qMl" eventType="touchUpInside" id="tpJ-r0-tVi"/>
-                                            <segue destination="7NC-pA-chd" kind="unwind" unwindAction="unwindToShowCollection:" id="mE6-4i-qW1"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wkT-zb-ZpH" customClass="DOFavoriteButton" customModule="Watchr" customModuleProvider="target">
@@ -233,6 +232,7 @@
                         <outlet property="watchListButton" destination="wkT-zb-ZpH" id="IA7-A1-9Sf"/>
                         <outlet property="watchedButton" destination="C1e-TM-8B3" id="M5h-zX-PKO"/>
                         <outlet property="watchingButton" destination="U8l-yC-fw8" id="3Zt-8H-ZaC"/>
+                        <segue destination="7NC-pA-chd" kind="unwind" identifier="unwindToShowCollection" unwindAction="unwindToShowCollection:" id="DTf-l9-z0O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OLo-A4-pfx" userLabel="First Responder" sceneMemberID="firstResponder"/>

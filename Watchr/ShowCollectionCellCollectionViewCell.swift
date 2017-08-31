@@ -23,11 +23,22 @@ class ShowCollectionCellCollectionViewCell: UICollectionViewCell {
     @IBOutlet var showTitle: UILabel!
     @IBOutlet var seasonLabel: UILabel!
     @IBOutlet var numberOfSeasonsLabel: UILabel!
-    @IBOutlet var favoriteButton: DOFavoriteButton!
+    @IBOutlet var watchrStatusButton: DOFavoriteButton!
     @IBOutlet var optionsMenuButton: UIButton!
     
     var showId: Int?
+    var showWatchrStatus: WatchrShowStatus?
     weak var delegate: CellActionsProtocol?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.layer.cornerRadius = 2
+        self.layoutViews()
+        if let status = showWatchrStatus{
+            displayCorrectWatchrStatusButton()
+        }
+    }
     
     override func prepareForReuse() {
         showTitle.text = nil
@@ -42,6 +53,19 @@ class ShowCollectionCellCollectionViewCell: UICollectionViewCell {
         self.seasonLabel.layer.cornerRadius = 3
         self.numberOfSeasonsLabel.layer.cornerRadius = 3
         self.showImage.layer.cornerRadius = 2
+    }
+    
+    func displayCorrectWatchrStatusButton(){
+        switch showWatchrStatus!{
+        case .Watched:
+            watchrStatusButton.image = UIImage(named: "heart")
+        case .Watching:
+            watchrStatusButton.image = UIImage(named: "eye")
+        case .WatchList:
+            watchrStatusButton.image = UIImage(named: "list")
+        case .NotWatched:
+            watchrStatusButton.image = UIImage(named: "add")
+        }
     }
     
     @IBAction func optionsMenuButtonTapped(_ sender: Any) {
@@ -79,29 +103,4 @@ class ShowCollectionCellCollectionViewCell: UICollectionViewCell {
             generator.impactOccurred()
         }
     }
-    
-    /*
-    func addShowToFavorites(){
-        ref.child("watched").child(currentUser!.watchedKey!).childByAutoId().setValue(self.showId)
-        favorites.append(self.showId!)
-        NotificationCenter.default.post(name: Notification.Name(rawValue: favoriteAddedKey), object: nil)
-    }
-    
-    func removeFromFavorites(){
-        
-        ref.child("watched").child(currentUser!.watchedKey!).observeSingleEvent(of: .value, with: {
-            (snapshot) in
-            for child in snapshot.children{
-                let thisChild = child as! DataSnapshot
-                if (thisChild.value as? Int == self.showId){
-                    ref.child("watched").child(currentUser!.watchedKey!).child(thisChild.key).removeValue()
-                    let indexToRemove = favorites.index(of: self.showId!)!
-                    favorites.remove(at: indexToRemove)
-                    let indexInfo:[String: Int] = ["index": indexToRemove]
-                    NotificationCenter.default.post(name: Notification.Name(rawValue: favoriteRemovedKey), object: indexToRemove, userInfo: indexInfo)
-                }
-            }
-        })
-    }
-    */
 }

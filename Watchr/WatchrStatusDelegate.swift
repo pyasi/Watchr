@@ -14,9 +14,10 @@ protocol WatchrStatusProtocol{
     func addShowToWatchList(showId: Int)
     func addShowToWatchingNow(showId: Int)
     func addShowToWatched(showId: Int)
+    func removeWhereNecessary(newStatus: WatchrShowStatus, showId: Int)
 }
 
-class WatchrStatusDelegate{
+class WatchrStatusDelegate: WatchrStatusProtocol{
     
     func addShowToWatchList(showId: Int){
         
@@ -25,13 +26,13 @@ class WatchrStatusDelegate{
         removeWhereNecessary(newStatus: .WatchList, showId: showId)
     }
     
-    func addToWatchingNow(showId: Int){
+    func addShowToWatchingNow(showId: Int){
         ref.child("watchingNow").child(currentUser!.watchingNowKey!).childByAutoId().setValue(showId)
         currentUser?.watching.append(showId)
         removeWhereNecessary(newStatus: .Watching, showId: showId)
     }
     
-    func addToWatched(showId: Int){
+    func addShowToWatched(showId: Int){
         ref.child("watched").child(currentUser!.watchedKey!).childByAutoId().setValue(showId)
         currentUser?.watched.append(showId)
         removeWhereNecessary(newStatus: .Watched, showId: showId)

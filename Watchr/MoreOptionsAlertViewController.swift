@@ -16,6 +16,8 @@ class MoreOptionsAlertViewController: UIAlertController {
     weak var delegate: CellActionsProtocol?
     var customHeader: MoreOptionsHeader?
     
+    var watchrStatusDelegate: WatchrStatusProtocol = WatchrStatusDelegate()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title =  "\n\n\n\n\n\n"
@@ -59,21 +61,21 @@ class MoreOptionsAlertViewController: UIAlertController {
     func addAppropriateActions(){
         
         if(!(currentUser?.watched.contains(self.showId!))!){
-            let addToWatched = UIAlertAction(title: "Watched", style: .default, handler: {(alert: UIAlertAction!) in self.addToWatched()})
+            let addToWatched = UIAlertAction(title: "Watched", style: .default, handler: {(alert: UIAlertAction!) in self.watchrStatusDelegate.addShowToWatched(showId: self.showId!)})
             
             addToWatched.setValue(UIImage(named: "heart"), forKey: "image")
             self.addAction(addToWatched)
         }
         
         if(!(currentUser?.watching.contains(self.showId!))!){
-            let addToWatchingNowAction = UIAlertAction(title: "Watching Now", style: .default, handler: {(alert: UIAlertAction!) in self.addToWatchingNow()})
+            let addToWatchingNowAction = UIAlertAction(title: "Watching Now", style: .default, handler: {(alert: UIAlertAction!) in self.watchrStatusDelegate.addShowToWatchingNow(showId: self.showId!)})
             
             //addToWatchingNowAction.setValue(UIImage(named: "eye"), forKey: "image")
             self.addAction(addToWatchingNowAction)
         }
         
         if(!(currentUser?.watchList.contains(self.showId!))!){
-            let addToWatchListAction = UIAlertAction(title: "Add to Watch List", style: .default, handler: {(alert: UIAlertAction!) in self.addShowToWatchList()})
+            let addToWatchListAction = UIAlertAction(title: "Add to Watch List", style: .default, handler: {(alert: UIAlertAction!) in self.watchrStatusDelegate.addShowToWatchList(showId: self.showId!)})
             
             //addToWatchListAction.setValue(UIImage(named: "list"), forKey: "image")
             self.addAction(addToWatchListAction)
@@ -82,97 +84,9 @@ class MoreOptionsAlertViewController: UIAlertController {
         let shouldAddUnwatched = (currentUser?.watchList.contains(self.showId!))! || (currentUser?.watched.contains(self.showId!))! || (currentUser?.watching.contains(self.showId!))!
         
         if (shouldAddUnwatched){
-            let unwatchedAction = UIAlertAction(title: "Unwatched", style: .default, handler: {(alert: UIAlertAction!) in self.removeWhereNecessary(newStatus: .NotWatched)})
+            let unwatchedAction = UIAlertAction(title: "Unwatched", style: .default, handler: {(alert: UIAlertAction!) in self.watchrStatusDelegate.removeWhereNecessary(newStatus: .NotWatched, showId: self.showId!)})
             self.addAction(unwatchedAction)
         }
-    }
-    
-    func addShowToWatchList(){
-        
-        ref.child("watchList").child(currentUser!.watchListKey!).childByAutoId().setValue(self.showId)
-        currentUser?.watchList.append(self.showId!)
-        removeWhereNecessary(newStatus: .WatchList)
-    }
-    
-    func addToWatchingNow(){
-        ref.child("watchingNow").child(currentUser!.watchingNowKey!).childByAutoId().setValue(self.showId)
-        currentUser?.watching.append(self.showId!)
-        removeWhereNecessary(newStatus: .Watching)
-    }
-    
-    func addToWatched(){
-        ref.child("watched").child(currentUser!.watchedKey!).childByAutoId().setValue(self.showId)
-        currentUser?.watched.append(self.showId!)
-        removeWhereNecessary(newStatus: .Watched)
-    }
-    
-    func removeWhereNecessary(newStatus: WatchrShowStatus){
-        switch newStatus{
-        case .Watched:
-            removeFromWatchList(showId: self.showId!)
-            removeFromWatchingNow(showId: self.showId!)
-            currentUser?.watching = (currentUser?.watching.filter({$0 != self.showId}))!
-            currentUser?.watchList = (currentUser?.watchList.filter({$0 != self.showId}))!
-        case .Watching:
-            removeFromWatchList(showId: self.showId!)
-            removeFromWatched(showId: self.showId!)
-            currentUser?.watched = (currentUser?.watched.filter({$0 != self.showId}))!
-            currentUser?.watchList = (currentUser?.watchList.filter({$0 != self.showId}))!
-        case .WatchList:
-            removeFromWatched(showId: self.showId!)
-            removeFromWatchingNow(showId: self.showId!)
-            currentUser?.watching = (currentUser?.watching.filter({$0 != self.showId}))!
-            currentUser?.watched = (currentUser?.watched.filter({$0 != self.showId}))!
-        case .NotWatched:
-            removeFromWatched(showId: self.showId!)
-            removeFromWatchingNow(showId: self.showId!)
-            removeFromWatched(showId: self.showId!)
-            currentUser?.watching = (currentUser?.watching.filter({$0 != self.showId}))!
-            currentUser?.watched = (currentUser?.watched.filter({$0 != self.showId}))!
-            currentUser?.watchList = (currentUser?.watchList.filter({$0 != self.showId}))!
-            break
-        }
-        
-        NotificationCenter.default.post(name: Notification.Name(rawValue: showStatusListsChanged), object: nil)
-        print("In App Watched: ", currentUser?.watched)
-        print("In App Watch List: ", currentUser?.watchList)
-        print("In App Watching: ", currentUser?.watching)
-    }
-    
-    func removeFromWatched(showId: Int){
-        ref.child("watched").child(currentUser!.watchedKey!).observeSingleEvent(of: .value, with: {
-            (snapshot) in
-            for child in snapshot.children{
-                let thisChild = child as! DataSnapshot
-                if (thisChild.value as? Int == showId){
-                    thisChild.ref.removeValue()
-                }
-            }
-        })
-    }
-    
-    func removeFromWatchList(showId: Int){
-        ref.child("watchList").child(currentUser!.watchListKey!).observeSingleEvent(of: .value, with: {
-            (snapshot) in
-            for child in snapshot.children{
-                let thisChild = child as! DataSnapshot
-                if (thisChild.value as? Int == showId){
-                    thisChild.ref.removeValue()
-                }
-            }
-        })
-    }
-    
-    func removeFromWatchingNow(showId: Int){
-        ref.child("watchingNow").child(currentUser!.watchingNowKey!).observeSingleEvent(of: .value, with: {
-            (snapshot) in
-            for child in snapshot.children{
-                let thisChild = child as! DataSnapshot
-                if (thisChild.value as? Int == showId){
-                    thisChild.ref.removeValue()
-                }
-            }
-        })
     }
     
     func goToShowDetailsClicked(){

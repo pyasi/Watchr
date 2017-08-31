@@ -105,13 +105,13 @@
             <color key="backgroundColor" red="0.16470588235294117" green="0.1803921568627451" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <size key="customSize" width="170" height="292"/>
             <connections>
-                <outlet property="favoriteButton" destination="Cnh-Tf-RA3" id="tSu-Bc-Fgc"/>
                 <outlet property="imageEmptyState" destination="Bfo-B4-KPA" id="Xse-tc-5sk"/>
                 <outlet property="numberOfSeasonsLabel" destination="g0W-88-NF1" id="pl1-OB-re7"/>
                 <outlet property="optionsMenuButton" destination="hK5-Ec-Vut" id="cNK-XZ-mfF"/>
                 <outlet property="seasonLabel" destination="WIA-zD-UlA" id="kwF-IH-Jnv"/>
                 <outlet property="showImage" destination="fJ5-sc-wxv" id="lbL-fc-SEo"/>
                 <outlet property="showTitle" destination="L7l-bL-MA6" id="b82-be-odO"/>
+                <outlet property="watchrStatusButton" destination="Cnh-Tf-RA3" id="Eou-lT-pwM"/>
             </connections>
             <point key="canvasLocation" x="32" y="67"/>
         </collectionViewCell>

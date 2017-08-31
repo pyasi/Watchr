@@ -128,10 +128,8 @@ class ShowCollectionViewController: UIViewController, UIViewControllerPreviewing
         if (showToCreate.numberOfSeasons == 1){
             cell.seasonLabel.text = "Season"
         }
-        cell.favoriteButton.isSelected = favorites.contains(showToCreate.id!) ? true : false
         
-        cell.layer.cornerRadius = 2
-        cell.layoutViews()
+        cell.showWatchrStatus = showToCreate.watchrStatus
         cell.delegate = self
         
         return cell

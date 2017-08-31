@@ -10,14 +10,17 @@ import UIKit
 import TMDBSwift
 
 class WatchrListPopupViewController: UIViewController {
-
+    
     @IBOutlet var popupView: UIView!
     @IBOutlet var watchListButton: DOFavoriteButton!
     @IBOutlet var watchingButton: DOFavoriteButton!
     @IBOutlet var watchedButton: DOFavoriteButton!
     @IBOutlet var cancelButton: UIButton!
     
+    var showStatus: WatchrShowStatus?
     var showId: Int?
+    
+    var watchrStatusDelegate: WatchrStatusProtocol = WatchrStatusDelegate()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,8 +37,8 @@ class WatchrListPopupViewController: UIViewController {
     
     func layoutCancelButton(){
         let maskPAth1 = UIBezierPath(roundedRect: cancelButton.bounds,
-                                 byRoundingCorners: [.bottomLeft, .bottomRight],
-                                 cornerRadii:CGSize(width: 10, height: 10))
+                                     byRoundingCorners: [.bottomLeft, .bottomRight],
+                                     cornerRadii:CGSize(width: 10, height: 10))
         let maskLayer1 = CAShapeLayer()
         maskLayer1.frame = cancelButton.bounds
         maskLayer1.path = maskPAth1.cgPath
@@ -49,27 +52,73 @@ class WatchrListPopupViewController: UIViewController {
         borderLayer.frame = cancelButton.bounds
         cancelButton.layer.addSublayer(borderLayer)
     }
-
-    @IBAction func watchlistTapped(_ sender: Any) {
-        
+    
+    func setSelectedButtonWhereAppropriate(){
+        switch showStatus!{
+        case .Watched:
+            watchedButton.isSelected = true
+        case .Watching:
+            watchingButton.isSelected = true
+        case .WatchList:
+            watchListButton.isSelected = true
+        case .NotWatched:
+            break
+        }
     }
     
-    @IBAction func watchingTapped(_ sender: Any) {
+    @IBAction func watchlistTapped(_ sender: DOFavoriteButton) {
         
+        if sender.isSelected {
+            sender.deselect()
+            watchrStatusDelegate.removeWhereNecessary(newStatus: .NotWatched, showId: showId!)
+        } else {
+            watchrStatusDelegate.addShowToWatchList(showId: showId!)
+            sender.select()
+            let generator = UIImpactFeedbackGenerator(style: .medium)
+            generator.impactOccurred()
+            dismissAfterAnimation()
+        }
     }
-
-    @IBAction func watchedTapped(_ sender: Any) {
     
+    @IBAction func watchingTapped(_ sender: DOFavoriteButton) {
+        if sender.isSelected {
+            sender.deselect()
+            watchrStatusDelegate.removeWhereNecessary(newStatus: .NotWatched, showId: showId!)
+        } else {
+            watchrStatusDelegate.addShowToWatchingNow(showId: showId!)
+            sender.select()
+            let generator = UIImpactFeedbackGenerator(style: .medium)
+            generator.impactOccurred()
+            dismissAfterAnimation()
+        }
     }
-
+    
+    @IBAction func watchedTapped(_ sender: DOFavoriteButton) {
+        if sender.isSelected {
+            sender.deselect()
+            watchrStatusDelegate.removeWhereNecessary(newStatus: .NotWatched, showId: showId!)
+        } else {
+            watchrStatusDelegate.addShowToWatched(showId: showId!)
+            sender.select()
+            let generator = UIImpactFeedbackGenerator(style: .medium)
+            generator.impactOccurred()
+            dismissAfterAnimation()
+        }
+    }
+    
     @IBAction func cancelTapped(_ sender: Any) {
-    
+        self.performSegue(withIdentifier: "unwindToShowCollection", sender: nil)
     }
     
+    func dismissAfterAnimation(){
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            self.performSegue(withIdentifier: "unwindToShowCollection", sender: nil)
+        })
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
 }
