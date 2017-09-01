@@ -38,6 +38,8 @@ class ShowCollectionViewController: UIViewController, UIViewControllerPreviewing
         let nibName = UINib(nibName: "ShowCard", bundle:nil)
         showsCollectionView.register(nibName, forCellWithReuseIdentifier: "ShowCell")
         
+        NotificationCenter.default.addObserver(self, selector: #selector(self.statusListChanged), name: NSNotification.Name(rawValue: showStatusListsChanged), object: nil)
+        
         if (showListType! == .Recommended){
             NotificationCenter.default.addObserver(self, selector: #selector(self.favoritesChanged), name: NSNotification.Name(rawValue: favoriteRemovedKey), object: nil)
             NotificationCenter.default.addObserver(self, selector: #selector(self.favoritesChanged), name: NSNotification.Name(rawValue: favoriteAddedKey), object: nil)
@@ -55,6 +57,10 @@ class ShowCollectionViewController: UIViewController, UIViewControllerPreviewing
         case .unknown:
             print("Unknown")
         }
+    }
+    
+    func statusListChanged(){
+        self.showsCollectionView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -360,8 +366,10 @@ class ShowCollectionViewController: UIViewController, UIViewControllerPreviewing
         
         if let destinationVC = segue.destination as? WatchrListPopupViewController {
             destinationVC.showId = sender as? Int
+            destinationVC.unwindDestination = .ShowCollectionViewController
             dim(.in, alpha: dimLevel, speed: dimSpeed)
         }
+        
     }
     
     func goToShowDetailsFromOptions(showId: Int){
@@ -376,6 +384,5 @@ class ShowCollectionViewController: UIViewController, UIViewControllerPreviewing
     
     @IBAction func unwindToShowCollection(_ sender: UIStoryboardSegue) {
         dim(.out, speed: dimSpeed)
-        self.showsCollectionView.reloadData()
     }
 }

@@ -52,6 +52,9 @@
                                                             <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="changeWatchrStatusTapped:" destination="PzI-Pk-Hir" eventType="touchUpInside" id="Wca-44-PIW"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N2r-mN-ZEA">
                                                     <rect key="frame" x="84" y="46" width="236" height="21"/>
@@ -111,11 +114,20 @@
                     <connections>
                         <outlet property="searchTableView" destination="B7L-es-Wvg" id="m10-kF-Db0"/>
                         <segue destination="h0S-bG-jDe" kind="show" identifier="SearchToShotDetailSegue" id="FVi-X0-xaY"/>
+                        <segue destination="zMk-fB-I6c" kind="presentation" identifier="WatchrStatusPopupViewControllerSegue" id="AsY-1K-aWA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rcq-Sf-YiU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="141.59999999999999" y="248.72563718140933"/>
+        </scene>
+        <!--WatchrStatusPopup-->
+        <scene sceneID="8pb-yG-zuI">
+            <objects>
+                <viewControllerPlaceholder storyboardName="WatchrStatusPopup" id="zMk-fB-I6c" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XZ9-Mf-fTT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="853" y="149"/>
         </scene>
         <!--ShowDetailView-->
         <scene sceneID="Bi5-dh-v0Y">
@@ -123,7 +135,7 @@
                 <viewControllerPlaceholder storyboardName="ShowDetailView" id="h0S-bG-jDe" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gg9-Yp-GR4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="896" y="127"/>
+            <point key="canvasLocation" x="834" y="248"/>
         </scene>
     </scenes>
     <resources>

@@ -9,6 +9,11 @@
 import UIKit
 import TMDBSwift
 
+enum UnwindFromPopupDestination: String{
+    case ShowCollectionViewController = "unwindToShowCollection"
+    case SearchViewController = "unwindToSearchController"
+}
+
 class WatchrListPopupViewController: UIViewController {
     
     @IBOutlet var popupView: UIView!
@@ -19,6 +24,7 @@ class WatchrListPopupViewController: UIViewController {
     
     var showWatchrStatus: WatchrShowStatus?
     var showId: Int?
+    var unwindDestination: UnwindFromPopupDestination?
     
     var watchrStatusDelegate: WatchrStatusProtocol = WatchrStatusDelegate()
     
@@ -118,12 +124,12 @@ class WatchrListPopupViewController: UIViewController {
     }
     
     @IBAction func cancelTapped(_ sender: Any) {
-        self.performSegue(withIdentifier: "unwindToShowCollection", sender: nil)
+        self.performSegue(withIdentifier: unwindDestination!.rawValue, sender: nil)
     }
     
     func dismissAfterAnimation(){
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-            self.performSegue(withIdentifier: "unwindToShowCollection", sender: nil)
+            self.performSegue(withIdentifier: self.unwindDestination!.rawValue, sender: nil)
         })
     }
     

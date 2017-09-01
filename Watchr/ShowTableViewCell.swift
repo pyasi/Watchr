@@ -19,6 +19,7 @@ class ShowTableViewCell: UITableViewCell {
     
     var showId: Int?
     var showWatchrStatus: WatchrShowStatus?
+    var delegate: SearchViewController?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -55,6 +56,13 @@ class ShowTableViewCell: UITableViewCell {
         case .NotWatched:
             watchrStatusButton.image = UIImage(named: "add")
             //watchrStatusButton.isSelected = false
+        }
+    }
+    
+    @IBAction func changeWatchrStatusTapped(_ sender: Any) {
+        
+        DispatchQueue.main.async {
+            self.delegate?.changeWatchrStatusTapped(showId: self.showId!)
         }
     }
 

@@ -26,6 +26,7 @@
 		FB7B2E881F57ABD6008D7C43 /* WatchrListPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7B2E871F57ABD6008D7C43 /* WatchrListPopupViewController.swift */; };
 		FB7B2E8A1F57ACD7008D7C43 /* Dimmable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7B2E891F57ACD7008D7C43 /* Dimmable.swift */; };
 		FB7B2E8C1F57BA94008D7C43 /* WatchrStatusDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7B2E8B1F57BA94008D7C43 /* WatchrStatusDelegate.swift */; };
+		FB7B2E8E1F58F038008D7C43 /* WatchrStatusPopup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB7B2E8D1F58F038008D7C43 /* WatchrStatusPopup.storyboard */; };
 		FB93FD441F3AA4C3002DB84A /* ColorsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93FD431F3AA4C3002DB84A /* ColorsHelper.swift */; };
 		FBBEFAF61F4252AD007DC859 /* MoreOptionsAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBEFAF51F4252AD007DC859 /* MoreOptionsAlertViewController.swift */; };
 		FBC3BA691F4D22D10022A0A6 /* PreviewShowDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC3BA681F4D22D10022A0A6 /* PreviewShowDetailViewController.swift */; };
@@ -86,6 +87,7 @@
 		FB7B2E871F57ABD6008D7C43 /* WatchrListPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchrListPopupViewController.swift; sourceTree = "<group>"; };
 		FB7B2E891F57ACD7008D7C43 /* Dimmable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dimmable.swift; sourceTree = "<group>"; };
 		FB7B2E8B1F57BA94008D7C43 /* WatchrStatusDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchrStatusDelegate.swift; sourceTree = "<group>"; };
+		FB7B2E8D1F58F038008D7C43 /* WatchrStatusPopup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WatchrStatusPopup.storyboard; sourceTree = "<group>"; };
 		FB93FD431F3AA4C3002DB84A /* ColorsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorsHelper.swift; sourceTree = "<group>"; };
 		FBBEFAF41F423F58007DC859 /* Watchr-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Watchr-Bridging-Header.h"; sourceTree = "<group>"; };
 		FBBEFAF51F4252AD007DC859 /* MoreOptionsAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreOptionsAlertViewController.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				FBDC931B1F11999000E515C8 /* CastDetailView.storyboard */,
 				FBF583C21F12D55B00950C96 /* ShowCard.xib */,
 				FBE0BA671F4BAF99000D4D93 /* MoreOptionsHeader.xib */,
+				FB7B2E8D1F58F038008D7C43 /* WatchrStatusPopup.storyboard */,
 				FBDC93121F10833600E515C8 /* SWSegmentedControl.swift */,
 				FBDC931F1F11DF9E00E515C8 /* DOFavoriteButton.swift */,
 				FBE0BA691F4BB03A000D4D93 /* MoreOptionsHeader.swift */,
@@ -325,6 +328,7 @@
 				FBDC931C1F11999000E515C8 /* CastDetailView.storyboard in Resources */,
 				FB57CD8F1F10356100F98DAE /* Main.storyboard in Resources */,
 				FBE0BA681F4BAF99000D4D93 /* MoreOptionsHeader.xib in Resources */,
+				FB7B2E8E1F58F038008D7C43 /* WatchrStatusPopup.storyboard in Resources */,
 				FB5648FF1F4284760023E0A2 /* Profile.storyboard in Resources */,
 				FB267C341F3CEA7900DCCE71 /* Search.storyboard in Resources */,
 				FB77F2021F1052A6003A1D46 /* ShowDetailView.storyboard in Resources */,
