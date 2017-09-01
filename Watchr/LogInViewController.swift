@@ -146,6 +146,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate, InitialLo
     func createUser(user: User?){
         let newUser = AppUser(user: user!)
         currentUser = newUser
+        
         ref.child("users").child(user!.uid).setValue(newUser.toDictionary())
     }
     

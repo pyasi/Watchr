@@ -31,6 +31,10 @@
 		FB7B2E921F58F91A008D7C43 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB7B2E911F58F91A008D7C43 /* FBSDKShareKit.framework */; };
 		FB7B2E941F58F925008D7C43 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB7B2E931F58F925008D7C43 /* FBSDKCoreKit.framework */; };
 		FB7B2E971F58FE21008D7C43 /* Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7B2E961F58FE21008D7C43 /* Testing.swift */; };
+		FB7B2E991F5906A0008D7C43 /* AddFriends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB7B2E981F5906A0008D7C43 /* AddFriends.storyboard */; };
+		FB7B2E9B1F590944008D7C43 /* AddFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7B2E9A1F590944008D7C43 /* AddFriendsViewController.swift */; };
+		FB7B2E9D1F590974008D7C43 /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7B2E9C1F590974008D7C43 /* FriendTableViewCell.swift */; };
+		FB7B2E9F1F590F9B008D7C43 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7B2E9E1F590F9B008D7C43 /* Friend.swift */; };
 		FB93FD441F3AA4C3002DB84A /* ColorsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93FD431F3AA4C3002DB84A /* ColorsHelper.swift */; };
 		FBBEFAF61F4252AD007DC859 /* MoreOptionsAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBEFAF51F4252AD007DC859 /* MoreOptionsAlertViewController.swift */; };
 		FBC3BA691F4D22D10022A0A6 /* PreviewShowDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC3BA681F4D22D10022A0A6 /* PreviewShowDetailViewController.swift */; };
@@ -96,6 +100,10 @@
 		FB7B2E911F58F91A008D7C43 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		FB7B2E931F58F925008D7C43 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		FB7B2E961F58FE21008D7C43 /* Testing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Testing.swift; sourceTree = "<group>"; };
+		FB7B2E981F5906A0008D7C43 /* AddFriends.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddFriends.storyboard; sourceTree = "<group>"; };
+		FB7B2E9A1F590944008D7C43 /* AddFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsViewController.swift; sourceTree = "<group>"; };
+		FB7B2E9C1F590974008D7C43 /* FriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
+		FB7B2E9E1F590F9B008D7C43 /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		FB93FD431F3AA4C3002DB84A /* ColorsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorsHelper.swift; sourceTree = "<group>"; };
 		FBBEFAF41F423F58007DC859 /* Watchr-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Watchr-Bridging-Header.h"; sourceTree = "<group>"; };
 		FBBEFAF51F4252AD007DC859 /* MoreOptionsAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreOptionsAlertViewController.swift; sourceTree = "<group>"; };
@@ -240,6 +248,7 @@
 				FB267C331F3CEA7900DCCE71 /* Search.storyboard */,
 				FB77F2011F1052A6003A1D46 /* ShowDetailView.storyboard */,
 				FB5648FE1F4284760023E0A2 /* Profile.storyboard */,
+				FB7B2E981F5906A0008D7C43 /* AddFriends.storyboard */,
 				FBDC931B1F11999000E515C8 /* CastDetailView.storyboard */,
 				FBF583C21F12D55B00950C96 /* ShowCard.xib */,
 				FBE0BA671F4BAF99000D4D93 /* MoreOptionsHeader.xib */,
@@ -255,6 +264,8 @@
 			isa = PBXGroup;
 			children = (
 				FB7B2E961F58FE21008D7C43 /* Testing.swift */,
+				FB7B2E9A1F590944008D7C43 /* AddFriendsViewController.swift */,
+				FB7B2E9C1F590974008D7C43 /* FriendTableViewCell.swift */,
 			);
 			name = Social;
 			sourceTree = "<group>";
@@ -276,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				FBF583C01F12BD7C00950C96 /* AppUser.swift */,
+				FB7B2E9E1F590F9B008D7C43 /* Friend.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -352,6 +364,7 @@
 				FB57CD8F1F10356100F98DAE /* Main.storyboard in Resources */,
 				FBE0BA681F4BAF99000D4D93 /* MoreOptionsHeader.xib in Resources */,
 				FB7B2E8E1F58F038008D7C43 /* WatchrStatusPopup.storyboard in Resources */,
+				FB7B2E991F5906A0008D7C43 /* AddFriends.storyboard in Resources */,
 				FB5648FF1F4284760023E0A2 /* Profile.storyboard in Resources */,
 				FB267C341F3CEA7900DCCE71 /* Search.storyboard in Resources */,
 				FB77F2021F1052A6003A1D46 /* ShowDetailView.storyboard in Resources */,
@@ -419,6 +432,7 @@
 				FB5648FD1F427A430023E0A2 /* ShowHelper.swift in Sources */,
 				FB57CD8C1F10356100F98DAE /* ShowCollectionViewController.swift in Sources */,
 				FB7B2E881F57ABD6008D7C43 /* WatchrListPopupViewController.swift in Sources */,
+				FB7B2E9B1F590944008D7C43 /* AddFriendsViewController.swift in Sources */,
 				FB267C361F3CEAC100DCCE71 /* SearchViewController.swift in Sources */,
 				FBDC93201F11DF9E00E515C8 /* DOFavoriteButton.swift in Sources */,
 				FBE632901F451A4D00B00748 /* ProfileShowsListViewController.swift in Sources */,
@@ -435,6 +449,7 @@
 				FBDC931A1F11467500E515C8 /* CastCollectionViewCell.swift in Sources */,
 				FBF583C71F12E10200950C96 /* NotificationKeys.swift in Sources */,
 				FB5649021F428E630023E0A2 /* ProfileMainViewController.swift in Sources */,
+				FB7B2E9D1F590974008D7C43 /* FriendTableViewCell.swift in Sources */,
 				FB267C301F3BF08400DCCE71 /* MainViewController.swift in Sources */,
 				FB77F1FF1F104323003A1D46 /* ShowCollectionCellCollectionViewCell.swift in Sources */,
 				FB7B2E8A1F57ACD7008D7C43 /* Dimmable.swift in Sources */,
@@ -442,6 +457,7 @@
 				FB7B2E971F58FE21008D7C43 /* Testing.swift in Sources */,
 				FBE0BA6A1F4BB03A000D4D93 /* MoreOptionsHeader.swift in Sources */,
 				FB57CD8A1F10356100F98DAE /* AppDelegate.swift in Sources */,
+				FB7B2E9F1F590F9B008D7C43 /* Friend.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

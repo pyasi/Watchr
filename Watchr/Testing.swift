@@ -38,4 +38,35 @@ class Testing{
             }
         }
     }
+    
+    func fetchUserProfile()
+    {
+        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"id, email, name, picture.width(480).height(480)"])
+        
+        graphRequest.start(completionHandler: { (connection, result, error) -> Void in
+            let friend = Friend()
+            if ((error) != nil)
+            {
+                print("Error took place: \(String(describing: error))")
+            }
+            else
+            {
+                print("Print entire fetched result: \(String(describing: result))")
+                let userData = result as! NSDictionary
+                friend.userId = userData.value(forKey: "id") as! String
+                
+                if let userName = userData.value(forKey: "name") as? String
+                {
+                    friend.name = userName
+                }
+                
+                if let profilePictureObj = userData.value(forKey: "picture") as? NSDictionary
+                {
+                    let data = profilePictureObj.value(forKey: "data") as! NSDictionary
+                    friend.photoUrl  = data.value(forKey: "url") as! String
+                }
+                print(friend)
+            }
+        })
+    }
 }
