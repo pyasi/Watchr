@@ -27,6 +27,10 @@
 		FB7B2E8A1F57ACD7008D7C43 /* Dimmable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7B2E891F57ACD7008D7C43 /* Dimmable.swift */; };
 		FB7B2E8C1F57BA94008D7C43 /* WatchrStatusDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7B2E8B1F57BA94008D7C43 /* WatchrStatusDelegate.swift */; };
 		FB7B2E8E1F58F038008D7C43 /* WatchrStatusPopup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB7B2E8D1F58F038008D7C43 /* WatchrStatusPopup.storyboard */; };
+		FB7B2E901F58F90C008D7C43 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB7B2E8F1F58F90C008D7C43 /* Bolts.framework */; };
+		FB7B2E921F58F91A008D7C43 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB7B2E911F58F91A008D7C43 /* FBSDKShareKit.framework */; };
+		FB7B2E941F58F925008D7C43 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB7B2E931F58F925008D7C43 /* FBSDKCoreKit.framework */; };
+		FB7B2E971F58FE21008D7C43 /* Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7B2E961F58FE21008D7C43 /* Testing.swift */; };
 		FB93FD441F3AA4C3002DB84A /* ColorsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93FD431F3AA4C3002DB84A /* ColorsHelper.swift */; };
 		FBBEFAF61F4252AD007DC859 /* MoreOptionsAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBEFAF51F4252AD007DC859 /* MoreOptionsAlertViewController.swift */; };
 		FBC3BA691F4D22D10022A0A6 /* PreviewShowDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC3BA681F4D22D10022A0A6 /* PreviewShowDetailViewController.swift */; };
@@ -88,6 +92,10 @@
 		FB7B2E891F57ACD7008D7C43 /* Dimmable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dimmable.swift; sourceTree = "<group>"; };
 		FB7B2E8B1F57BA94008D7C43 /* WatchrStatusDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchrStatusDelegate.swift; sourceTree = "<group>"; };
 		FB7B2E8D1F58F038008D7C43 /* WatchrStatusPopup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WatchrStatusPopup.storyboard; sourceTree = "<group>"; };
+		FB7B2E8F1F58F90C008D7C43 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		FB7B2E911F58F91A008D7C43 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		FB7B2E931F58F925008D7C43 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		FB7B2E961F58FE21008D7C43 /* Testing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Testing.swift; sourceTree = "<group>"; };
 		FB93FD431F3AA4C3002DB84A /* ColorsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorsHelper.swift; sourceTree = "<group>"; };
 		FBBEFAF41F423F58007DC859 /* Watchr-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Watchr-Bridging-Header.h"; sourceTree = "<group>"; };
 		FBBEFAF51F4252AD007DC859 /* MoreOptionsAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreOptionsAlertViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +125,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB7B2E941F58F925008D7C43 /* FBSDKCoreKit.framework in Frameworks */,
+				FB7B2E921F58F91A008D7C43 /* FBSDKShareKit.framework in Frameworks */,
+				FB7B2E901F58F90C008D7C43 /* Bolts.framework in Frameworks */,
 				FBF583BE1F12AEEE00950C96 /* FBSDKLoginKit.framework in Frameworks */,
 				1FE8579BD747C4BA36A6360B /* Pods_Watchr.framework in Frameworks */,
 			);
@@ -128,6 +139,9 @@
 		1A732F5F9C85BB689420A081 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FB7B2E931F58F925008D7C43 /* FBSDKCoreKit.framework */,
+				FB7B2E911F58F91A008D7C43 /* FBSDKShareKit.framework */,
+				FB7B2E8F1F58F90C008D7C43 /* Bolts.framework */,
 				FBF583BD1F12AEEE00950C96 /* FBSDKLoginKit.framework */,
 				12F09ACFC0CF3DB1006ADAC2 /* Pods_Watchr.framework */,
 			);
@@ -155,6 +169,7 @@
 		FB5649001F428E340023E0A2 /* Profiles */ = {
 			isa = PBXGroup;
 			children = (
+				FB7B2E951F58FCDC008D7C43 /* Social */,
 				FB5649011F428E630023E0A2 /* ProfileMainViewController.swift */,
 				FBE6328F1F451A4D00B00748 /* ProfileShowsListViewController.swift */,
 				FBE6328D1F4519A200B00748 /* ShowProfileTableViewCell.swift */,
@@ -234,6 +249,14 @@
 				FBE0BA691F4BB03A000D4D93 /* MoreOptionsHeader.swift */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		FB7B2E951F58FCDC008D7C43 /* Social */ = {
+			isa = PBXGroup;
+			children = (
+				FB7B2E961F58FE21008D7C43 /* Testing.swift */,
+			);
+			name = Social;
 			sourceTree = "<group>";
 		};
 		FBDC93141F1085A900E515C8 /* Show Details */ = {
@@ -416,6 +439,7 @@
 				FB77F1FF1F104323003A1D46 /* ShowCollectionCellCollectionViewCell.swift in Sources */,
 				FB7B2E8A1F57ACD7008D7C43 /* Dimmable.swift in Sources */,
 				FB267C3A1F3CEF3700DCCE71 /* ShowTableViewCell.swift in Sources */,
+				FB7B2E971F58FE21008D7C43 /* Testing.swift in Sources */,
 				FBE0BA6A1F4BB03A000D4D93 /* MoreOptionsHeader.swift in Sources */,
 				FB57CD8A1F10356100F98DAE /* AppDelegate.swift in Sources */,
 			);

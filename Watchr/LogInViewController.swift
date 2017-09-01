@@ -30,6 +30,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate, InitialLo
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        facebookLoginButton.readPermissions = ["public_profile", "email", "user_friends"]
         facebookLoginButton.delegate = self
         
         //debugLogout()
@@ -84,11 +85,11 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate, InitialLo
                             }
                             self.hasLoadedWatchingNow = true
                         })
-                    
+                        
                         print("User is signed in with uid:", user.uid)
                         print("User is ", user.displayName)
                         self.performSegue(withIdentifier: "LoggedInSegue", sender: nil)
-                })
+                    })
                 }
             }
         }

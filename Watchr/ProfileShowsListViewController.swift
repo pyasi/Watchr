@@ -44,22 +44,23 @@ class ProfileShowsListViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        let profileView = (self.parent?.parent as! ProfileMainViewController).profileDetailsView
-        let scrollMenuView = (self.parent as! CAPSPageMenu).view
-        let offsetY = scrollView.contentOffset.y
-
-        if (offsetY > 0) {
-            //profileView?.frame.origin.y = (profileView?.frame.origin.y)! - 1
+        /*
+        if let profileView = self.parent?.parent as! ProfileMainViewController).profileDetailsView{
+            let scrollMenuView = (self.parent as! CAPSPageMenu).view
+            let offsetY = scrollView.contentOffset.y
             
-            /*
-            if((scrollMenuView?.frame.origin.y)! > CGFloat(0)){
-                scrollMenuView?.frame.origin.y = (scrollMenuView?.frame.origin.y)! - 1
-                scrollMenuView?.frame = CGRect(x: (scrollMenuView?.frame.origin.x)!, y: (scrollMenuView?.frame.origin.y)!, width: (scrollMenuView?.frame.width)!, height: (scrollMenuView?.frame.height)! + 1)
-            */
+            if (offsetY > 0) {
+                //profileView?.frame.origin.y = (profileView?.frame.origin.y)! - 1
+                
+                /*
+                 if((scrollMenuView?.frame.origin.y)! > CGFloat(0)){
+                 scrollMenuView?.frame.origin.y = (scrollMenuView?.frame.origin.y)! - 1
+                 scrollMenuView?.frame = CGRect(x: (scrollMenuView?.frame.origin.x)!, y: (scrollMenuView?.frame.origin.y)!, width: (scrollMenuView?.frame.width)!, height: (scrollMenuView?.frame.height)! + 1)
+                 */
                 print(scrollMenuView?.frame.origin.y)
-            
-        }
+                
+            }
+        }*/
     }
     
     func statusListChanged(){
@@ -168,7 +169,7 @@ class ProfileShowsListViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func loadWatchrStatusPopup(showId: Int) {
-    
+        
     }
     
     func goToShowDetailsFromOptions(showId: Int){
