@@ -44,6 +44,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>PageMenu.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Watchr.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -63,16 +68,6 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>107A9565F9DF88517DFD3E28C05B2B96</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>125DCDD177CB0E7566A501D5F83E96BA</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>335700B385266123C290FD8C56416E45</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -97,7 +92,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>79E2469F2EC08152219B8405CA6CB3E2</key>
+		<key>978A447F57E812AEE5D676FF361F1416</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -107,7 +102,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>A10AA43EC00CD1064CF20FA2B8ABAC4B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B2D1EA054B969388653F0F06A4DC0E15</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>C052BEBFBD0AB5218CC64BA3450F6547</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D16F73E6BABDFA6AB21398188788F433</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -11,15 +11,26 @@ import Firebase
 import FirebaseDatabase
 import FBSDKLoginKit
 
-class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
+protocol InitialLoadingProtocol : NSObjectProtocol {
+    var hasLoadedWatched: Bool  { get set }
+    var hasLoadedWatchList: Bool  { get set }
+    var hasLoadedWatchingNow: Bool  { get set }
+    func shouldLoadViews() -> Bool
+}
+
+class LogInViewController: UIViewController, FBSDKLoginButtonDelegate, InitialLoadingProtocol {
     
     @IBOutlet var facebookLoginButton: FBSDKLoginButton!
     
     var authListener: AuthStateDidChangeListenerHandle?
+    var hasLoadedWatched: Bool = false
+    var hasLoadedWatchList: Bool = false
+    var hasLoadedWatchingNow: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        facebookLoginButton.readPermissions = ["public_profile", "email", "user_friends"]
         facebookLoginButton.delegate = self
         
         //debugLogout()
@@ -44,28 +55,64 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
             if let user = user {
                 if currentUser == nil{
                     let userID = Auth.auth().currentUser?.uid
-                    ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-                        if(snapshot.exists()){
-                            currentUser = AppUser.init(snapshot: snapshot)
-                            ref.child("favorites").child(currentUser!.favoritesKey!).observeSingleEvent(of: .value, with: {
-                                (snapshot) in
-                                for child in snapshot.children{
-                                    let thisChild = child as! DataSnapshot
-                                    favorites.append(thisChild.value as! Int)
-                                }
-                                print("Favorites: ", favorites)
-                            })
-                        }
+                    self.loadUser(userId: userID!, completionHandler: {
+                        success in
                         
-                    }) { (error) in
-                        print(error.localizedDescription)
-                    }
+                        // TODO Clean up this logic
+                        ref.child("watched").child(currentUser!.watchedKey!).observeSingleEvent(of: .value, with: {
+                            (snapshot) in
+                            for child in snapshot.children{
+                                let thisChild = child as! DataSnapshot
+                                currentUser?.watched.append(thisChild.value as! Int)
+                            }
+                            self.hasLoadedWatched = true
+                        })
+                        
+                        ref.child("watchList").child(currentUser!.watchListKey!).observeSingleEvent(of: .value, with: {
+                            (snapshot) in
+                            for child in snapshot.children{
+                                let thisChild = child as! DataSnapshot
+                                currentUser?.watchList.append(thisChild.value as! Int)
+                            }
+                            self.hasLoadedWatchList = true
+                        })
+                        
+                        ref.child("watchingNow").child(currentUser!.watchingNowKey!).observeSingleEvent(of: .value, with: {
+                            (snapshot) in
+                            for child in snapshot.children{
+                                let thisChild = child as! DataSnapshot
+                                currentUser?.watching.append(thisChild.value as! Int)
+                            }
+                            self.hasLoadedWatchingNow = true
+                        })
+                        
+                        print("User is signed in with uid:", user.uid)
+                        print("User is ", user.displayName)
+                        self.performSegue(withIdentifier: "LoggedInSegue", sender: nil)
+                    })
                 }
-                print("User is signed in with uid:", user.uid)
-                print("User is ", user.displayName)
-                self.performSegue(withIdentifier: "LoggedInSegue", sender: nil)
             }
         }
+    }
+    
+    func loadUser(userId: String, completionHandler: @escaping (Bool) -> ()){
+        ref.child("users").child(userId).observeSingleEvent(of: .value, with: { (snapshot) in
+            if(snapshot.exists()){
+                currentUser = AppUser.init(snapshot: snapshot)
+                completionHandler(true)
+            }
+            else{
+                // COULD NOT CONNECT TO FIREBASE CHANGE THIS
+                completionHandler(true)
+            }
+        })
+    }
+    
+    func shouldLoadViews() -> Bool{
+        if (hasLoadedWatched && hasLoadedWatchList && hasLoadedWatchingNow){
+            return true
+        }
+        return false
     }
     
     override func didReceiveMemoryWarning() {
@@ -99,11 +146,23 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     func createUser(user: User?){
         let newUser = AppUser(user: user!)
         currentUser = newUser
+        
         ref.child("users").child(user!.uid).setValue(newUser.toDictionary())
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("logged out")
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let tabVC = segue.destination as? UITabBarController{
+            if let navVC = tabVC.viewControllers?[0] as? UINavigationController{
+                if let destinationVC = navVC.viewControllers[0] as? MainViewController{
+                    
+                    //destinationVC.initialLoadDelegate = self
+                }
+            }
+        }
     }
 }
 

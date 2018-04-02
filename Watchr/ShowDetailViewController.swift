@@ -30,6 +30,8 @@ class ShowDetailViewController: UIViewController, UIScrollViewDelegate {
         fillBannerImage()
         //getStillsForShow()
         castInfoView.isHidden = true
+        
+        self.navigationController?.navigationBar.tintColor = whiteTheme
     }
     
     override func didReceiveMemoryWarning() {
@@ -56,28 +58,6 @@ class ShowDetailViewController: UIViewController, UIScrollViewDelegate {
         
     }
     
-    /*
-    func getStillsForShow(){
-        
-        TVMDB.images(apiKey, tvShowID: show!.id, language: "en"){
-            apiReturn in
-            if let tvImages = apiReturn.1{
-                for still in tvImages.posters{
-                    
-                    let url = URL(string:"https://image.tmdb.org/t/p/w500_and_h281_bestv2/" + still.file_path!)
-                    DispatchQueue.global().async {
-                        let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-                        DispatchQueue.main.async {
-                            self.stills.append(UIImage(data: data!)!)
-                            print(self.stills.count)
-                        }
-                    }
-                }
-            }
-        }
-    }
-    */
-    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
     }
@@ -97,7 +77,6 @@ class ShowDetailViewController: UIViewController, UIScrollViewDelegate {
         default:
             break
         }
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -120,7 +99,75 @@ class ShowDetailViewController: UIViewController, UIScrollViewDelegate {
         self.scrollView.contentSize = contentRect.size
     }
     
+    @IBAction func watchlistButtonTapped(_ sender: DOFavoriteButton) {
+        if sender.isSelected {
+            // deselect
+            sender.deselect()
+        } else {
+            // select with animation
+            sender.select()
+            
+            let generator = UIImpactFeedbackGenerator(style: .medium)
+            generator.impactOccurred()
+        }
+    }
+    
+    @IBAction func watchingButtonTapped(_ sender: DOFavoriteButton) {
+        if sender.isSelected {
+            // deselect
+            sender.deselect()
+        } else {
+            // select with animation
+            sender.select()
+            
+            let generator = UIImpactFeedbackGenerator(style: .medium)
+            generator.impactOccurred()
+        }
+    }
+    
+    @IBAction func watchedButtonTapped(_ sender: DOFavoriteButton) {
+        if sender.isSelected {
+            // deselect
+            sender.deselect()
+        } else {
+            // select with animation
+            sender.select()
+            
+            let generator = UIImpactFeedbackGenerator(style: .medium)
+            generator.impactOccurred()
+        }
+    }
+    
     @IBAction func experimentalButtonTapped(_ sender: Any) {
         fillStillsImageView(newStills: stills)
     }
+}
+
+extension UITextView{
+    
+    func updateTextFont() {
+        if ((self.text?.isEmpty)! || self.bounds.size.equalTo(CGSize.zero)) {
+            return
+        }
+        
+        let textViewSize = self.frame.size
+        let fixedWidth = self.frame.width
+        let expectSize = self.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat(MAXFLOAT)));
+        
+        var expectFont = self.font;
+        if (expectSize.height > textViewSize.height) {
+            while (self.sizeThatFits(CGSize(width: fixedWidth, height:  CGFloat(MAXFLOAT))).height > textViewSize.height) {
+                expectFont = self.font!.withSize(self.font!.pointSize - 1)
+                self.font = expectFont
+            }
+        }
+        else {
+            while (self.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat(MAXFLOAT))).height < textViewSize.height) {
+                expectFont = self.font
+                self.font = self.font!.withSize(self.font!.pointSize + 1)
+            }
+            self.font = expectFont;
+        }
+    }
+    
 }

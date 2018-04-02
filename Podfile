@@ -11,6 +11,7 @@ target 'Watchr' do
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'FacebookLogin'
-  pod 'AMScrollingNavbar'
   pod 'SDWebImage', '~> 4.0'
+  pod 'PageMenu'
+  pod 'AMScrollingNavbar'
 end

@@ -66,11 +66,23 @@
                         </attributedString>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Television Icon" translatesAutoresizingMaskIntoConstraints="NO" id="Bfo-B4-KPA">
+                        <rect key="frame" x="16" y="41" width="138" height="138"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hK5-Ec-Vut">
+                        <rect key="frame" x="147" y="262" width="25" height="25"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <state key="normal" image="more-options"/>
+                        <connections>
+                            <action selector="optionsMenuButtonTapped:" destination="qBe-dj-Sod" eventType="touchUpInside" id="ZVE-DR-s5F"/>
+                        </connections>
+                    </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cnh-Tf-RA3" customClass="DOFavoriteButton" customModule="Watchr" customModuleProvider="target">
-                        <rect key="frame" x="128" y="254" width="39" height="38"/>
+                        <rect key="frame" x="0.0" y="254" width="39" height="38"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="image" keyPath="image" value="heart"/>
+                            <userDefinedRuntimeAttribute type="image" keyPath="image" value="add"/>
                             <userDefinedRuntimeAttribute type="color" keyPath="imageColorOn">
                                 <color key="value" red="0.37647058823529411" green="0.34509803921568627" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </userDefinedRuntimeAttribute>
@@ -81,34 +93,32 @@
                                 <color key="value" red="0.38823529411764707" green="0.41176470588235292" blue="0.47058823529411764" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="color" keyPath="circleColor">
-                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="value" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                         <connections>
-                            <action selector="favoriteTapped:" destination="qBe-dj-Sod" eventType="touchUpInside" id="5Lb-IK-CjS"/>
+                            <action selector="changeWatchrStatusTapped:" destination="qBe-dj-Sod" eventType="touchUpInside" id="RAG-2c-wK0"/>
                         </connections>
                     </button>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Television Icon" translatesAutoresizingMaskIntoConstraints="NO" id="Bfo-B4-KPA">
-                        <rect key="frame" x="16" y="41" width="138" height="138"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </imageView>
                 </subviews>
             </view>
             <color key="backgroundColor" red="0.16470588235294117" green="0.1803921568627451" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <size key="customSize" width="170" height="292"/>
             <connections>
-                <outlet property="favoriteButton" destination="Cnh-Tf-RA3" id="tSu-Bc-Fgc"/>
                 <outlet property="imageEmptyState" destination="Bfo-B4-KPA" id="Xse-tc-5sk"/>
                 <outlet property="numberOfSeasonsLabel" destination="g0W-88-NF1" id="pl1-OB-re7"/>
+                <outlet property="optionsMenuButton" destination="hK5-Ec-Vut" id="cNK-XZ-mfF"/>
                 <outlet property="seasonLabel" destination="WIA-zD-UlA" id="kwF-IH-Jnv"/>
                 <outlet property="showImage" destination="fJ5-sc-wxv" id="lbL-fc-SEo"/>
                 <outlet property="showTitle" destination="L7l-bL-MA6" id="b82-be-odO"/>
+                <outlet property="watchrStatusButton" destination="Cnh-Tf-RA3" id="Eou-lT-pwM"/>
             </connections>
             <point key="canvasLocation" x="32" y="67"/>
         </collectionViewCell>
     </objects>
     <resources>
         <image name="Television Icon" width="256" height="256"/>
-        <image name="heart" width="32" height="32"/>
+        <image name="add" width="128" height="128"/>
+        <image name="more-options" width="128" height="128"/>
     </resources>
 </document>

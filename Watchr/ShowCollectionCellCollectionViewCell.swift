@@ -10,6 +10,12 @@ import UIKit
 import TMDBSwift
 import FirebaseDatabase
 
+protocol CellActionsProtocol : NSObjectProtocol {
+    func loadMoreOptions(controller: UIViewController) -> Void
+    func goToShowDetailsFromOptions(showId: Int)
+    func loadWatchrStatusPopup(showId: Int)
+}
+
 class ShowCollectionCellCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var imageEmptyState: UIImageView!
@@ -17,40 +23,27 @@ class ShowCollectionCellCollectionViewCell: UICollectionViewCell {
     @IBOutlet var showTitle: UILabel!
     @IBOutlet var seasonLabel: UILabel!
     @IBOutlet var numberOfSeasonsLabel: UILabel!
-    @IBOutlet var favoriteButton: DOFavoriteButton!
+    @IBOutlet var watchrStatusButton: DOFavoriteButton!
+    @IBOutlet var optionsMenuButton: UIButton!
     
     var showId: Int?
+    var showWatchrStatus: WatchrShowStatus?
+    weak var delegate: CellActionsProtocol?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.layer.cornerRadius = 2
+        self.layoutViews()
+    }
     
     override func prepareForReuse() {
-        //showImage.image = nil
-        //imageEmptyState.image = nil
         showTitle.text = nil
         showId = nil
+        showWatchrStatus = nil
+        numberOfSeasonsLabel.isHidden = false
+        seasonLabel.isHidden = false
     }
-    
-    /*
-    func getImageForShow(showId: Int){
-        
-        TVMDB.images(apiKey, tvShowID: showId, language: "en"){
-            apiReturn in
-            let tvImages = apiReturn.1!
-            
-            if (tvImages.posters.count > 0) {
-                let url = URL(string:"https://image.tmdb.org/t/p/w185//" + tvImages.posters[0].file_path!)
-                DispatchQueue.global().async {
-                    let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-                    DispatchQueue.main.async {
-                        self.imageEmptyState.image = nil
-                        self.showImage.image = UIImage(data: data!)
-                    }
-                }
-            }
-            else{
-                self.imageEmptyState.image = UIImage(named: "Television Icon")
-            }
-        }
-    }
-    */
     
     func layoutViews(){
         self.seasonLabel.layer.masksToBounds = true
@@ -60,43 +53,64 @@ class ShowCollectionCellCollectionViewCell: UICollectionViewCell {
         self.showImage.layer.cornerRadius = 2
     }
     
+    func displayExpectedViews(){
+        showWatchrStatus = getStatusForShowId(showId: showId!)
+        if (showWatchrStatus != nil){
+            displayCorrectWatchrStatusButton()
+        }
+    }
+    
+    func displayCorrectWatchrStatusButton(){
+        
+        switch showWatchrStatus!{
+        case .Watched:
+            watchrStatusButton.image = UIImage(named: "heart")
+            //watchrStatusButton.isSelected = true
+        case .Watching:
+            watchrStatusButton.image = UIImage(named: "eye")
+            //watchrStatusButton.isSelected = true
+        case .WatchList:
+            watchrStatusButton.image = UIImage(named: "list")
+            //watchrStatusButton.isSelected = true
+        case .NotWatched:
+            watchrStatusButton.image = UIImage(named: "add")
+            //watchrStatusButton.isSelected = false
+        }
+    }
+    
+    @IBAction func optionsMenuButtonTapped(_ sender: Any) {
+        let alertController = MoreOptionsAlertViewController()
+        alertController.showId = self.showId!
+        alertController.delegate = self.delegate
+        
+        DispatchQueue.main.async {
+            if((self.delegate?.responds(to: Selector(("loadMoreOptions:")))) != nil)
+            {
+                self.delegate?.loadMoreOptions(controller: alertController)
+            }
+        }
+    }
+    
+    @IBAction func changeWatchrStatusTapped(_ sender: Any) {
+        
+        DispatchQueue.main.async {
+            if((self.delegate?.responds(to: Selector(("loadWatchrStatusPopup:")))) != nil)
+            {
+                self.delegate?.loadWatchrStatusPopup(showId: self.showId!)
+            }
+        }
+    }
+    
     @IBAction func favoriteTapped(_ sender: DOFavoriteButton) {
         if sender.isSelected {
             // deselect
             sender.deselect()
-            removeFromFavorites()
         } else {
             // select with animation
             sender.select()
             
             let generator = UIImpactFeedbackGenerator(style: .medium)
             generator.impactOccurred()
-            addShowToFavorites()
         }
     }
-    
-    func addShowToFavorites(){
-        ref.child("favorites").child(currentUser!.favoritesKey!).childByAutoId().setValue(self.showId)
-        favorites.append(self.showId!)
-        NotificationCenter.default.post(name: Notification.Name(rawValue: favoriteAddedKey), object: nil)
-    }
-    
-    func removeFromFavorites(){
-        //print(favorites)
-        ref.child("favorites").child(currentUser!.favoritesKey!).observeSingleEvent(of: .value, with: {
-            (snapshot) in
-            for child in snapshot.children{
-                let thisChild = child as! DataSnapshot
-                if (thisChild.value as? Int == self.showId){
-                    ref.child("favorites").child(currentUser!.favoritesKey!).child(thisChild.key).removeValue()
-                    let indexToRemove = favorites.index(of: self.showId!)!
-                    favorites.remove(at: indexToRemove)
-                    let indexInfo:[String: Int] = ["index": indexToRemove]
-                    NotificationCenter.default.post(name: Notification.Name(rawValue: favoriteRemovedKey), object: indexToRemove, userInfo: indexInfo)
-                }
-            }
-        })
-    }
-    
-    
 }

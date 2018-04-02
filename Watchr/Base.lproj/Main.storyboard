@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -36,7 +35,7 @@
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Knc-zf-eed">
                                     <size key="itemSize" width="170" height="292"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="50" height="75"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="10" minY="8" maxX="10" maxY="8"/>
                                 </collectionViewFlowLayout>
                                 <cells>
@@ -50,32 +49,6 @@
                                         <color key="backgroundColor" red="0.1647058824" green="0.18039215689999999" blue="0.2274509804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LoadMoreFooter" id="1nr-9y-7cs" customClass="LoadMoreFooterView" customModule="Watchr" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="308" width="375" height="75"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3dy-Og-q9a">
-                                            <rect key="frame" x="85" y="12" width="205" height="50"/>
-                                            <color key="backgroundColor" red="0.42655369640000002" green="0.475846082" blue="0.4802647531" alpha="1" colorSpace="calibratedRGB"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                            <state key="normal" title="Load More">
-                                                <color key="titleColor" red="0.90980392156862744" green="0.92549019607843142" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="loadMoreTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5I8-bk-nYS"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="3dy-Og-q9a" secondAttribute="trailing" constant="77" id="2Op-r8-FO0"/>
-                                        <constraint firstItem="3dy-Og-q9a" firstAttribute="leading" secondItem="1nr-9y-7cs" secondAttribute="leadingMargin" constant="77" id="EdY-5e-ZvQ"/>
-                                        <constraint firstItem="3dy-Og-q9a" firstAttribute="top" secondItem="1nr-9y-7cs" secondAttribute="topMargin" constant="4" id="dgy-7E-aUo"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="3dy-Og-q9a" secondAttribute="bottom" constant="5" id="hPf-oP-aI6"/>
-                                    </constraints>
-                                    <connections>
-                                        <outlet property="loadMoreButton" destination="3dy-Og-q9a" id="PY4-9S-9Sb"/>
-                                    </connections>
-                                </collectionReusableView>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -90,11 +63,20 @@
                     <connections>
                         <outlet property="showsCollectionView" destination="nQN-KZ-hK2" id="p59-Wn-ut6"/>
                         <segue destination="zJS-hB-okt" kind="show" identifier="ToShowDetailSegue" id="4jR-Sn-dPO"/>
+                        <segue destination="ktC-jv-XOe" kind="presentation" identifier="WatchrStatusPopupViewControllerSegue" id="cPI-Km-Cth"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JjJ-za-q8D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1824.8" y="1512.5937031484259"/>
+        </scene>
+        <!--WatchrStatusPopup-->
+        <scene sceneID="NJo-j9-269">
+            <objects>
+                <viewControllerPlaceholder storyboardName="WatchrStatusPopup" id="ktC-jv-XOe" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z1l-is-sbo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2576" y="1512"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -143,7 +125,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="996" y="1507.1964017991006"/>
+            <point key="canvasLocation" x="815" y="1513"/>
         </scene>
         <!--ShowDetailView-->
         <scene sceneID="8SC-1r-jGG">
@@ -227,7 +209,17 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yce-78-8ZH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2576.8000000000002" y="-663.41829085457277"/>
+            <point key="canvasLocation" x="3516" y="-663.41829085457277"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="zy3-ry-n2w">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" id="MMt-l0-YOQ" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="HTr-ot-e0O"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xov-D0-jBV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="573" y="-581"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="unV-TD-2rb">
@@ -245,6 +237,7 @@
                     <connections>
                         <segue destination="akp-wx-M6Q" kind="relationship" relationship="viewControllers" id="cD8-RH-D6y"/>
                         <segue destination="lNI-sS-FJL" kind="relationship" relationship="viewControllers" id="mHF-Ms-img"/>
+                        <segue destination="eeG-SO-dmz" kind="relationship" relationship="viewControllers" id="K2l-LT-YJI"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ww-PB-jgy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -257,7 +250,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="akp-wx-M6Q" customClass="ScrollingNavigationController" customModule="AMScrollingNavbar" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="mostViewed" id="kD0-KP-r5D"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="sXb-lo-Wv0">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="sXb-lo-Wv0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.92538958790000003" green="0.92554813619999998" blue="0.92537957429999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -273,7 +266,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Vl-QB-s8H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="996" y="133"/>
+            <point key="canvasLocation" x="1327" y="157"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0Xp-r0-hP6">
@@ -281,7 +274,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lNI-sS-FJL" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="1jH-Bz-s0s"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="ih0-9g-Pi5">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="ih0-9g-Pi5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.92538958790000003" green="0.92554813619999998" blue="0.92537957429999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -297,7 +290,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zkh-WZ-9ae" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="996" y="-663"/>
+            <point key="canvasLocation" x="1935.2" y="-663.41829085457277"/>
         </scene>
         <!--Discovery Swiping Page View Controller-->
         <scene sceneID="TlB-T9-d9V">
@@ -305,7 +298,30 @@
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="G5Z-Hk-ePA" customClass="DiscoverySwipingPageViewController" customModule="Watchr" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1ha-h6-hN2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="996" y="2168"/>
+            <point key="canvasLocation" x="814" y="2315"/>
+        </scene>
+        <!--Scrolling Navigation Controller-->
+        <scene sceneID="FNi-mY-js3">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eeG-SO-dmz" customClass="ScrollingNavigationController" customModule="AMScrollingNavbar" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="contacts" id="ahB-E2-IOg"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="m9v-Qh-VnT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.11764705882352941" green="0.14117647058823529" blue="0.1803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.92538958790000003" green="0.92554813619999998" blue="0.92537957429999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="MMt-l0-YOQ" kind="relationship" relationship="rootViewController" id="4Sd-ng-m4n"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qbh-9x-G2y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1" y="-580"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

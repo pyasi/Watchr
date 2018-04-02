@@ -9,7 +9,7 @@
 import UIKit
 import TMDBSwift
 
-class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
+class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, Dimmable {
     
     @IBOutlet var searchTableView: UITableView!
     
@@ -133,6 +133,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
             let url = URL(string: "https://image.tmdb.org/t/p/w92/" + path)
             cell.showImage.sd_setImage(with: url)
         }
+        //cell.showImage.image
         
         var genreString = ""
         for x in 0..<show.genres.count{
@@ -147,7 +148,9 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
         cell.showGenres.text = genreString
         
         cell.showId = show.id
-        cell.favoriteButton.isSelected = favorites.contains(show.id!) ? true : false
+        cell.displayExpectedViews()
+        cell.delegate = self
+        //cell.favoriteButton.isSelected = favorites.contains(show.id!) ? true : false
         
         cell.selectionStyle = .none
         
@@ -165,12 +168,27 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
             let show = sender as! TVMDB
             destinationVC.show = show
         }
+        
+        if let destinationVC = segue.destination as? WatchrListPopupViewController{
+            let showId = sender as! Int
+            destinationVC.unwindDestination = .SearchViewController
+            destinationVC.showId = showId
+            dim(.in, alpha: dimLevel, speed: dimSpeed)
+        }
     }
     
+    func changeWatchrStatusTapped(showId: Int){
+        self.performSegue(withIdentifier: "WatchrStatusPopupViewControllerSegue", sender: showId)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func unwindToSearchController(_ sender: UIStoryboardSegue) {
+        dim(.out, speed: dimSpeed)
+        self.searchTableView.reloadData()
     }
     
 }

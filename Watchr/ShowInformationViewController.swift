@@ -26,8 +26,11 @@ class ShowInformationViewController: UIViewController, UICollectionViewDelegate,
         
         getShowDetailedInformation(show: show!)
         getRecommendationsForShow(show: show!)
-        recommendationCollectionView.delegate = self
-        recommendationCollectionView.dataSource = self
+        
+        
+        /* SET */
+        //recommendationCollectionView.delegate = self
+        //recommendationCollectionView.dataSource = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -43,7 +46,6 @@ class ShowInformationViewController: UIViewController, UICollectionViewDelegate,
         genreLabel.text = getGenresString(show: detailedShow!)
         networkLabel.text = detailedShow!.networks.count > 0 ? detailedShow!.networks[0].name : " - "
         descriptionTextView.text = detailedShow!.overview != nil ? detailedShow!.overview : " - "
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -51,6 +53,9 @@ class ShowInformationViewController: UIViewController, UICollectionViewDelegate,
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        // Shouldn't be ShowCollectionCellCollectionViewCell
+        
         let cell = recommendationCollectionView.dequeueReusableCell(withReuseIdentifier: "RecommendationCell", for: indexPath) as! ShowCollectionCellCollectionViewCell
         cell.showTitle.text = recommendations[indexPath.row].name != nil ? recommendations[indexPath.row].name : ""
         if( recommendations[indexPath.row].id != nil){
@@ -63,6 +68,7 @@ class ShowInformationViewController: UIViewController, UICollectionViewDelegate,
         else{
             cell.showImage.image = UIImage(named: "default")
         }
+        
         
         return cell
     }

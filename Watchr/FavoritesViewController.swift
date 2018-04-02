@@ -74,7 +74,7 @@ class FavoritesViewController: UIViewController, UICollectionViewDelegate, UICol
             cell.seasonLabel.text = "Season"
         }
         cell.showId = favoriteShows[indexPath.row].id
-        cell.favoriteButton.isSelected = true
+        //cell.favoriteButton.isSelected = true
         cell.layoutViews()
         
         return cell
