@@ -172,6 +172,7 @@
 				FB267C391F3CEF3700DCCE71 /* ShowTableViewCell.swift */,
 			);
 			name = Search;
+			path = Search;
 			sourceTree = "<group>";
 		};
 		FB5649001F428E340023E0A2 /* Profiles */ = {
@@ -183,16 +184,17 @@
 				FBE6328D1F4519A200B00748 /* ShowProfileTableViewCell.swift */,
 			);
 			name = Profiles;
+			path = Profiles;
 			sourceTree = "<group>";
 		};
 		FB57CD7D1F10356100F98DAE = {
 			isa = PBXGroup;
 			children = (
-				FBBEFAF41F423F58007DC859 /* Watchr-Bridging-Header.h */,
-				FB57CD881F10356100F98DAE /* Watchr */,
-				FB57CD871F10356100F98DAE /* Products */,
-				7F5A19B5D13592B94E730ECB /* Pods */,
 				1A732F5F9C85BB689420A081 /* Frameworks */,
+				7F5A19B5D13592B94E730ECB /* Pods */,
+				FB57CD871F10356100F98DAE /* Products */,
+				FB57CD881F10356100F98DAE /* Watchr */,
+				FBBEFAF41F423F58007DC859 /* Watchr-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -207,18 +209,18 @@
 		FB57CD881F10356100F98DAE /* Watchr */ = {
 			isa = PBXGroup;
 			children = (
-				FB57CD891F10356100F98DAE /* AppDelegate.swift */,
 				FB77F1FD1F1042E3003A1D46 /* Controllers */,
-				FB77F2001F105288003A1D46 /* Views */,
 				FBF583BF1F12BD5300950C96 /* Models */,
+				FB77F2001F105288003A1D46 /* Views */,
+				FB57CD891F10356100F98DAE /* AppDelegate.swift */,
 				FB57CD901F10356100F98DAE /* Assets.xcassets */,
-				FB57CD921F10356100F98DAE /* LaunchScreen.storyboard */,
-				FB57CD951F10356100F98DAE /* Info.plist */,
-				FBF583B91F12A5E800950C96 /* GoogleService-Info.plist */,
-				FBF583C61F12E10200950C96 /* NotificationKeys.swift */,
 				FB93FD431F3AA4C3002DB84A /* ColorsHelper.swift */,
-				FB5648FC1F427A430023E0A2 /* ShowHelper.swift */,
 				FB7B2E891F57ACD7008D7C43 /* Dimmable.swift */,
+				FBF583B91F12A5E800950C96 /* GoogleService-Info.plist */,
+				FB57CD951F10356100F98DAE /* Info.plist */,
+				FB57CD921F10356100F98DAE /* LaunchScreen.storyboard */,
+				FBF583C61F12E10200950C96 /* NotificationKeys.swift */,
+				FB5648FC1F427A430023E0A2 /* ShowHelper.swift */,
 			);
 			path = Watchr;
 			sourceTree = "<group>";
@@ -226,61 +228,65 @@
 		FB77F1FD1F1042E3003A1D46 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FB5649001F428E340023E0A2 /* Profiles */,
+				FB267C321F3CE9D600DCCE71 /* Search */,
+				FBDC93141F1085A900E515C8 /* Show Details */,
+				FBF583C41F12D6AC00950C96 /* FavoritesViewController.swift */,
+				FBF583BB1F12ADC000950C96 /* LogInViewController.swift */,
 				FB267C2F1F3BF08400DCCE71 /* MainViewController.swift */,
+				FBBEFAF51F4252AD007DC859 /* MoreOptionsAlertViewController.swift */,
+				FB77F1FE1F104323003A1D46 /* ShowCollectionCellCollectionViewCell.swift */,
 				FB57CD8B1F10356100F98DAE /* ShowCollectionViewController.swift */,
 				FB7B2E871F57ABD6008D7C43 /* WatchrListPopupViewController.swift */,
 				FB7B2E8B1F57BA94008D7C43 /* WatchrStatusDelegate.swift */,
-				FBF583C41F12D6AC00950C96 /* FavoritesViewController.swift */,
-				FB77F1FE1F104323003A1D46 /* ShowCollectionCellCollectionViewCell.swift */,
-				FBBEFAF51F4252AD007DC859 /* MoreOptionsAlertViewController.swift */,
-				FBF583BB1F12ADC000950C96 /* LogInViewController.swift */,
-				FBDC93141F1085A900E515C8 /* Show Details */,
-				FB267C321F3CE9D600DCCE71 /* Search */,
-				FB5649001F428E340023E0A2 /* Profiles */,
 			);
 			name = Controllers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		FB77F2001F105288003A1D46 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				FB57CD8D1F10356100F98DAE /* Main.storyboard */,
-				FB267C331F3CEA7900DCCE71 /* Search.storyboard */,
-				FB77F2011F1052A6003A1D46 /* ShowDetailView.storyboard */,
-				FB5648FE1F4284760023E0A2 /* Profile.storyboard */,
 				FB7B2E981F5906A0008D7C43 /* AddFriends.storyboard */,
 				FBDC931B1F11999000E515C8 /* CastDetailView.storyboard */,
-				FBF583C21F12D55B00950C96 /* ShowCard.xib */,
-				FBE0BA671F4BAF99000D4D93 /* MoreOptionsHeader.xib */,
-				FB7B2E8D1F58F038008D7C43 /* WatchrStatusPopup.storyboard */,
-				FBDC93121F10833600E515C8 /* SWSegmentedControl.swift */,
 				FBDC931F1F11DF9E00E515C8 /* DOFavoriteButton.swift */,
+				FB57CD8D1F10356100F98DAE /* Main.storyboard */,
 				FBE0BA691F4BB03A000D4D93 /* MoreOptionsHeader.swift */,
+				FBE0BA671F4BAF99000D4D93 /* MoreOptionsHeader.xib */,
+				FB5648FE1F4284760023E0A2 /* Profile.storyboard */,
+				FBDC93121F10833600E515C8 /* SWSegmentedControl.swift */,
+				FB267C331F3CEA7900DCCE71 /* Search.storyboard */,
+				FBF583C21F12D55B00950C96 /* ShowCard.xib */,
+				FB77F2011F1052A6003A1D46 /* ShowDetailView.storyboard */,
+				FB7B2E8D1F58F038008D7C43 /* WatchrStatusPopup.storyboard */,
 			);
 			name = Views;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		FB7B2E951F58FCDC008D7C43 /* Social */ = {
 			isa = PBXGroup;
 			children = (
-				FB7B2E961F58FE21008D7C43 /* Testing.swift */,
 				FB7B2E9A1F590944008D7C43 /* AddFriendsViewController.swift */,
 				FB7B2E9C1F590974008D7C43 /* FriendTableViewCell.swift */,
+				FB7B2E961F58FE21008D7C43 /* Testing.swift */,
 			);
 			name = Social;
+			path = Social;
 			sourceTree = "<group>";
 		};
 		FBDC93141F1085A900E515C8 /* Show Details */ = {
 			isa = PBXGroup;
 			children = (
-				FB77F2031F1054B2003A1D46 /* ShowDetailViewController.swift */,
-				FBC3BA681F4D22D10022A0A6 /* PreviewShowDetailViewController.swift */,
-				FBDC93151F1085D200E515C8 /* ShowInformationViewController.swift */,
-				FBDC93171F11452100E515C8 /* CastCollectionViewController.swift */,
-				FBDC93191F11467500E515C8 /* CastCollectionViewCell.swift */,
 				FBDC931D1F119BC000E515C8 /* ActorDetailViewController.swift */,
+				FBDC93191F11467500E515C8 /* CastCollectionViewCell.swift */,
+				FBDC93171F11452100E515C8 /* CastCollectionViewController.swift */,
+				FBC3BA681F4D22D10022A0A6 /* PreviewShowDetailViewController.swift */,
+				FB77F2031F1054B2003A1D46 /* ShowDetailViewController.swift */,
+				FBDC93151F1085D200E515C8 /* ShowInformationViewController.swift */,
 			);
 			name = "Show Details";
+			path = "Show Details";
 			sourceTree = "<group>";
 		};
 		FBF583BF1F12BD5300950C96 /* Models */ = {
@@ -290,6 +296,7 @@
 				FB7B2E9E1F590F9B008D7C43 /* Friend.swift */,
 			);
 			name = Models;
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -470,6 +477,7 @@
 				FB57CD8E1F10356100F98DAE /* Base */,
 			);
 			name = Main.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		FB57CD921F10356100F98DAE /* LaunchScreen.storyboard */ = {
@@ -478,6 +486,7 @@
 				FB57CD931F10356100F98DAE /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
