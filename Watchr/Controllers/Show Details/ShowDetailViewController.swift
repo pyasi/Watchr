@@ -55,7 +55,6 @@ class ShowDetailViewController: UIViewController, UIScrollViewDelegate {
         stillsImageView.animationImages = newStills
         stillsImageView.animationDuration = Double(stills.count * 3)
         stillsImageView.startAnimating()
-        
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

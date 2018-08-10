@@ -33,8 +33,6 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate, InitialLo
         facebookLoginButton.readPermissions = ["public_profile", "email", "user_friends"]
         facebookLoginButton.delegate = self
         
-        //debugLogout()
-        // Do any additional setup after loading the view.
     }
     
     func debugLogout(){
@@ -131,6 +129,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate, InitialLo
                 ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
                     if snapshot.hasChild(user!.uid){
                         print("User Exists")
+                        self.performSegue(withIdentifier: "LoggedInSegue", sender: nil)
                     }else{
                         self.createUser(user: user)
                     }
