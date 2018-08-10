@@ -9,7 +9,7 @@
 import UIKit
 import TMDBSwift
 
-class ShowInformationViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class ShowInformationViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate {
     
     @IBOutlet var yearLabel: UILabel!
     @IBOutlet var genreLabel: UILabel!
@@ -17,6 +17,7 @@ class ShowInformationViewController: UIViewController, UICollectionViewDelegate,
     @IBOutlet var descriptionTextView: UITextView!
     @IBOutlet var recommendationCollectionView: UICollectionView!
     
+    @IBOutlet var scrollView: UIScrollView!
     var show: TVMDB?
     var detailedShow: TVDetailedMDB?
     var recommendations: [TVMDB] = []
@@ -27,6 +28,8 @@ class ShowInformationViewController: UIViewController, UICollectionViewDelegate,
         getShowDetailedInformation(show: show!)
         getRecommendationsForShow(show: show!)
         
+        scrollView.delegate = self
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height+100)
         
         /* SET */
         //recommendationCollectionView.delegate = self
@@ -46,6 +49,10 @@ class ShowInformationViewController: UIViewController, UICollectionViewDelegate,
         genreLabel.text = getGenresString(show: detailedShow!)
         networkLabel.text = detailedShow!.networks.count > 0 ? detailedShow!.networks[0].name : " - "
         descriptionTextView.text = detailedShow!.overview != nil ? detailedShow!.overview : " - "
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print("here")
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

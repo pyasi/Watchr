@@ -11,16 +11,21 @@ import TMDBSwift
 
 class ShowDetailViewController: UIViewController, UIScrollViewDelegate {
     
-    @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var stillsImageView: UIImageView!
     @IBOutlet var showInfoView: UIView!
-    @IBOutlet var castInfoView: UIView!
+    @IBOutlet var watchingButton: DOFavoriteButton!
+    @IBOutlet var watchedButton: DOFavoriteButton!
+    @IBOutlet var watchListButton: DOFavoriteButton!
+    //    @IBOutlet var castInfoView: UIView!
     @IBOutlet var segmentControl: SWSegmentedControl!
     
+    @IBOutlet var scrollView: UIScrollView!
     var show: TVMDB?
     var stills: [UIImage] = []
     var castController: CastCollectionViewController?
     var infoController: ShowInformationViewController?
+    var showWatchrStatus: WatchrShowStatus?
+    var watchrStatusDelegate: WatchrStatusProtocol = WatchrStatusDelegate()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +34,11 @@ class ShowDetailViewController: UIViewController, UIScrollViewDelegate {
         self.title = show?.name
         fillBannerImage()
         //getStillsForShow()
-        castInfoView.isHidden = true
+//        castInfoView.isHidden = true
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height+100)
+
+        showWatchrStatus = getStatusForShowId(showId: (show?.id)!)
+        setSelectedButtonWhereAppropriate()
         
         self.navigationController?.navigationBar.tintColor = whiteTheme
     }
@@ -58,7 +67,6 @@ class ShowDetailViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
     }
     
     @IBAction func segmentControlValueChanged(_ sender: Any) {
@@ -67,11 +75,11 @@ class ShowDetailViewController: UIViewController, UIScrollViewDelegate {
         {
         case 0:
             showInfoView.isHidden = false
-            castInfoView.isHidden = true
+//            castInfoView.isHidden = true
             resizeScrollView()
         case 1:
             showInfoView.isHidden = true
-            castInfoView.isHidden = false
+//            castInfoView.isHidden = false
             castController?.resizeCollectionView()
         default:
             break
@@ -98,14 +106,29 @@ class ShowDetailViewController: UIViewController, UIScrollViewDelegate {
         self.scrollView.contentSize = contentRect.size
     }
     
+    func setSelectedButtonWhereAppropriate(){
+        switch showWatchrStatus!{
+        case .Watched:
+            watchedButton.isSelected = true
+        case .Watching:
+            watchingButton.isSelected = true
+        case .WatchList:
+            watchListButton.isSelected = true
+        case .NotWatched:
+            break
+        }
+    }
+    
     @IBAction func watchlistButtonTapped(_ sender: DOFavoriteButton) {
         if sender.isSelected {
-            // deselect
             sender.deselect()
+            watchrStatusDelegate.removeWhereNecessary(newStatus: .NotWatched, showId: (show?.id)!)
         } else {
-            // select with animation
+            watchrStatusDelegate.addShowToWatchList(showId:(show?.id)!)
+            //self.view.isUserInteractionEnabled = false
             sender.select()
-            
+            watchingButton.deselect()
+            watchedButton.deselect()
             let generator = UIImpactFeedbackGenerator(style: .medium)
             generator.impactOccurred()
         }
@@ -113,12 +136,14 @@ class ShowDetailViewController: UIViewController, UIScrollViewDelegate {
     
     @IBAction func watchingButtonTapped(_ sender: DOFavoriteButton) {
         if sender.isSelected {
-            // deselect
             sender.deselect()
+            watchrStatusDelegate.removeWhereNecessary(newStatus: .NotWatched, showId: (show?.id)!)
         } else {
-            // select with animation
+            watchrStatusDelegate.addShowToWatchingNow(showId: (show?.id)!)
+            //self.view.isUserInteractionEnabled = false
             sender.select()
-            
+            watchedButton.deselect()
+            watchListButton.deselect()
             let generator = UIImpactFeedbackGenerator(style: .medium)
             generator.impactOccurred()
         }
@@ -126,12 +151,14 @@ class ShowDetailViewController: UIViewController, UIScrollViewDelegate {
     
     @IBAction func watchedButtonTapped(_ sender: DOFavoriteButton) {
         if sender.isSelected {
-            // deselect
             sender.deselect()
+            watchrStatusDelegate.removeWhereNecessary(newStatus: .NotWatched, showId: (show?.id)!)
         } else {
-            // select with animation
+            watchrStatusDelegate.addShowToWatched(showId: (show?.id)!)
+            //self.view.isUserInteractionEnabled = false
             sender.select()
-            
+            watchingButton.deselect()
+            watchListButton.deselect()
             let generator = UIImpactFeedbackGenerator(style: .medium)
             generator.impactOccurred()
         }
@@ -141,6 +168,7 @@ class ShowDetailViewController: UIViewController, UIScrollViewDelegate {
         fillStillsImageView(newStills: stills)
     }
 }
+
 
 extension UITextView{
     
