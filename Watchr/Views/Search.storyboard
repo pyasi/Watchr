@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="WB2-08-mj9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="WB2-08-mj9">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Add Friends View Controller-->
+        <!--Search View Controller-->
         <scene sceneID="3Kc-ja-t1j">
             <objects>
-                <viewController id="WB2-08-mj9" customClass="AddFriendsViewController" customModule="Watchr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="WB2-08-mj9" customClass="SearchViewController" customModule="Watchr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="93f-Ed-asG"/>
                         <viewControllerLayoutGuide type="bottom" id="MDL-tH-eMe"/>
@@ -112,7 +112,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="searchTableView" destination="B7L-es-Wvg" id="m10-kF-Db0"/>
+                        <outlet property="searchTableView" destination="B7L-es-Wvg" id="6UR-Zc-ElE"/>
                         <segue destination="h0S-bG-jDe" kind="show" identifier="SearchToShotDetailSegue" id="FVi-X0-xaY"/>
                         <segue destination="zMk-fB-I6c" kind="presentation" identifier="WatchrStatusPopupViewControllerSegue" id="AsY-1K-aWA"/>
                     </connections>
