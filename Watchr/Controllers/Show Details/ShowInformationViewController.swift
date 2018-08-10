@@ -11,29 +11,34 @@ import TMDBSwift
 
 class ShowInformationViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate {
     
-    @IBOutlet var yearLabel: UILabel!
+    //@IBOutlet var yearLabel: UILabel!
     @IBOutlet var genreLabel: UILabel!
     @IBOutlet var networkLabel: UILabel!
     @IBOutlet var descriptionTextView: UITextView!
     @IBOutlet var recommendationCollectionView: UICollectionView!
     
+    @IBOutlet var recommendationsLabel: UILabel!
     @IBOutlet var scrollView: UIScrollView!
     var show: TVMDB?
     var detailedShow: TVDetailedMDB?
     var recommendations: [TVMDB] = []
+    var parentScrollView: UIScrollView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         getShowDetailedInformation(show: show!)
         getRecommendationsForShow(show: show!)
         
         scrollView.delegate = self
         scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height+100)
         
-        /* SET */
-        //recommendationCollectionView.delegate = self
-        //recommendationCollectionView.dataSource = self
+        recommendationCollectionView.delegate = self
+        recommendationCollectionView.dataSource = self
+        
+        self.parentScrollView?.contentSize = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 200).size
+        self.preferredContentSize = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 200).size
+        recommendationsLabel.layer.cornerRadius = 8
     }
     
     override func didReceiveMemoryWarning() {
@@ -44,7 +49,7 @@ class ShowInformationViewController: UIViewController, UICollectionViewDelegate,
     func loadShowInformation(){
         
         if let airDate = detailedShow?.first_air_date{
-            yearLabel.text = airDate
+            //yearLabel.text = airDate
         }
         genreLabel.text = getGenresString(show: detailedShow!)
         networkLabel.text = detailedShow!.networks.count > 0 ? detailedShow!.networks[0].name : " - "
@@ -63,7 +68,7 @@ class ShowInformationViewController: UIViewController, UICollectionViewDelegate,
         
         // Shouldn't be ShowCollectionCellCollectionViewCell
         
-        let cell = recommendationCollectionView.dequeueReusableCell(withReuseIdentifier: "RecommendationCell", for: indexPath) as! ShowCollectionCellCollectionViewCell
+        let cell = recommendationCollectionView.dequeueReusableCell(withReuseIdentifier: "RecommendationCell", for: indexPath) as! ShowRecommendationViewCell
         cell.showTitle.text = recommendations[indexPath.row].name != nil ? recommendations[indexPath.row].name : ""
         if( recommendations[indexPath.row].id != nil){
             if let path = recommendations[indexPath.row].poster_path{

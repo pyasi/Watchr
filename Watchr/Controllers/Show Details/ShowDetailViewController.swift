@@ -41,6 +41,7 @@ class ShowDetailViewController: UIViewController, UIScrollViewDelegate {
         setSelectedButtonWhereAppropriate()
         
         self.navigationController?.navigationBar.tintColor = whiteTheme
+        print(self.childViewControllers)
     }
     
     override func didReceiveMemoryWarning() {
@@ -86,10 +87,22 @@ class ShowDetailViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
+    override func preferredContentSizeDidChange(forChildContentContainer container: UIContentContainer) {
+        print("WOW", container)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destinationVC = segue.destination  as? ShowInformationViewController{
             infoController = destinationVC
             destinationVC.show = show
+            destinationVC.parentScrollView = self.scrollView
+//            var contentRect = CGRect(x: 0, y: 0, width: 0, height: 0)
+//            for view in destinationVC.view.subviews {
+//                contentRect = contentRect.union(view.frame)
+//            }
+//            print(contentRect)
+//            self.showInfoView. = contentRect.height
+            
         }
         if let destinationVC = segue.destination  as? CastCollectionViewController{
             castController = destinationVC
