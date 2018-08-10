@@ -41,7 +41,7 @@ class ShowDetailViewController: UIViewController, UIScrollViewDelegate {
     
     func fillBannerImage(){
         if let path = show?.backdrop_path{
-            let url = URL(string:"https://image.tmdb.org/t/p/w500_and_h281_bestv2/" + path)
+            let url = URL(string:"https://image.tmdb.org/t/p/w780/" + path)
             self.stillsImageView.sd_setShowActivityIndicatorView(true)
             self.stillsImageView.sd_setIndicatorStyle(.whiteLarge)
             self.stillsImageView.sd_setImage(with: url)

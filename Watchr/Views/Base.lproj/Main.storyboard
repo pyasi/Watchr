@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rLn-xK-xvC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rLn-xK-xvC">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -30,7 +30,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nQN-KZ-hK2">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" red="0.086274509799999996" green="0.090196078430000007" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Knc-zf-eed">
                                     <size key="itemSize" width="170" height="292"/>
@@ -87,7 +87,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JrW-JH-8Rd">
@@ -173,7 +173,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Sk7-tv-AzB"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="5JM-nx-42G">
-                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="idS-82-Lii">
@@ -236,7 +236,6 @@
                     </tabBar>
                     <connections>
                         <segue destination="akp-wx-M6Q" kind="relationship" relationship="viewControllers" id="cD8-RH-D6y"/>
-                        <segue destination="lNI-sS-FJL" kind="relationship" relationship="viewControllers" id="mHF-Ms-img"/>
                         <segue destination="eeG-SO-dmz" kind="relationship" relationship="viewControllers" id="K2l-LT-YJI"/>
                     </connections>
                 </tabBarController>
@@ -251,7 +250,7 @@
                     <tabBarItem key="tabBarItem" systemItem="mostViewed" id="kD0-KP-r5D"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="sXb-lo-Wv0">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.92538958790000003" green="0.92554813619999998" blue="0.92537957429999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" cyan="0.84740632770000002" magenta="0.74705207350000002" yellow="0.49682036039999999" black="0.55295857349999999" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
@@ -268,30 +267,6 @@
             </objects>
             <point key="canvasLocation" x="1327" y="157"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="0Xp-r0-hP6">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lNI-sS-FJL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="1jH-Bz-s0s"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="ih0-9g-Pi5">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.92538958790000003" green="0.92554813619999998" blue="0.92537957429999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="barTintColor" cyan="0.84740632770000002" magenta="0.74705207350000002" yellow="0.49682036039999999" black="0.55295857349999999" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" red="0.92538958790000003" green="0.92554813619999998" blue="0.92537957429999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Gz6-FD-90I" kind="relationship" relationship="rootViewController" id="fwY-8c-NLh"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zkh-WZ-9ae" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1935.2" y="-663.41829085457277"/>
-        </scene>
         <!--Discovery Swiping Page View Controller-->
         <scene sceneID="TlB-T9-d9V">
             <objects>
@@ -307,7 +282,7 @@
                     <tabBarItem key="tabBarItem" systemItem="contacts" id="ahB-E2-IOg"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="m9v-Qh-VnT">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.11764705882352941" green="0.14117647058823529" blue="0.1803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
