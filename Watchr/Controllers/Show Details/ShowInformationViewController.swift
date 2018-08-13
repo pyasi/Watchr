@@ -38,7 +38,8 @@ class ShowInformationViewController: UIViewController, UICollectionViewDelegate,
         
         self.parentScrollView?.contentSize = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 200).size
         self.preferredContentSize = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 200).size
-        recommendationsLabel.layer.cornerRadius = 8
+        recommendationsLabel.layer.masksToBounds = true
+        recommendationsLabel.layer.cornerRadius = 4
     }
     
     override func didReceiveMemoryWarning() {
@@ -57,10 +58,12 @@ class ShowInformationViewController: UIViewController, UICollectionViewDelegate,
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print("here")
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        // TODO empty state for no recommendations
+        
         return recommendations.count
     }
     
@@ -69,7 +72,10 @@ class ShowInformationViewController: UIViewController, UICollectionViewDelegate,
         // Shouldn't be ShowCollectionCellCollectionViewCell
         
         let cell = recommendationCollectionView.dequeueReusableCell(withReuseIdentifier: "RecommendationCell", for: indexPath) as! ShowRecommendationViewCell
-        cell.showTitle.text = recommendations[indexPath.row].name != nil ? recommendations[indexPath.row].name : ""
+        
+        // No longer displaying show name
+        //cell.showTitle.text = recommendations[indexPath.row].name != nil ? recommendations[indexPath.row].name : ""
+        
         if( recommendations[indexPath.row].id != nil){
             if let path = recommendations[indexPath.row].poster_path{
                 let url = URL(string: "https://image.tmdb.org/t/p/w185//" + path)
