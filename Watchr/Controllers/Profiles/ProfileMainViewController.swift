@@ -9,6 +9,7 @@
 import UIKit
 import TMDBSwift
 import PageMenu
+import AMScrollingNavbar
 
 class ProfileMainViewController: UIViewController {
 
@@ -19,6 +20,8 @@ class ProfileMainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Watch List"
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+
         loadPagingController()
     }
     
@@ -42,8 +45,9 @@ class ProfileMainViewController: UIViewController {
         controllerArray.append(watchListController)
         
         let parameters: [CAPSPageMenuOption] = [
-            .centerMenuItems(false),
-            .menuItemWidth(75.0),
+            .centerMenuItems(true),
+            .menuItemWidth(90.0),
+            .menuMargin(18.0),
             .viewBackgroundColor(darkTheme),
             .scrollMenuBackgroundColor(mediumTheme),
             .scrollAnimationDurationOnMenuItemTap(250),

@@ -109,6 +109,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="UqG-tn-H1z">
+                        <barButtonItem key="backBarButtonItem" title=" " id="wS6-q8-P8Y"/>
                         <barButtonItem key="leftBarButtonItem" title="L" id="sFh-AA-JuH">
                             <connections>
                                 <action selector="logOutTapped:" destination="BYZ-38-t0r" id="qKc-1J-q7r"/>
@@ -150,6 +151,24 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Television Icon" translatesAutoresizingMaskIntoConstraints="NO" id="Xte-CV-7zh">
+                                <rect key="frame" x="16" y="113" width="343" height="332"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mbs-me-icT">
+                                <rect key="frame" x="67" y="269" width="240" height="69"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Watchr">
+                                        <attributes>
+                                            <color key="NSColor" red="0.90980392156862744" green="0.92549019607843142" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="52" name="Silom"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.086274509799999996" green="0.090196078430000007" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -160,7 +179,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6tU-EM-Y2y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-865" y="157"/>
+            <point key="canvasLocation" x="-866.39999999999998" y="156.97151424287858"/>
         </scene>
         <!--Favorites View Controller-->
         <scene sceneID="2iK-NL-ffc">
@@ -321,6 +340,9 @@
             <point key="canvasLocation" x="-602" y="1297"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Television Icon" width="256" height="256"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="4jR-Sn-dPO"/>
     </inferredMetricsTieBreakers>

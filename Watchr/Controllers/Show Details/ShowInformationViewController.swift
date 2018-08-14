@@ -23,6 +23,7 @@ class ShowInformationViewController: UIViewController, UICollectionViewDelegate,
     var detailedShow: TVDetailedMDB?
     var recommendations: [TVMDB] = []
     var parentScrollView: UIScrollView?
+    var parentView: UIView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +41,20 @@ class ShowInformationViewController: UIViewController, UICollectionViewDelegate,
         self.preferredContentSize = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 200).size
         recommendationsLabel.layer.masksToBounds = true
         recommendationsLabel.layer.cornerRadius = 4
+        
     }
+    
+//    override func viewDidLayoutSubviews() {
+//        var x:CGFloat      = self.parentView!.frame.origin.x
+//        var y:CGFloat      = self.parentView!.frame.origin.y
+//        var width:CGFloat  = self.parentView!.frame.width
+//        var height:CGFloat = self.recommendationCollectionView.frame.height + self.recommendationCollectionView.bounds.origin.y
+//        var frame:CGRect   = CGRect(x: x, y: y, width: width, height: height)
+//        //self.parentView?.frame = frame
+//        print(self.recommendationCollectionView.frame)
+//        self.pare?.frame = CGRect(x: (self.parentScrollView?.frame.origin.x)!, y: (self.parentScrollView?.frame.origin.x)!, width: (self.parentScrollView?.frame.width)!, height: (self.recommendationCollectionView?.frame.height)! + (self.recommendationCollectionView?.frame.origin.y)!)
+//        //print("new frame", frame)
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -70,7 +84,6 @@ class ShowInformationViewController: UIViewController, UICollectionViewDelegate,
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         // Shouldn't be ShowCollectionCellCollectionViewCell
-        
         let cell = recommendationCollectionView.dequeueReusableCell(withReuseIdentifier: "RecommendationCell", for: indexPath) as! ShowRecommendationViewCell
         
         // No longer displaying show name
@@ -86,7 +99,6 @@ class ShowInformationViewController: UIViewController, UICollectionViewDelegate,
         else{
             cell.showImage.image = UIImage(named: "default")
         }
-        
         
         return cell
     }
@@ -145,5 +157,22 @@ class ShowInformationViewController: UIViewController, UICollectionViewDelegate,
             self.detailedShow = apiReturn.1!
             self.loadShowInformation()
         }
+    }
+    
+    @IBAction func shareButtonTapped(_ sender: Any) {
+        
+        let textToShare = "Check out this show I found on Watchr" + show!.name
+        let watcherLink = "linktowatchr.com"
+        if let url = URL(string: "https://image.tmdb.org/t/p/w185//" + show!.poster_path!){
+        let image = UIImageView()
+        image.sd_setImage(with: url)
+        if let myWebsite = NSURL(string: "http://www.codingexplorer.com/") {
+            let objectsToShare = [textToShare, image.image, watcherLink] as [Any]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            
+            activityVC.popoverPresentationController?.sourceView = sender as? UIView
+            self.present(activityVC, animated: true, completion: nil)
+        }
+    }
     }
 }
