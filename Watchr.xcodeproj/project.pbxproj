@@ -38,6 +38,7 @@
 		FB93FD441F3AA4C3002DB84A /* ColorsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93FD431F3AA4C3002DB84A /* ColorsHelper.swift */; };
 		FBBEFAF61F4252AD007DC859 /* MoreOptionsAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBEFAF51F4252AD007DC859 /* MoreOptionsAlertViewController.swift */; };
 		FBC3BA691F4D22D10022A0A6 /* PreviewShowDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC3BA681F4D22D10022A0A6 /* PreviewShowDetailViewController.swift */; };
+		FBC5F70D211E072E00697EDA /* ShowRecommendationViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC5F70C211E072E00697EDA /* ShowRecommendationViewCell.swift */; };
 		FBDC93131F10833600E515C8 /* SWSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC93121F10833600E515C8 /* SWSegmentedControl.swift */; };
 		FBDC93161F1085D200E515C8 /* ShowInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC93151F1085D200E515C8 /* ShowInformationViewController.swift */; };
 		FBDC93181F11452100E515C8 /* CastCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC93171F11452100E515C8 /* CastCollectionViewController.swift */; };
@@ -108,6 +109,7 @@
 		FBBEFAF41F423F58007DC859 /* Watchr-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Watchr-Bridging-Header.h"; sourceTree = "<group>"; };
 		FBBEFAF51F4252AD007DC859 /* MoreOptionsAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreOptionsAlertViewController.swift; sourceTree = "<group>"; };
 		FBC3BA681F4D22D10022A0A6 /* PreviewShowDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewShowDetailViewController.swift; sourceTree = "<group>"; };
+		FBC5F70C211E072E00697EDA /* ShowRecommendationViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowRecommendationViewCell.swift; sourceTree = "<group>"; };
 		FBDC93121F10833600E515C8 /* SWSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWSegmentedControl.swift; sourceTree = "<group>"; };
 		FBDC93151F1085D200E515C8 /* ShowInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowInformationViewController.swift; sourceTree = "<group>"; };
 		FBDC93171F11452100E515C8 /* CastCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CastCollectionViewController.swift; sourceTree = "<group>"; };
@@ -171,7 +173,6 @@
 				FB267C351F3CEAC100DCCE71 /* SearchViewController.swift */,
 				FB267C391F3CEF3700DCCE71 /* ShowTableViewCell.swift */,
 			);
-			name = Search;
 			path = Search;
 			sourceTree = "<group>";
 		};
@@ -183,7 +184,6 @@
 				FBE6328F1F451A4D00B00748 /* ProfileShowsListViewController.swift */,
 				FBE6328D1F4519A200B00748 /* ShowProfileTableViewCell.swift */,
 			);
-			name = Profiles;
 			path = Profiles;
 			sourceTree = "<group>";
 		};
@@ -240,7 +240,6 @@
 				FB7B2E871F57ABD6008D7C43 /* WatchrListPopupViewController.swift */,
 				FB7B2E8B1F57BA94008D7C43 /* WatchrStatusDelegate.swift */,
 			);
-			name = Controllers;
 			path = Controllers;
 			sourceTree = "<group>";
 		};
@@ -260,7 +259,6 @@
 				FB77F2011F1052A6003A1D46 /* ShowDetailView.storyboard */,
 				FB7B2E8D1F58F038008D7C43 /* WatchrStatusPopup.storyboard */,
 			);
-			name = Views;
 			path = Views;
 			sourceTree = "<group>";
 		};
@@ -271,7 +269,6 @@
 				FB7B2E9C1F590974008D7C43 /* FriendTableViewCell.swift */,
 				FB7B2E961F58FE21008D7C43 /* Testing.swift */,
 			);
-			name = Social;
 			path = Social;
 			sourceTree = "<group>";
 		};
@@ -284,8 +281,8 @@
 				FBC3BA681F4D22D10022A0A6 /* PreviewShowDetailViewController.swift */,
 				FB77F2031F1054B2003A1D46 /* ShowDetailViewController.swift */,
 				FBDC93151F1085D200E515C8 /* ShowInformationViewController.swift */,
+				FBC5F70C211E072E00697EDA /* ShowRecommendationViewCell.swift */,
 			);
-			name = "Show Details";
 			path = "Show Details";
 			sourceTree = "<group>";
 		};
@@ -295,7 +292,6 @@
 				FBF583C01F12BD7C00950C96 /* AppUser.swift */,
 				FB7B2E9E1F590F9B008D7C43 /* Friend.swift */,
 			);
-			name = Models;
 			path = Models;
 			sourceTree = "<group>";
 		};
@@ -437,6 +433,7 @@
 				FB7B2E8C1F57BA94008D7C43 /* WatchrStatusDelegate.swift in Sources */,
 				FBDC931E1F119BC000E515C8 /* ActorDetailViewController.swift in Sources */,
 				FB5648FD1F427A430023E0A2 /* ShowHelper.swift in Sources */,
+				FBC5F70D211E072E00697EDA /* ShowRecommendationViewCell.swift in Sources */,
 				FB57CD8C1F10356100F98DAE /* ShowCollectionViewController.swift in Sources */,
 				FB7B2E881F57ABD6008D7C43 /* WatchrListPopupViewController.swift in Sources */,
 				FB7B2E9B1F590944008D7C43 /* AddFriendsViewController.swift in Sources */,

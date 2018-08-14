@@ -47,7 +47,7 @@ class MainViewController: UIViewController, UISearchBarDelegate {
         popularShows.showListType = ShowListType.Popular
         topRatedShows.showListType = ShowListType.TopRated
         onTheAir.showListType = ShowListType.OnTheAir
-        recommendedShows.showListType = ShowListType.Recommended
+        //recommendedShows.showListType = ShowListType.Recommended
         
         popularShows.title = "Popular"
         topRatedShows.title = "Top Rated"
@@ -57,12 +57,12 @@ class MainViewController: UIViewController, UISearchBarDelegate {
         controllerArray.append(popularShows)
         controllerArray.append(topRatedShows)
         controllerArray.append(onTheAir)
-        controllerArray.append(recommendedShows)
+        //controllerArray.append(recommendedShows)
         
         let parameters: [CAPSPageMenuOption] = [
-            .centerMenuItems(false),
-            .menuItemWidth(75.0),
-            .menuMargin(8.0),
+            .centerMenuItems(true),
+            .menuItemWidth(90.0),
+            .menuMargin(18.0),
             .viewBackgroundColor(darkTheme),
             .scrollMenuBackgroundColor(mediumTheme),
             .scrollAnimationDurationOnMenuItemTap(250),

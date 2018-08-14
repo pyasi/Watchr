@@ -32,16 +32,19 @@ class ProfileShowsListViewController: UIViewController, UITableViewDelegate, UIT
     
     override func viewWillAppear(_ animated: Bool) {
         
-        /*  Uncomment to user scrolling nav bar
          if let navigationController = self.navigationController as? ScrollingNavigationController {
-         navigationController.followScrollView(showsTableView, delay: 75.0, scrollSpeedFactor: 2, followers: [((self.parent?.parent as! ProfileMainViewController).profileDetailsView)!, (self.parent as! CAPSPageMenu).view])
+         navigationController.followScrollView(showsTableView, delay: 75.0, scrollSpeedFactor: 1)
          }
-         */
     }
     
     func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool {
+        if let navigationController = navigationController as? ScrollingNavigationController {
+            navigationController.showNavbar(animated: true)
+        }
         return true
     }
+    
+    
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         /*

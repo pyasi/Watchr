@@ -9,39 +9,20 @@
 import UIKit
 import TMDBSwift
 import PageMenu
+import AMScrollingNavbar
 
 class ProfileMainViewController: UIViewController {
 
-    @IBOutlet var profileDetailsView: UIView!
-    @IBOutlet var profilePhoto: UIImageView!
-    @IBOutlet var displayNameLabel: UILabel!
-    @IBOutlet var followButton: UIButton!
     @IBOutlet var viewToSizeContainer: UIView!
-    @IBOutlet var numberOfFollowersLabel: UILabel!
-    @IBOutlet var numberFollowingLabel: UILabel!
     
     var pageMenu : CAPSPageMenu?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Watch List"
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 
-        loadProfileInformation()
         loadPagingController()
-    }
-    
-    func loadProfileInformation(){
-        let url = currentUser?.photoURL
-        profilePhoto.sd_setImage(with: url, placeholderImage: UIImage(named: "profile"))
-        displayNameLabel.text = currentUser?.displayName
-        
-        followButton.layer.borderColor = hexStringToUIColor(hex: "6058FF").cgColor
-        followButton.layer.borderWidth = 0.5
-        followButton.layer.cornerRadius = 3
-        
-        profilePhoto.layer.masksToBounds = false
-        profilePhoto.layer.borderWidth = 0.0
-        profilePhoto.layer.cornerRadius = profilePhoto.frame.height / 2
-        profilePhoto.clipsToBounds = true
     }
     
     func loadPagingController(){
@@ -64,21 +45,21 @@ class ProfileMainViewController: UIViewController {
         controllerArray.append(watchListController)
         
         let parameters: [CAPSPageMenuOption] = [
-            .centerMenuItems(false),
-            .menuItemWidth(75.0),
+            .centerMenuItems(true),
+            .menuItemWidth(90.0),
+            .menuMargin(18.0),
             .viewBackgroundColor(darkTheme),
             .scrollMenuBackgroundColor(mediumTheme),
             .scrollAnimationDurationOnMenuItemTap(250),
             .addBottomMenuHairline(false),
             .selectionIndicatorHeight(2.0)
         ]
-                
-        let rect = CGRect(x: 0, y: profileDetailsView.frame.height, width: viewToSizeContainer.frame.width, height: viewToSizeContainer.frame.height)
+        
+        let rect = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         
         // Initialize page menu with controller array, frame, and optional parameters
         pageMenu = CAPSPageMenu(viewControllers: controllerArray, frame: rect, pageMenuOptions: parameters)
-        
-        //let verticalConstraint = NSLayoutConstraint(item: pageMenu?.view, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: profileDetailsView, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 0)
+    
         
         // Lastly add page menu as subview of base view controller view
         // or use pageMenu controller in you view hierachy as desired

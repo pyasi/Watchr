@@ -20,7 +20,7 @@ class MoreOptionsAlertViewController: UIAlertController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title =  "\n\n\n\n\n\n"
+        //self.title =  "\n\n\n\n\n\n"
         self.message = nil
         
         configureView()
@@ -34,13 +34,16 @@ class MoreOptionsAlertViewController: UIAlertController {
     }
     
     func configureView(){
+        
         let margin:CGFloat = 10.0
-        let rect = CGRect(x: margin, y: margin, width: self.view.bounds.size.width - margin * 4.0, height: 120)
-        customHeader = MoreOptionsHeader.instanceFromNib()
-        customHeader?.frame = rect
-        customHeader?.backgroundColor = mediumTheme
-        customHeader?.backgroundView.layer.cornerRadius = 2
-        self.view.addSubview(customHeader!)
+        let rect = CGRect(x: margin, y: margin, width: self.view.bounds.size.width, height: 120)
+
+        // CUSTOM HEADER
+//        customHeader = MoreOptionsHeader.instanceFromNib()
+//        customHeader?.frame = rect
+//        customHeader?.backgroundColor = mediumTheme
+//        customHeader?.backgroundView.layer.cornerRadius = 4
+//        self.view.addSubview(customHeader!)
         
         let gotToShowDetails = UIAlertAction(title: "Go to Show Details", style: .default, handler: {(alert: UIAlertAction!) in self.goToShowDetailsClicked()})
         
@@ -61,13 +64,13 @@ class MoreOptionsAlertViewController: UIAlertController {
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.75)
         alertContentView.layer.cornerRadius = 15
     }
-    
+
     func addAppropriateActions(){
         
         if(!(currentUser?.watched.contains(self.showId!))!){
             let addToWatched = UIAlertAction(title: "Watched", style: .default, handler: {(alert: UIAlertAction!) in self.watchrStatusDelegate.addShowToWatched(showId: self.showId!)})
             
-            addToWatched.setValue(UIImage(named: "heart"), forKey: "image")
+            //addToWatched.setValue(UIImage(named: "heart"), forKey: "image")
             self.addAction(addToWatched)
         }
         

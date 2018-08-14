@@ -14,4 +14,5 @@ target 'Watchr' do
   pod 'SDWebImage', '~> 4.0'
   pod 'PageMenu'
   pod 'AMScrollingNavbar'
+ pod 'PageMenu', :git => 'https://github.com/orazz/PageMenu.git'
 end
