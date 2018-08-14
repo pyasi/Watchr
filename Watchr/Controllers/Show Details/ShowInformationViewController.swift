@@ -24,6 +24,8 @@ class ShowInformationViewController: UIViewController, UICollectionViewDelegate,
     var recommendations: [TVMDB] = []
     var parentScrollView: UIScrollView?
     var parentView: UIView?
+    var endOfContent: CGFloat?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,30 +33,17 @@ class ShowInformationViewController: UIViewController, UICollectionViewDelegate,
         getShowDetailedInformation(show: show!)
         getRecommendationsForShow(show: show!)
         
-        scrollView.delegate = self
-        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height+100)
-        
         recommendationCollectionView.delegate = self
         recommendationCollectionView.dataSource = self
         
-        self.parentScrollView?.contentSize = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 200).size
-        self.preferredContentSize = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 200).size
         recommendationsLabel.layer.masksToBounds = true
         recommendationsLabel.layer.cornerRadius = 4
         
     }
     
-//    override func viewDidLayoutSubviews() {
-//        var x:CGFloat      = self.parentView!.frame.origin.x
-//        var y:CGFloat      = self.parentView!.frame.origin.y
-//        var width:CGFloat  = self.parentView!.frame.width
-//        var height:CGFloat = self.recommendationCollectionView.frame.height + self.recommendationCollectionView.bounds.origin.y
-//        var frame:CGRect   = CGRect(x: x, y: y, width: width, height: height)
-//        //self.parentView?.frame = frame
-//        print(self.recommendationCollectionView.frame)
-//        self.pare?.frame = CGRect(x: (self.parentScrollView?.frame.origin.x)!, y: (self.parentScrollView?.frame.origin.x)!, width: (self.parentScrollView?.frame.width)!, height: (self.recommendationCollectionView?.frame.height)! + (self.recommendationCollectionView?.frame.origin.y)!)
-//        //print("new frame", frame)
-//    }
+    override func viewDidLayoutSubviews() {
+        parentScrollView?.contentSize = CGSize(width: self.view.frame.size.width, height: recommendationCollectionView.frame.origin.y + recommendationCollectionView.frame.height + endOfContent!)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -63,15 +52,10 @@ class ShowInformationViewController: UIViewController, UICollectionViewDelegate,
     
     func loadShowInformation(){
         
-        if let airDate = detailedShow?.first_air_date{
-            //yearLabel.text = airDate
-        }
         genreLabel.text = getGenresString(show: detailedShow!)
         networkLabel.text = detailedShow!.networks.count > 0 ? detailedShow!.networks[0].name : " - "
         descriptionTextView.text = detailedShow!.overview != nil ? detailedShow!.overview : " - "
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -138,19 +122,6 @@ class ShowInformationViewController: UIViewController, UICollectionViewDelegate,
         return genreString
     }
     
-    /*
-    func getNetworksString(show: TVMDB) -> String{
-        var genreString = ""
-        print(show.genres)
-        for x in 0...show.genres.count - 1{
-            genreString.append(show.genres[x].name!)
-            if(x != show.genres.count - 1){
-                genreString.append(", ")
-            }
-        }
-        return genreString
-    }*/
-    
     func getShowDetailedInformation(show: TVMDB){
         TVDetailedMDB.tv(apiKey, tvShowID: show.id, language: "en"){
             apiReturn in
@@ -163,7 +134,7 @@ class ShowInformationViewController: UIViewController, UICollectionViewDelegate,
         
         let textToShare = "Check out this show I found on Watchr" + show!.name
         let watcherLink = "linktowatchr.com"
-        if let url = URL(string: "https://image.tmdb.org/t/p/w185//" + show!.poster_path!){
+        if let url = URL(string: "https://image.tmdb.org/t/p/w185/" + show!.poster_path!){
         let image = UIImageView()
         image.sd_setImage(with: url)
         if let myWebsite = NSURL(string: "http://www.codingexplorer.com/") {

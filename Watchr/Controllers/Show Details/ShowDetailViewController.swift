@@ -92,12 +92,13 @@ class ShowDetailViewController: UIViewController, UIScrollViewDelegate {
             destinationVC.show = show
             destinationVC.parentScrollView = self.scrollView
             destinationVC.parentView = self.view
+            destinationVC.endOfContent = self.showInfoView.frame.origin.y
             print("First Frame: ", self.showInfoView.frame)
-            var contentRect = CGRect(x: 0, y: 0, width: 0, height: 0)
-            
-            for view in destinationVC.view.subviews {
-                contentRect = contentRect.union(view.frame)
-            }
+//            var contentRect = CGRect(x: 0, y: 0, width: 0, height: 0)
+//            
+//            for view in destinationVC.view.subviews {
+//                contentRect = contentRect.union(view.frame)
+//            }
             //self.showInfoView. = contentRect.height
             
         }

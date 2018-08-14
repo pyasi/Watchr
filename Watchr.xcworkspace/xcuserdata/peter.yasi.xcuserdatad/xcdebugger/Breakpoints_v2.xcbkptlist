@@ -3718,7 +3718,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/Controllers/Show Details/ShowDetailViewController.swift"
-            timestampString = "555903529.816413"
+            timestampString = "555907436.886225"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "52"
@@ -3846,11 +3846,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/Controllers/Show Details/ShowDetailViewController.swift"
-            timestampString = "555903529.816599"
+            timestampString = "555907436.886435"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
             landmarkName = "resizeScrollView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3861,40 +3861,8 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Watchr/Controllers/Show Details/ShowInformationViewController.swift"
-            timestampString = "555903529.816681"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "scrollViewDidScroll(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Watchr/Controllers/Show Details/ShowDetailViewController.swift"
-            timestampString = "555903529.817234"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Watchr/Controllers/Show Details/ShowDetailViewController.swift"
-            timestampString = "555903529.817292"
+            timestampString = "555907436.886523"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "43"
@@ -3910,7 +3878,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pods/PageMenu/Classes/CAPSPageMenu.swift"
-            timestampString = "555903529.817347"
+            timestampString = "555907436.886585"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "355"
@@ -3958,7 +3926,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pods/PageMenu/Classes/CAPSPageMenu.swift"
-            timestampString = "555903529.817399"
+            timestampString = "555907436.886651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "326"
@@ -3974,7 +3942,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pods/PageMenu/Classes/CAPSPageMenu.swift"
-            timestampString = "555903529.8174469"
+            timestampString = "555907436.886717"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "85"
@@ -3990,7 +3958,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pods/PageMenu/Classes/CAPSPageMenu.swift"
-            timestampString = "555903529.817495"
+            timestampString = "555907436.886779"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "92"
@@ -4038,7 +4006,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pods/PageMenu/Classes/CAPSPageMenu.swift"
-            timestampString = "555903529.817541"
+            timestampString = "555907436.886869"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "94"
@@ -4054,7 +4022,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pods/PageMenu/Classes/CAPSPageMenu.swift"
-            timestampString = "555903529.817587"
+            timestampString = "555907436.886946"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "167"
@@ -4070,7 +4038,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pods/PageMenu/Classes/CAPSPageMenu.swift"
-            timestampString = "555903529.817634"
+            timestampString = "555907436.887022"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "168"
@@ -4086,7 +4054,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pods/PageMenu/Classes/CAPSPageMenu.swift"
-            timestampString = "555903529.817679"
+            timestampString = "555907436.887097"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "208"
@@ -4102,7 +4070,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pods/PageMenu/Classes/CAPSPageMenu.swift"
-            timestampString = "555903529.817724"
+            timestampString = "555907436.887208"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "239"
@@ -4182,7 +4150,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/Controllers/ShowCollectionViewController.swift"
-            timestampString = "555903529.817835"
+            timestampString = "555907436.887342"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
@@ -4198,7 +4166,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pods/PageMenu/Classes/CAPSPageMenu.swift"
-            timestampString = "555903529.817884"
+            timestampString = "555907436.8874"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "242"
@@ -4214,7 +4182,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/Controllers/Profiles/ProfileShowsListViewController.swift"
-            timestampString = "555903529.81793"
+            timestampString = "555907436.887453"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "41"
@@ -4230,11 +4198,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/Controllers/Show Details/ShowInformationViewController.swift"
-            timestampString = "555903529.817978"
+            timestampString = "555907436.887512"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
+            landmarkName = "shareButtonTapped(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Watchr/Controllers/Show Details/ShowInformationViewController.swift"
+            timestampString = "555907697.317042"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "shareButtonTapped(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Watchr/Controllers/Show Details/ShowInformationViewController.swift"
+            timestampString = "555908153.597528"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
             landmarkName = "shareButtonTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
