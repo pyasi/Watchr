@@ -39,6 +39,8 @@
 		FBBEFAF61F4252AD007DC859 /* MoreOptionsAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBEFAF51F4252AD007DC859 /* MoreOptionsAlertViewController.swift */; };
 		FBC3BA691F4D22D10022A0A6 /* PreviewShowDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC3BA681F4D22D10022A0A6 /* PreviewShowDetailViewController.swift */; };
 		FBC5F70D211E072E00697EDA /* ShowRecommendationViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC5F70C211E072E00697EDA /* ShowRecommendationViewCell.swift */; };
+		FBC5F70F21227DB800697EDA /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBC5F70E21227DB800697EDA /* Settings.storyboard */; };
+		FBC5F7122122881000697EDA /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC5F7112122881000697EDA /* SettingsController.swift */; };
 		FBDC93131F10833600E515C8 /* SWSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC93121F10833600E515C8 /* SWSegmentedControl.swift */; };
 		FBDC93161F1085D200E515C8 /* ShowInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC93151F1085D200E515C8 /* ShowInformationViewController.swift */; };
 		FBDC93181F11452100E515C8 /* CastCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC93171F11452100E515C8 /* CastCollectionViewController.swift */; };
@@ -110,6 +112,8 @@
 		FBBEFAF51F4252AD007DC859 /* MoreOptionsAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreOptionsAlertViewController.swift; sourceTree = "<group>"; };
 		FBC3BA681F4D22D10022A0A6 /* PreviewShowDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewShowDetailViewController.swift; sourceTree = "<group>"; };
 		FBC5F70C211E072E00697EDA /* ShowRecommendationViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowRecommendationViewCell.swift; sourceTree = "<group>"; };
+		FBC5F70E21227DB800697EDA /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		FBC5F7112122881000697EDA /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		FBDC93121F10833600E515C8 /* SWSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWSegmentedControl.swift; sourceTree = "<group>"; };
 		FBDC93151F1085D200E515C8 /* ShowInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowInformationViewController.swift; sourceTree = "<group>"; };
 		FBDC93171F11452100E515C8 /* CastCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CastCollectionViewController.swift; sourceTree = "<group>"; };
@@ -228,6 +232,7 @@
 		FB77F1FD1F1042E3003A1D46 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FBC5F7102122880000697EDA /* Settings */,
 				FB5649001F428E340023E0A2 /* Profiles */,
 				FB267C321F3CE9D600DCCE71 /* Search */,
 				FBDC93141F1085A900E515C8 /* Show Details */,
@@ -258,6 +263,7 @@
 				FBF583C21F12D55B00950C96 /* ShowCard.xib */,
 				FB77F2011F1052A6003A1D46 /* ShowDetailView.storyboard */,
 				FB7B2E8D1F58F038008D7C43 /* WatchrStatusPopup.storyboard */,
+				FBC5F70E21227DB800697EDA /* Settings.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -270,6 +276,14 @@
 				FB7B2E961F58FE21008D7C43 /* Testing.swift */,
 			);
 			path = Social;
+			sourceTree = "<group>";
+		};
+		FBC5F7102122880000697EDA /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				FBC5F7112122881000697EDA /* SettingsController.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		FBDC93141F1085A900E515C8 /* Show Details */ = {
@@ -370,6 +384,7 @@
 				FB7B2E991F5906A0008D7C43 /* AddFriends.storyboard in Resources */,
 				FB5648FF1F4284760023E0A2 /* Profile.storyboard in Resources */,
 				FB267C341F3CEA7900DCCE71 /* Search.storyboard in Resources */,
+				FBC5F70F21227DB800697EDA /* Settings.storyboard in Resources */,
 				FB77F2021F1052A6003A1D46 /* ShowDetailView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -449,6 +464,7 @@
 				FBF583C51F12D6AD00950C96 /* FavoritesViewController.swift in Sources */,
 				FB93FD441F3AA4C3002DB84A /* ColorsHelper.swift in Sources */,
 				FBE6328E1F4519A200B00748 /* ShowProfileTableViewCell.swift in Sources */,
+				FBC5F7122122881000697EDA /* SettingsController.swift in Sources */,
 				FBF583BC1F12ADC000950C96 /* LogInViewController.swift in Sources */,
 				FBDC931A1F11467500E515C8 /* CastCollectionViewCell.swift in Sources */,
 				FBF583C71F12E10200950C96 /* NotificationKeys.swift in Sources */,

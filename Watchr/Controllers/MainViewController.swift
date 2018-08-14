@@ -90,14 +90,10 @@ class MainViewController: UIViewController, UISearchBarDelegate {
     }
     
     @IBAction func logOutTapped(_ sender: Any) {
-        let firebaseAuth = Auth.auth()
-        do {
-            try firebaseAuth.signOut()
-            let loginManager = FBSDKLoginManager()
-            loginManager.logOut()
-            self.performSegue(withIdentifier: "LogOutSegue", sender: nil)
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-        }
+    
+    }
+    
+    @IBAction func unwindToMain(_ sender: UIStoryboardSegue) {
+
     }
 }

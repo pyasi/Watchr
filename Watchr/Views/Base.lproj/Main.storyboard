@@ -81,6 +81,33 @@
             </objects>
             <point key="canvasLocation" x="2576" y="1512"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="EgR-2O-bHI">
+            <objects>
+                <navigationController id="1NG-pf-zTW" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JPH-2L-nsK">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" cyan="0.84740632770000002" magenta="0.74705207350000002" yellow="0.49682036039999999" black="0.55295857349999999" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="naT-JE-rET" kind="relationship" relationship="rootViewController" id="FQk-Fg-xT1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qUy-VB-7Au" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1821" y="2362"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="O3E-zq-9mm">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Settings" id="naT-JE-rET" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="upI-pY-E7Y"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g0h-bC-9dK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2538" y="2361"/>
+        </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -109,10 +136,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="UqG-tn-H1z">
-                        <barButtonItem key="backBarButtonItem" title=" " id="wS6-q8-P8Y"/>
                         <barButtonItem key="leftBarButtonItem" title="L" id="sFh-AA-JuH">
                             <connections>
                                 <action selector="logOutTapped:" destination="BYZ-38-t0r" id="qKc-1J-q7r"/>
+                                <segue destination="1NG-pf-zTW" kind="presentation" id="AcH-sW-0j1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
