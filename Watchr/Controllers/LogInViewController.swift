@@ -163,6 +163,10 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate, InitialLo
             }
         }
     }
+    
+    @IBAction func unwindToLogin(_ sender: UIStoryboardSegue) {
+    
+    }
 }
 
 

@@ -88,7 +88,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JPH-2L-nsK">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" cyan="0.84740632770000002" magenta="0.74705207350000002" yellow="0.49682036039999999" black="0.55295857349999999" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
                         <color key="barTintColor" cyan="0.84740632770000002" magenta="0.74705207350000002" yellow="0.49682036039999999" black="0.55295857349999999" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.90980392160000001" green="0.92549019610000005" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="naT-JE-rET" kind="relationship" relationship="rootViewController" id="FQk-Fg-xT1"/>
@@ -146,7 +150,6 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="containerView" destination="JrW-JH-8Rd" id="hqK-xN-mGJ"/>
-                        <segue destination="rLn-xK-xvC" kind="presentation" identifier="LogOutSegue" id="hsP-en-T3O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

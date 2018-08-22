@@ -45,7 +45,6 @@ class ShowCollectionViewController: UIViewController, UIViewControllerPreviewing
             NotificationCenter.default.addObserver(self, selector: #selector(self.favoritesChanged), name: NSNotification.Name(rawValue: favoriteAddedKey), object: nil)
         }
         
-        print(Testing().fetchUserProfile())
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

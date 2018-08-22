@@ -3734,7 +3734,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/Controllers/LogInViewController.swift"
-            timestampString = "555613523.855499"
+            timestampString = "555912326.138491"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "52"
@@ -3750,7 +3750,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/Controllers/LogInViewController.swift"
-            timestampString = "555613523.855569"
+            timestampString = "555912326.1385649"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "53"
@@ -3766,7 +3766,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/Controllers/LogInViewController.swift"
-            timestampString = "555613523.855612"
+            timestampString = "555912326.138615"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "131"
@@ -3782,7 +3782,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/Controllers/LogInViewController.swift"
-            timestampString = "555613523.855659"
+            timestampString = "555912326.13866"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "60"
@@ -3830,7 +3830,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/Controllers/LogInViewController.swift"
-            timestampString = "555613523.8556989"
+            timestampString = "555912326.138701"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "55"
@@ -4150,7 +4150,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Watchr/Controllers/ShowCollectionViewController.swift"
-            timestampString = "555911076.569968"
+            timestampString = "555964483.748455"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
@@ -4236,6 +4236,22 @@
             startingLineNumber = "136"
             endingLineNumber = "136"
             landmarkName = "shareButtonTapped(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Watchr/Controllers/Settings/SettingsController.swift"
+            timestampString = "555912326.1390539"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -8,8 +8,10 @@
 
 
 import UIKit
+import Firebase
+import FBSDKLoginKit
 
-class SettingsTableViewController: UITableViewController {
+class SettingsController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +24,7 @@ class SettingsTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.section, " ", indexPath.row)
@@ -65,15 +67,15 @@ class SettingsTableViewController: UITableViewController {
         }
     }
     func logOut(){
-         let firebaseAuth = Auth.auth()
-         do {
-         try firebaseAuth.signOut()
-         let loginManager = FBSDKLoginManager()
-         loginManager.logOut()
-         self.performSegue(withIdentifier: "LogOutSegue", sender: nil)
-         } catch let signOutError as NSError {
-         print ("Error signing out: %@", signOutError)
-         }
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            let loginManager = FBSDKLoginManager()
+            loginManager.logOut()
+            self.performSegue(withIdentifier: "unwindToLogin", sender: nil)
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
     }
-{
+}
 
